@@ -24,7 +24,7 @@ const workflowData = [
 
 const WorkflowSection = () => {
   return (
-    <div className="h-screen flex flex-col items-center justify-center gap-11">
+    <div className="h-screen flex flex-col items-center justify-center gap-11 mt-20">
       <h1 className="font-semibold text-[54px] -tracking-[0.04em]">
         A Simple Powerful Workflow
       </h1>
