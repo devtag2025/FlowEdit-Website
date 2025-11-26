@@ -2,13 +2,12 @@ import Image from "next/image";
 
 const Background7 = () => {
   return (
-    <div className="w-full -mt-380">
+    <div className="relative h-screen -mt-180 lg:-mt-200">
       <Image
         src="/images/background/wave-3.png"
-        alt="wave 3"
-        width={2000}
-        height={600}
-        className="object-cover w-full"
+        alt="blur bg"
+        fill
+        className="object-cover lg:object-fill lg:object-top"
       />
     </div>
   );

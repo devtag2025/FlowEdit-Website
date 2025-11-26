@@ -9,7 +9,7 @@ import WorkflowSection from "@/components/modules/home-page/WorkflowSection";
 export default function HomePage() {
   return (
     <div className="">
-      <div className="pt-44">
+      <div className="pt-8 lg:pt-44">
         <Banner />
         <FeatureShowcase />
         <WorkflowSection />
