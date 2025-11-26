@@ -1,0 +1,72 @@
+import Container from "@/components/shared/Container";
+import PriceCard, { FeatureType } from "./PriceCard";
+
+const priceData: {
+  title: string;
+  price: number;
+  glow: boolean;
+  features: { text: string; type: FeatureType }[];
+}[] = [
+  {
+    title: "Launch",
+    price: 112,
+    glow: false,
+    features: [
+      { text: "Parturient sed nunc neque", type: "minus" },
+      { text: "Vel enim ultrices et ornare", type: "minus" },
+      { text: "Aenean cursus nec amet", type: "minus" },
+      { text: "Adipiscing accumsan ut", type: "minus" },
+      { text: "Parturient imperdiet id urna", type: "minus" },
+      { text: "Mollis porta bibendum", type: "minus" },
+      { text: "Vel nec dapibus sem feugiat", type: "check" },
+      { text: "Elementum pretium sed", type: "check" },
+      { text: "Ridiculus urna habitasse", type: "check" },
+    ],
+  },
+  {
+    title: "Growth",
+    price: 99,
+    glow: true,
+    features: [
+      { text: "Ipsum eu mauris in ut massa", type: "check" },
+      { text: "At id vel sit aliquet venenatis", type: "check" },
+      { text: "Non at sit faucibus sed", type: "check" },
+      { text: "Aliquet amet donec pulvinar", type: "check" },
+      { text: "Justo et in interdum a nulla", type: "check" },
+      { text: "Sit molestie libero in dui", type: "check" },
+      { text: "Ultricies gravida tempus orci", type: "check" },
+      { text: "Eu eget cras nunc facilisis", type: "check" },
+      { text: "Gravida auctor sed donec", type: "check" },
+    ],
+  },
+  {
+    title: "Plus",
+    price: 112,
+    glow: false,
+    features: [
+      { text: "Morbi diam eros scelerisque", type: "check" },
+      { text: "Urna facilisis mattis mi nulla", type: "check" },
+      { text: "Volutpat odio nunc non vel", type: "check" },
+      { text: "Lorem at in aliquam tellus", type: "check" },
+      { text: "Molestie a vel in sed enim", type: "check" },
+      { text: "Interdum lectus lorem ipsum", type: "check" },
+      { text: "Nunc quis aliquet ornare", type: "check" },
+      { text: "Ut bibendum mauris nisl", type: "check" },
+      { text: "Dapibus at eget diam vitae", type: "check" },
+    ],
+  },
+];
+
+const PriceCarosel = () => {
+  return (
+    <Container className="mt-16">
+      <div className="flex items-center justify-center gap-8 flex-wrap">
+        {priceData.map((card, i) => (
+          <PriceCard key={i} {...card} />
+        ))}
+      </div>
+    </Container>
+  );
+};
+
+export default PriceCarosel;
