@@ -9,7 +9,7 @@ import Background8 from "../backgrounds/Background8";
 
 const Background = () => {
   return (
-    <div className="absolute top-0 left-0 w-full h-[1600px] overflow-visible">
+    <div className="pointer-events-none absolute inset-0 -z-10">
       <Background1 />
 
       <Background2 />

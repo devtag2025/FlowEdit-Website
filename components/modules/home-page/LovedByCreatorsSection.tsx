@@ -1,68 +1,99 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
+
 import Container from "@/components/shared/Container";
 import PageHeaderButton from "@/components/shared/PageHeaderButton";
 import { BiSolidQuoteLeft } from "react-icons/bi";
 
+import "swiper/css";
+import "swiper/css/free-mode";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode } from "swiper/modules";
+
+const testimonials = [
+  {
+    quote: "“The best in town”",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus sed sit ultrices et sed metus sollicitudin. Orci nullam vitae amet ullamcorper scelerisque",
+    name: "Emerson Saris",
+    info: "58, California, USA",
+  },
+  {
+    quote: "“Finance is now easy!”",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus sed sit ultrices et sed metus sollicitudin. Orci nullam vitae amet ullamcorper scelerisque",
+    name: "Emerson Saris",
+    info: "58, California, USA",
+  },
+  {
+    quote: "“They made it easy”",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus sed sit ultrices et sed metus sollicitudin. Orci nullam vitae amet ullamcorper scelerisque",
+    name: "Emerson Saris",
+    info: "58, California, USA",
+  },
+];
+
+const TestimonialCard = ({ item }: any) => (
+  <div
+    className="
+      w-[360px] md:w-[380px]
+      rounded-[20px]
+      px-8 py-10
+      border border-[rgba(255,255,255,0.14)]
+      backdrop-blur-[25px]
+      shadow-[0_8px_20px_rgba(0,0,0,0.12)]
+      bg-[linear-gradient(180deg,rgba(255,255,255,0.68),rgba(255,255,255,0.5))]
+
+      flex flex-col gap-5
+      items-center lg:items-start
+      text-center lg:text-left
+    "
+  >
+    <BiSolidQuoteLeft className="text-6xl opacity-10" />
+
+    <h1 className="font-semibold text-xl sm:text-2xl leading-[150%] text-black">
+      {item.quote}
+    </h1>
+
+    <p className="text-base sm:text-lg leading-[150%] text-black/70 max-w-[300px]">
+      {item.text}
+    </p>
+
+    <div className="flex flex-col gap-1 mt-auto">
+      <h6 className="text-lg font-semibold text-black">{item.name}</h6>
+      <p className="text-sm text-black/70">{item.info}</p>
+    </div>
+  </div>
+);
+
 const LovedByCreatorsSection = () => {
   return (
-    <Container className="flex flex-col items-center justify-center gap-10 h-screen">
+    <Container className="flex flex-col items-center justify-center gap-10 py-20">
       <PageHeaderButton text="Testimonials" />
-      <h1 className="font-semibold text-[54px] -tracking-[0.04em] text-black">
+
+      <h1 className="font-semibold text-[32px] sm:text-[44px] md:text-[54px] -tracking-[0.04em] text-black text-center">
         Loved by creators
       </h1>
-      <div className="flex items-center gap-6">
-        <div className="border border-[rgba(255, 255, 255, 0.1)] rounded-[10px] px-6 py-8 backdrop-blur-[20px] shadow-[0_10px_10px_0_rgba(0,0,0,0.1),0_4px_4px_0_rgba(0,0,0,0.05),0_1px_0_0_rgba(0,0,0,0.05)] bg-[linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.5))] flex flex-col gap-3">
-          <BiSolidQuoteLeft className="text-5xl opacity-10" />
-          <h1 className="font-semibold text-2xl leading-[140%] text-black">
-            “The best in town”
-          </h1>
-          <p className="text-lg leading-[133%] text-[rgba(0,0,0,0.7)]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus
-            sed sit ultrices et sed metus sollicitudin. Orci nullam vitae amet
-            ullamcorper scelerisque
-          </p>
-          <div className="flex flex-col gap-2">
-            <h6 className="text-lg leading-[162%] text-black">Emerson Saris</h6>
-            <p className="font-normal text-sm leading-[150%] text-black">
-              58, California, USA
-            </p>
-          </div>
-        </div>
 
-        <div className="border border-[rgba(255, 255, 255, 0.1)] rounded-[10px] px-6 py-8 backdrop-blur-[20px] shadow-[0_10px_10px_0_rgba(0,0,0,0.1),0_4px_4px_0_rgba(0,0,0,0.05),0_1px_0_0_rgba(0,0,0,0.05)] bg-[linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.5))] flex flex-col gap-3">
-          <BiSolidQuoteLeft className="text-5xl opacity-10" />
-          <h1 className="font-semibold text-2xl leading-[140%] text-black">
-            “Finance is now easy!”
-          </h1>
-          <p className="text-lg leading-[133%] text-[rgba(0,0,0,0.7)]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus
-            sed sit ultrices et sed metus sollicitudin. Orci nullam vitae amet
-            ullamcorper scelerisque
-          </p>
-          <div className="flex flex-col gap-2">
-            <h6 className="text-lg leading-[162%] text-black">Emerson Saris</h6>
-            <p className="font-normal text-sm leading-[150%] text-black">
-              58, California, USA
-            </p>
-          </div>
-        </div>
+      <div className="block lg:hidden w-full">
+        <Swiper
+          modules={[FreeMode]}
+          freeMode={true}
+          grabCursor={true}
+          spaceBetween={24}
+          slidesPerView="auto"
+          className="w-full py-4 pl-4"
+        >
+          {testimonials.map((item, index) => (
+            <SwiperSlide key={index} style={{ width: "auto" }}>
+              <TestimonialCard item={item} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
 
-        <div className="border border-[rgba(255, 255, 255, 0.1)] rounded-[10px] px-6 py-8 backdrop-blur-[20px] shadow-[0_10px_10px_0_rgba(0,0,0,0.1),0_4px_4px_0_rgba(0,0,0,0.05),0_1px_0_0_rgba(0,0,0,0.05)] bg-[linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.5))] flex flex-col gap-3">
-          <BiSolidQuoteLeft className="text-5xl opacity-10" />
-          <h1 className="font-semibold text-2xl leading-[140%] text-black">
-            “They made it easy”
-          </h1>
-          <p className="text-lg leading-[133%] text-[rgba(0,0,0,0.7)]">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus
-            sed sit ultrices et sed metus sollicitudin. Orci nullam vitae amet
-            ullamcorper scelerisque
-          </p>
-          <div className="flex flex-col gap-2">
-            <h6 className="text-lg leading-[162%] text-black">Emerson Saris</h6>
-            <p className="font-normal text-sm leading-[150%] text-black">
-              58, California, USA
-            </p>
-          </div>
-        </div>
+      <div className="hidden lg:flex justify-center gap-8 w-full">
+        {testimonials.map((item, index) => (
+          <TestimonialCard key={index} item={item} />
+        ))}
       </div>
     </Container>
   );

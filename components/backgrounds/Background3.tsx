@@ -2,13 +2,12 @@ import Image from "next/image";
 
 const Background3 = () => {
   return (
-    <div className="w-full h-screen">
+    <div className="relative h-screen -mt-144 lg:-mt-140 bg-white/10">
       <Image
         src="/images/background/wallpaper-blur.png"
-        alt="wave"
-        width={2000} // IMPORTANT: Do NOT use fill
-        height={800}
-        className="absolute left-1/2 -translate-x-1/2 top-40 z-10 object-cover"
+        alt="blur bg"
+        fill
+        className="object-cover object-left lg:object-fill lg:object-left"
       />
     </div>
   );

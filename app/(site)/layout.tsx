@@ -7,13 +7,13 @@ const PublicLayout = ({ children }: Readonly<{ children: ReactNode }>) => {
   return (
     <div className="relative">
       <Background />
-      {/* <div className="absolute top-0 left-0 z-20 h-screen w-full">
+      <div className="absolute top-0 left-0 z-20 h-screen w-full">
         <Navbar />
         <main className="grow max-w-svw min-h-screen font-inter">
           {children}
         </main>
         <Footer />
-      </div> */}
+      </div>
     </div>
   );
 };
