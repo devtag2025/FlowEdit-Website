@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const Background3 = () => {
+const PortfolioBackground3 = () => {
   return (
     <div className="relative -top-full h-screen bg-white/10">
       <Image
@@ -13,4 +13,4 @@ const Background3 = () => {
   );
 };
 
-export default Background3;
+export default PortfolioBackground3;

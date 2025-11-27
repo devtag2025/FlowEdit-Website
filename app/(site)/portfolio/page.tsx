@@ -7,11 +7,13 @@ import PortfolioShowcase from "@/components/modules/portfolio-page/PortfolioShow
 
 const PortfolioPage = () => {
   return (
-    <div className="pt-12 lg:pt-24">
+    <div className="pt-0">
       <PortfolioBanner />
       <AllProjects />
       <PortfolioShowcase />
-      <LovedByCreatorsSection />
+      <div className="pt-20 lg:pt-0">
+        <LovedByCreatorsSection />
+      </div>
       <Faq />
       <GetStarted />
     </div>
