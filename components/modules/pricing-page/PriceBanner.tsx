@@ -1,4 +1,5 @@
 "use client";
+
 import PageHeaderButton from "@/components/shared/PageHeaderButton";
 import ToggleSwitch from "@/components/shared/ToggleSwitch";
 
@@ -9,11 +10,11 @@ const PriceBanner = () => {
         <div className="w-fit">
           <PageHeaderButton text="Pricing" />
         </div>
-        <h1 className="font-semibold text-[44px] leading-[118%] lg:text-[73px] -tracking-[0.04em] text-white">
-          Stop Editing. Start growing
+        <h1 className="font-semibold text-[44px] leading-[118%] lg:text-[73px] -tracking-[0.04em] text-white text-center lg:text-left">
+          Stop Editing. <br className="block lg:hidden" /> Start growing
         </h1>
 
-        <p className="text-base lg:text-xl leading-[150%] text-white max-w-92 lg:max-w-2xl">
+        <p className="text-base lg:text-xl leading-[150%] text-white max-w-92 lg:max-w-2xl text-center lg:text-left">
           As we grow our library of UI components, we’re introducing a
           limited-time pricing that’s not only 50% off but also significantly
           cheaper than what’s on the market
