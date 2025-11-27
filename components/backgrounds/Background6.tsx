@@ -2,13 +2,12 @@ import Image from "next/image";
 
 const Background6 = () => {
   return (
-    <div className="w-full mt-80">
+    <div className="relative h-screen mt-320 lg:mt-235">
       <Image
         src="/images/background/gradient-2.png"
-        alt="gradient 2"
-        width={2000}
-        height={600}
-        className="object-cover w-full"
+        alt="blur bg"
+        fill
+        className="object-fill object-top"
       />
     </div>
   );

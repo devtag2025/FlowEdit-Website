@@ -1,3 +1,6 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import Background1 from "../backgrounds/Background1";
 import Background2 from "../backgrounds/Background2";
 import Background3 from "../backgrounds/Background3";
@@ -8,20 +11,25 @@ import Background7 from "../backgrounds/Background7";
 import Background8 from "../backgrounds/Background8";
 
 const Background = () => {
+  const pathname = usePathname();
+
   return (
-    <div className="absolute top-0 left-0 w-full h-[1600px] overflow-visible">
+    <div className="pointer-events-none absolute inset-0 -z-10">
       <Background1 />
 
       <Background2 />
 
       <Background3 />
+      {pathname !== "/pricing" && (
+        <>
+          <Background4 />
+          <Background5 />
 
-      <Background4 />
-      <Background5 />
-
-      <Background6 />
-      <Background7 />
-      <Background8 />
+          <Background6 />
+          <Background7 />
+          <Background8 />
+        </>
+      )}
     </div>
   );
 };

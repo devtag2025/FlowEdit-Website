@@ -4,10 +4,9 @@ import Image from "next/image";
 
 const DualShowcase = () => {
   return (
-    <Container className="flex flex-col gap-28">
-      <div className="flex items-center justify-between gap-28">
-        <div className="relative w-[608px] h-[484px]">
-          {/* Big image */}
+    <Container className="flex flex-col justify-between gap-28">
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-28 mt-20">
+        <div className="relative w-full max-w-[608px] h-[340px] sm:h-[420px] md:h-[460px] lg:h-[484px] mx-auto">
           <Image
             src="/images/home-page/workflow-3.png"
             alt="workflow main"
@@ -15,8 +14,7 @@ const DualShowcase = () => {
             className="absolute object-cover rounded-2xl"
           />
 
-          {/* Small image on top */}
-          <div className="absolute top-1/2 left-1/2 w-[580px] h-[456px] -translate-x-1/2 -translate-y-1/2 z-20 border border-[rgba(255, 255, 255, 0.33)] rounded-2xl">
+          <div className="absolute top-1/2 left-1/2 w-[95%] sm:w-[85%] md:w-[95%] h-[95%] sm:h-[80%] md:h-[95%] -translate-x-1/2 -translate-y-1/2 z-20 border border-[rgba(255, 255, 255, 0.33)] rounded-2xl">
             <Image
               src="/images/home-page/workflow-3.png"
               alt="workflow overlay"
@@ -26,12 +24,12 @@ const DualShowcase = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-5">
-          <h1 className="font-semibold text-[54px] -tracking-[0.04em] text-black max-w-xl">
+        <div className="flex flex-col gap-5 max-w-xl text-center lg:text-left">
+          <h1 className="font-semibold text-[34px] sm:text-[44px] md:text-[54px] -tracking-[0.04em] text-black">
             Duis convallis elit blandit turpis
           </h1>
 
-          <p className="text-lg leading-[133%] text-[rgba(0, 0, 0, 0.7)] max-w-lg">
+          <p className="text-base sm:text-lg leading-[150%] text-[rgba(0,0,0,0.7)]">
             Tellus fermentum laoreet dignissim risus scelerisque pretium
             ullamcorper pretium. Sapien ut tellus ut hendrerit mauris. Varius
             dui sed vestibulum quis tellus egestas dolor eget magna. Dui
@@ -40,15 +38,14 @@ const DualShowcase = () => {
             Amet sem.
           </p>
 
-          <div className="w-fit">
+          <div className="w-fit mx-auto lg:mx-0">
             <SiteButton>Start for Free</SiteButton>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-row-reverse items-center justify-between gap-28">
-        <div className="relative w-[608px] h-[484px]">
-          {/* Big image */}
+      <div className="flex flex-col lg:flex-row-reverse items-center justify-between gap-12 lg:gap-28">
+        <div className="relative w-full max-w-[608px] h-[340px] sm:h-[420px] md:h-[460px] lg:h-[484px] mx-auto">
           <Image
             src="/images/home-page/workflow-2.png"
             alt="workflow main"
@@ -56,8 +53,7 @@ const DualShowcase = () => {
             className="absolute object-cover rounded-2xl"
           />
 
-          {/* Small image on top */}
-          <div className="absolute top-1/2 left-1/2 w-[580px] h-[456px] -translate-x-1/2 -translate-y-1/2 z-20 border border-[rgba(255, 255, 255, 0.33)] rounded-2xl">
+          <div className="absolute top-1/2 left-1/2 w-[95%] sm:w-[85%] md:w-[95%] h-[95%] sm:h-[80%] md:h-[95%] -translate-x-1/2 -translate-y-1/2 z-20 border border-[rgba(255, 255, 255, 0.33)] rounded-2xl">
             <Image
               src="/images/home-page/workflow-2.png"
               alt="workflow overlay"
@@ -67,12 +63,12 @@ const DualShowcase = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-5">
-          <h1 className="font-semibold text-[54px] -tracking-[0.04em] text-black max-w-xl">
+        <div className="flex flex-col gap-5 max-w-xl text-center lg:text-left">
+          <h1 className="font-semibold text-[34px] sm:text-[44px] md:text-[54px] -tracking-[0.04em] text-black">
             Duis convallis elit blandit turpis
           </h1>
 
-          <p className="text-lg leading-[133%] text-[rgba(0, 0, 0, 0.7)] max-w-lg">
+          <p className="text-base sm:text-lg leading-[150%] text-[rgba(0,0,0,0.7)]">
             Tellus fermentum laoreet dignissim risus scelerisque pretium
             ullamcorper pretium. Sapien ut tellus ut hendrerit mauris. Varius
             dui sed vestibulum quis tellus egestas dolor eget magna. Dui
@@ -81,7 +77,7 @@ const DualShowcase = () => {
             Amet sem.
           </p>
 
-          <div className="w-fit">
+          <div className="w-fit mx-auto lg:mx-0">
             <SiteButton>Start for Free</SiteButton>
           </div>
         </div>

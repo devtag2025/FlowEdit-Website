@@ -2,12 +2,20 @@ import Image from "next/image";
 
 const Background1 = () => {
   return (
-    <div className="w-full h-screen">
+    <div className="relative h-screen">
       <Image
         src="/images/background/gradient.png"
-        alt="gradient"
+        alt="banner bg"
         fill
-        className="absolute inset-0 object-cover z-10"
+        className="object-fill object-top"
+        priority
+      />
+      <Image
+        src="/images/background/spider-wave.png"
+        alt="spidy bg"
+        fill
+        className="object-cover object-top block lg:hidden z-10"
+        priority
       />
     </div>
   );
