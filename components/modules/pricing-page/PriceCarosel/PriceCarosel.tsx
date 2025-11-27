@@ -1,5 +1,14 @@
+"use client";
+
 import Container from "@/components/shared/Container";
 import PriceCard, { FeatureType } from "./PriceCard";
+
+import "swiper/css";
+import "swiper/css/free-mode";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode } from "swiper/modules";
+import { useRef } from "react";
+import type { Swiper as SwiperType } from "swiper";
 
 const priceData: {
   title: string;
@@ -58,9 +67,37 @@ const priceData: {
 ];
 
 const PriceCarosel = () => {
+  const sliderRef = useRef<SwiperType | null>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   return (
     <Container className="mt-16">
-      <div className="flex items-center justify-center gap-8 flex-wrap">
+      <div className="lg:hidden">
+        <Swiper
+          onSwiper={(swiper) => (sliderRef.current = swiper)}
+          modules={[FreeMode]}
+          freeMode={true}
+          grabCursor={true}
+          spaceBetween={24}
+          slidesPerView={1.15}
+          centeredSlides={true}
+          className="w-full py-8"
+        >
+          {priceData.map((card, i) => (
+            <SwiperSlide key={i}>
+              <div
+                ref={(el) => {
+                  cardRefs.current[i] = el;
+                }}
+                className="flex justify-center"
+              >
+                <PriceCard {...card} />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+
+      <div className="hidden lg:flex items-center justify-center gap-8">
         {priceData.map((card, i) => (
           <PriceCard key={i} {...card} />
         ))}

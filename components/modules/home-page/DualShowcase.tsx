@@ -4,21 +4,9 @@ import Image from "next/image";
 
 const DualShowcase = () => {
   return (
-    <Container className="flex flex-col gap-28">
-      {/* SECTION 1 */}
-      <div
-        className="
-          flex flex-col 
-          lg:flex-row 
-          items-center 
-          justify-between 
-          gap-12 
-          lg:gap-28 mt-20
-        "
-      >
-        {/* IMAGE BLOCK */}
+    <Container className="flex flex-col justify-between gap-28">
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-28 mt-20">
         <div className="relative w-full max-w-[608px] h-[340px] sm:h-[420px] md:h-[460px] lg:h-[484px] mx-auto">
-          {/* Big image */}
           <Image
             src="/images/home-page/workflow-3.png"
             alt="workflow main"
@@ -26,16 +14,7 @@ const DualShowcase = () => {
             className="absolute object-cover rounded-2xl"
           />
 
-          {/* Small image on top */}
-          <div
-            className="
-            absolute top-1/2 left-1/2 
-            w-[95%] sm:w-[85%] md:w-[95%] 
-            h-[95%] sm:h-[80%] md:h-[95%] 
-            -translate-x-1/2 -translate-y-1/2 
-            z-20 border border-[rgba(255, 255, 255, 0.33)] rounded-2xl
-          "
-          >
+          <div className="absolute top-1/2 left-1/2 w-[95%] sm:w-[85%] md:w-[95%] h-[95%] sm:h-[80%] md:h-[95%] -translate-x-1/2 -translate-y-1/2 z-20 border border-[rgba(255, 255, 255, 0.33)] rounded-2xl">
             <Image
               src="/images/home-page/workflow-3.png"
               alt="workflow overlay"
@@ -45,7 +24,6 @@ const DualShowcase = () => {
           </div>
         </div>
 
-        {/* TEXT BLOCK */}
         <div className="flex flex-col gap-5 max-w-xl text-center lg:text-left">
           <h1 className="font-semibold text-[34px] sm:text-[44px] md:text-[54px] -tracking-[0.04em] text-black">
             Duis convallis elit blandit turpis
@@ -66,18 +44,7 @@ const DualShowcase = () => {
         </div>
       </div>
 
-      {/* SECTION 2 — reversed layout */}
-      <div
-        className="
-          flex flex-col 
-          lg:flex-row-reverse 
-          items-center 
-          justify-between 
-          gap-12 
-          lg:gap-28
-        "
-      >
-        {/* IMAGE BLOCK */}
+      <div className="flex flex-col lg:flex-row-reverse items-center justify-between gap-12 lg:gap-28">
         <div className="relative w-full max-w-[608px] h-[340px] sm:h-[420px] md:h-[460px] lg:h-[484px] mx-auto">
           <Image
             src="/images/home-page/workflow-2.png"
@@ -86,15 +53,7 @@ const DualShowcase = () => {
             className="absolute object-cover rounded-2xl"
           />
 
-          <div
-            className="
-            absolute top-1/2 left-1/2 
-            w-[95%] sm:w-[85%] md:w-[95%] 
-            h-[95%] sm:h-[80%] md:h-[95%] 
-            -translate-x-1/2 -translate-y-1/2 
-            z-20 border border-[rgba(255, 255, 255, 0.33)] rounded-2xl
-          "
-          >
+          <div className="absolute top-1/2 left-1/2 w-[95%] sm:w-[85%] md:w-[95%] h-[95%] sm:h-[80%] md:h-[95%] -translate-x-1/2 -translate-y-1/2 z-20 border border-[rgba(255, 255, 255, 0.33)] rounded-2xl">
             <Image
               src="/images/home-page/workflow-2.png"
               alt="workflow overlay"
@@ -104,7 +63,6 @@ const DualShowcase = () => {
           </div>
         </div>
 
-        {/* TEXT BLOCK */}
         <div className="flex flex-col gap-5 max-w-xl text-center lg:text-left">
           <h1 className="font-semibold text-[34px] sm:text-[44px] md:text-[54px] -tracking-[0.04em] text-black">
             Duis convallis elit blandit turpis

@@ -21,15 +21,13 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 px-6 md:px-20 py-6 flex items-center justify-between text-white">
+    <nav className="fixed top-0 left-0 w-full z-50 px-6 md:px-20 py-6 flex items-center justify-between text-white bg-[#5578e5]">
       <Logo />
 
-      {/* Desktop Nav */}
       <div className="hidden md:flex">
         <NavItems navItems={navItems} />
       </div>
 
-      {/* Mobile Nav */}
       <div className="lg:hidden">
         <Sheet>
           <SheetTrigger>
