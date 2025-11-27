@@ -65,21 +65,23 @@ export default function FaqAccordion() {
               {title}
 
               {/* Custom + / – icon */}
-              <span
-                className="
+              <div>
+                <span
+                  className="
                   ml-4 flex h-7 w-7 items-center justify-center 
                   rounded-full border border-white/40 
-                  bg-white/30 backdrop-blur-sm 
-                  transition-all
+                   backdrop-blur-sm 
+                  transition-all bg-white/30
                 "
-              >
-                <span className="block group-data-[state=open]:hidden text-xl leading-none">
-                  +
+                >
+                  <span className="block group-data-[state=open]:hidden text-xl leading-none">
+                    +
+                  </span>
+                  <span className="hidden group-data-[state=open]:block text-xl leading-none">
+                    –
+                  </span>
                 </span>
-                <span className="hidden group-data-[state=open]:block text-xl leading-none">
-                  –
-                </span>
-              </span>
+              </div>
             </AccordionTrigger>
 
             <AccordionContent

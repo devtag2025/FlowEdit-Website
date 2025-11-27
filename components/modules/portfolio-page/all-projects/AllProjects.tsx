@@ -1,6 +1,9 @@
 import { IProject } from "@/types/portfolio";
 import ProjectCard from "./ProjectCard";
 import Container from "@/components/shared/Container";
+import PortfolioBackground2 from "@/components/backgrounds/PotfolioBackground2";
+import Background3 from "@/components/backgrounds/Background3";
+import PortfolioBackground3 from "@/components/backgrounds/PortfolioBackground3";
 
 const AllProjects = () => {
   const allProjects: IProject[] = [
@@ -51,13 +54,19 @@ const AllProjects = () => {
     },
   ];
   return (
-    <Container>
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {allProjects?.map((project, i) => (
-          <ProjectCard key={i} project={project} />
-        ))}
+    <div className="relative py-368 lg:py-64">
+      <PortfolioBackground3 />
+
+      <div className="absolute top-0 z-20">
+        <Container>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {allProjects?.map((project, i) => (
+              <ProjectCard key={i} project={project} />
+            ))}
+          </div>
+        </Container>
       </div>
-    </Container>
+    </div>
   );
 };
 

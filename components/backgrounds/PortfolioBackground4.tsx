@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-const Background6 = () => {
+const PortfolioBackground4 = () => {
   return (
-    <div className="relative h-screen -top-10">
+    <div className="relative -top-35 h-screen">
       <Image
         src="/images/background/gradient-2.png"
         alt="blur bg"
@@ -13,4 +13,4 @@ const Background6 = () => {
   );
 };
 
-export default Background6;
+export default PortfolioBackground4;

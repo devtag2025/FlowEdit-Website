@@ -1,11 +1,11 @@
 import Image from "next/image";
 
-const Background5 = () => {
+const PortfolioBackground5 = () => {
   return (
-    <div className="relative -top-[65%] h-screen">
+    <div className="relative -top-full h-screen">
       <Image
         src="/images/background/wave-3.png"
-        alt="blur bg"
+        alt="wave bg"
         fill
         className="object-left object-cover lg:object-fill"
       />
@@ -13,4 +13,4 @@ const Background5 = () => {
   );
 };
 
-export default Background5;
+export default PortfolioBackground5;
