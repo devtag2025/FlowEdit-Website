@@ -9,6 +9,8 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper/modules";
+import Background6 from "@/components/backgrounds/Background6";
+import Background7 from "@/components/backgrounds/Background7";
 
 const testimonials = [
   {
@@ -52,36 +54,40 @@ const TestimonialCard = ({ item }: any) => (
 
 const LovedByCreatorsSection = () => {
   return (
-    <Container className="flex flex-col items-center justify-center gap-10 py-20">
-      <PageHeaderButton text="Testimonials" />
+    <div className="relative h-screen my-32">
+      <Background6 />
+      <Background7 />
+      <Container className="absolute top-0 z-20 flex flex-col items-center justify-center gap-10 py-20">
+        <PageHeaderButton text="Testimonials" />
 
-      <h1 className="font-semibold text-[32px] sm:text-[44px] md:text-[54px] -tracking-[0.04em] text-black text-center">
-        Loved by creators
-      </h1>
+        <h1 className="font-semibold text-[32px] sm:text-[44px] md:text-[54px] -tracking-[0.04em] text-black text-center">
+          Loved by creators
+        </h1>
 
-      <div className="block lg:hidden w-full">
-        <Swiper
-          modules={[FreeMode]}
-          freeMode={true}
-          grabCursor={true}
-          spaceBetween={24}
-          slidesPerView="auto"
-          className="w-full py-4 pl-4"
-        >
+        <div className="block lg:hidden w-full">
+          <Swiper
+            modules={[FreeMode]}
+            freeMode={true}
+            grabCursor={true}
+            spaceBetween={24}
+            slidesPerView="auto"
+            className="w-full py-4 pl-4"
+          >
+            {testimonials.map((item, index) => (
+              <SwiperSlide key={index} style={{ width: "auto" }}>
+                <TestimonialCard item={item} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+
+        <div className="hidden lg:flex justify-center gap-8 w-full">
           {testimonials.map((item, index) => (
-            <SwiperSlide key={index} style={{ width: "auto" }}>
-              <TestimonialCard item={item} />
-            </SwiperSlide>
+            <TestimonialCard key={index} item={item} />
           ))}
-        </Swiper>
-      </div>
-
-      <div className="hidden lg:flex justify-center gap-8 w-full">
-        {testimonials.map((item, index) => (
-          <TestimonialCard key={index} item={item} />
-        ))}
-      </div>
-    </Container>
+        </div>
+      </Container>
+    </div>
   );
 };
 

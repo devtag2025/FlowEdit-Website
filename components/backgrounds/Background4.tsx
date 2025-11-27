@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Background4 = () => {
   return (
-    <div className="relative h-screen mt-56">
+    <div className="relative h-screen">
       <Image
         src="/images/background/gradient-2.png"
         alt="blur bg"

@@ -1,12 +1,17 @@
 "use client";
 
+import Background1 from "@/components/backgrounds/Background1";
+
+import PriceBackground2 from "@/components/backgrounds/PriceBackground2";
 import PageHeaderButton from "@/components/shared/PageHeaderButton";
 import ToggleSwitch from "@/components/shared/ToggleSwitch";
 
 const PriceBanner = () => {
   return (
-    <div className="mt-11">
-      <div className="flex flex-col gap-5 items-center">
+    <div className="relative h-[70vh]">
+      <Background1 />
+      <PriceBackground2 />
+      <div className="absolute top-0 z-20 flex flex-col gap-5 items-center justify-center h-full w-full">
         <div className="w-fit">
           <PageHeaderButton text="Pricing" />
         </div>
@@ -14,7 +19,7 @@ const PriceBanner = () => {
           Stop Editing. <br className="block lg:hidden" /> Start growing
         </h1>
 
-        <p className="text-base lg:text-xl leading-[150%] text-white max-w-92 lg:max-w-2xl text-center lg:text-left">
+        <p className="text-base lg:text-xl leading-[150%] text-white max-w-92 lg:max-w-2xl text-center">
           As we grow our library of UI components, we’re introducing a
           limited-time pricing that’s not only 50% off but also significantly
           cheaper than what’s on the market

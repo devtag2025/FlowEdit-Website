@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper/modules";
 import { useRef } from "react";
 import type { Swiper as SwiperType } from "swiper";
+import Background3 from "@/components/backgrounds/Background3";
 
 const priceData: {
   title: string;
@@ -70,39 +71,42 @@ const PriceCarosel = () => {
   const sliderRef = useRef<SwiperType | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   return (
-    <Container className="mt-16">
-      <div className="lg:hidden">
-        <Swiper
-          onSwiper={(swiper) => (sliderRef.current = swiper)}
-          modules={[FreeMode]}
-          freeMode={true}
-          grabCursor={true}
-          spaceBetween={24}
-          slidesPerView={1.15}
-          centeredSlides={true}
-          className="w-full py-8"
-        >
-          {priceData.map((card, i) => (
-            <SwiperSlide key={i}>
-              <div
-                ref={(el) => {
-                  cardRefs.current[i] = el;
-                }}
-                className="flex justify-center"
-              >
-                <PriceCard {...card} />
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+    <div className="relative py-28 lg:py-20">
+      <Background3 />
+      <Container className="absolute top-0 z-20">
+        <div className="lg:hidden">
+          <Swiper
+            onSwiper={(swiper) => (sliderRef.current = swiper)}
+            modules={[FreeMode]}
+            freeMode={true}
+            grabCursor={true}
+            spaceBetween={24}
+            slidesPerView={1.15}
+            centeredSlides={true}
+            className="w-full py-8"
+          >
+            {priceData.map((card, i) => (
+              <SwiperSlide key={i}>
+                <div
+                  ref={(el) => {
+                    cardRefs.current[i] = el;
+                  }}
+                  className="flex justify-center"
+                >
+                  <PriceCard {...card} />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
 
-      <div className="hidden lg:flex items-center justify-center gap-8">
-        {priceData.map((card, i) => (
-          <PriceCard key={i} {...card} />
-        ))}
-      </div>
-    </Container>
+        <div className="hidden lg:flex items-center justify-center gap-8">
+          {priceData.map((card, i) => (
+            <PriceCard key={i} {...card} />
+          ))}
+        </div>
+      </Container>
+    </div>
   );
 };
 
