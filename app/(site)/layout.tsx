@@ -7,11 +7,7 @@ const PublicLayout = ({ children }: Readonly<{ children: ReactNode }>) => {
   return (
     // <SmoothScroll>
     <div className="font-inter">
-      <Navbar />
-
       <main>{children}</main>
-
-      <Footer />
     </div>
     // </SmoothScroll>
   );

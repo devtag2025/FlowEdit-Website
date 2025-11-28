@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const GetStarted = () => {
   return (
-    <div className="relative w-full max-w-[1056px] rounded-2xl overflow-hidden backdrop-blur-[20px] bg-[linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.5))] -auto py-10 sm:py-14 md:h-[193px]">
+    <div className="relative w-full max-w-[1056px] mx-auto rounded-2xl overflow-hidden backdrop-blur-[20px] bg-[linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.5))] -auto py-10 sm:py-14 md:h-[193px]">
       <Image
         src="/images/home-page/glow.png"
         alt="glow"

@@ -13,16 +13,32 @@ import NavItems from "./NavItems";
 import MobileMenu from "./MobileMenu";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
+  const [scrolled, setScrolled] = useState(false);
+
   const navItems = [
     { label: "home", to: "/" },
     { label: "pricing", to: "/pricing" },
     { label: "portfolio", to: "/portfolio" },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) setScrolled(true);
+      else setScrolled(false);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="fixed top-0 left-0 z-50 w-full px-6 md:px-20 py-6 flex items-center justify-between text-white">
+    <nav
+      className={`sticky top-0 left-0 z-50 w-full px-6 md:px-20 py-6 flex items-center justify-between text-white transition-all duration-300 
+      ${scrolled ? "bg-[#6283ea]/50 backdrop-blur-lg" : "bg-transparent"}`}
+    >
       <Link
         href="/"
         className={`font-inter font-medium text-xl leading-[150%]`}
