@@ -3,7 +3,7 @@ import PriceCarosel from "@/components/modules/pricing-page/PriceCarosel/PriceCa
 
 const PricingPage = () => {
   return (
-    <div className="relative pt-8">
+    <div className="relative">
       <PriceBanner />
       <PriceCarosel />
     </div>

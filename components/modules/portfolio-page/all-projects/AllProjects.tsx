@@ -57,7 +57,7 @@ const AllProjects = () => {
     <div className="relative py-368 lg:py-64">
       <PortfolioBackground3 />
 
-      <div className="absolute top-0 z-20">
+      <div className="absolute top-0 z-20 w-full">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {allProjects?.map((project, i) => (

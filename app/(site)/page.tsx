@@ -8,16 +8,13 @@ import WorkflowSection from "@/components/modules/home-page/WorkflowSection";
 
 export default function HomePage() {
   return (
-    <div className="">
-      <div className="relative pt-8 lg:pt-0">
-        <Banner />
-        <FeatureShowcase />
-        <WorkflowSection />
-        <DualShowcase />
-        <LovedByCreatorsSection />
-        <Faq />
-        <GetStarted />
-      </div>
+    <div>
+      <Banner />
+      <WorkflowSection />
+      <DualShowcase />
+      <LovedByCreatorsSection />
+      <Faq />
+      {/* <GetStarted /> */}
     </div>
   );
 }

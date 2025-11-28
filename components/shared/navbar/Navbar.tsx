@@ -12,6 +12,7 @@ import Logo from "../Logo";
 import NavItems from "./NavItems";
 import MobileMenu from "./MobileMenu";
 import Image from "next/image";
+import Link from "next/link";
 
 const Navbar = () => {
   const navItems = [
@@ -21,8 +22,13 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 px-6 md:px-20 py-6 flex items-center justify-between text-white bg-[#5578e5]">
-      <Logo />
+    <nav className="fixed top-0 left-0 z-50 w-full px-6 md:px-20 py-6 flex items-center justify-between text-white">
+      <Link
+        href="/"
+        className={`font-inter font-medium text-xl leading-[150%]`}
+      >
+        <h1>Flow Edit</h1>
+      </Link>
 
       <div className="hidden md:flex">
         <NavItems navItems={navItems} />

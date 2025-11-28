@@ -11,6 +11,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper/modules";
 import Background6 from "@/components/backgrounds/Background6";
 import Background7 from "@/components/backgrounds/Background7";
+import Image from "next/image";
 
 const testimonials = [
   {
@@ -54,39 +55,54 @@ const TestimonialCard = ({ item }: any) => (
 
 const LovedByCreatorsSection = () => {
   return (
-    <div className="relative mt-20">
-      <Background6 />
-      <Background7 />
-      <Container className="absolute top-0 z-20 flex flex-col items-center gap-10 h-full">
-        <PageHeaderButton text="Testimonials" />
+    <div className="">
+      <div className="w-full h-screen bg-[url('/images/back/05.jpg')] bg-cover bg-center bg-no-repeat">
+        {/* <Image
+          src="/images/back/05.jpg"
+          alt="grid"
+          fill
+          className="w-full h-full absolute left-0 top-0 z-0 mt-10 object-cover"
+        /> */}
+        {/* <Image
+          src="/images/background/wave-3.png"
+          alt="grid"
+          fill
+          className="object-contain object-top z-3"
+        /> */}
 
-        <h1 className="font-semibold text-[32px] sm:text-[44px] md:text-[54px] -tracking-[0.04em] text-black text-center">
-          Loved by creators
-        </h1>
+        <div className="w-full">
+          <Container className="flex flex-col items-center justify-center gap-10 w-full h-screen">
+            <PageHeaderButton text="Testimonials" />
 
-        <div className="block lg:hidden w-screen px-1 py-4">
-          <Swiper
-            modules={[FreeMode]}
-            freeMode={true}
-            grabCursor={true}
-            spaceBetween={24}
-            slidesPerView={1}
-            className="w-full py-4 pl-4"
-          >
-            {testimonials.map((item, index) => (
-              <SwiperSlide key={index} style={{ width: "auto" }}>
-                <TestimonialCard item={item} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+            <h1 className="font-semibold text-[32px] sm:text-[44px] md:text-[54px] -tracking-[0.04em] text-black text-center">
+              Loved by creators
+            </h1>
+
+            <div className="block lg:hidden w-screen px-1 py-4">
+              <Swiper
+                modules={[FreeMode]}
+                freeMode={true}
+                grabCursor={true}
+                spaceBetween={24}
+                slidesPerView={1}
+                className="w-full py-4 pl-4"
+              >
+                {testimonials.map((item, index) => (
+                  <SwiperSlide key={index} style={{ width: "auto" }}>
+                    <TestimonialCard item={item} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+
+            <div className="hidden lg:flex justify-center gap-8 w-full">
+              {testimonials.map((item, index) => (
+                <TestimonialCard key={index} item={item} />
+              ))}
+            </div>
+          </Container>
         </div>
-
-        <div className="hidden lg:flex justify-center gap-8 w-full">
-          {testimonials.map((item, index) => (
-            <TestimonialCard key={index} item={item} />
-          ))}
-        </div>
-      </Container>
+      </div>
     </div>
   );
 };

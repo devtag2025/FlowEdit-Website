@@ -64,7 +64,7 @@ const PriceCard = ({
       <div className="h-px w-[95%] bg-black/15" />
 
       <div className="w-fit shadow-xl relative z-20 rounded-lg">
-        <SiteButton className="bg-white">
+        <SiteButton className="bg-white hover:bg-white">
           <div className="flex items-center gap-2">
             <span>Start 14 Days Trial</span>
             <GoCreditCard />

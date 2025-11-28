@@ -15,7 +15,6 @@ const PortfolioPage = () => {
         <LovedByCreatorsSection />
       </div>
       <Faq />
-      <GetStarted />
     </div>
   );
 };

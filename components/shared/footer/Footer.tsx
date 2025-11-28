@@ -51,7 +51,7 @@ const footerMenu = [
 const Footer: FC = () => {
   return (
     <Container>
-      <footer className="w-full py-24 bg-transparent hidden lg:block">
+      <footer className=" w-full py-0 bg-transparent hidden lg:block">
         <div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 text-center sm:text-left">
             <div className="flex flex-col items-center sm:items-start">
