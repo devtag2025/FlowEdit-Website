@@ -25,10 +25,10 @@ const workflowData = [
 
 const WorkflowSection = () => {
   return (
-    <div className="relative h-screen">
+    <div className="relative">
       <Background4 />
       <Background5 />
-      <div className="absolute top-0 z-20 w-full flex flex-col items-center justify-center gap-10 mt-20 px-4">
+      <div className="absolute top-0 z-20 w-full flex flex-col items-center gap-10 px-4">
         <h1 className="font-semibold text-[34px] sm:text-[42px] md:text-[54px] -tracking-[0.04em] text-center">
           A Simple Powerful Workflow
         </h1>

@@ -44,8 +44,8 @@ const PortfolioShowcase = () => {
                 gravida iaculis. Amet sem.
               </p>
 
-              <div className="w-fit">
-                <SiteButton>Start for Free</SiteButton>
+              <div className="w-full lg:w-fit">
+                <SiteButton className="w-full">Start for Free</SiteButton>
               </div>
             </div>
           </div>

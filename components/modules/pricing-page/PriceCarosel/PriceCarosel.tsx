@@ -71,7 +71,7 @@ const PriceCarosel = () => {
   const sliderRef = useRef<SwiperType | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   return (
-    <div className="relative py-28 lg:py-20">
+    <div className="relative py-28 lg:py-20 mb-40 lg:mb-0">
       <Background3 />
       <Container className="absolute top-0 z-20">
         <div className="lg:hidden">

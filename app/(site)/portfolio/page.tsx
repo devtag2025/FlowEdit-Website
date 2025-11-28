@@ -11,7 +11,7 @@ const PortfolioPage = () => {
       <PortfolioBanner />
       <AllProjects />
       <PortfolioShowcase />
-      <div className="pt-20 lg:pt-0">
+      <div className="pt-52 lg:pt-0">
         <LovedByCreatorsSection />
       </div>
       <Faq />

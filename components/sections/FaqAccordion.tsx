@@ -89,7 +89,7 @@ export default function FaqAccordion() {
                 text-sm sm:text-base 
                 text-[rgba(0,0,0,0.7)] 
                 leading-[150%] 
-                pt-2 pb-4
+                pt-2 pb-4 text-left
               "
             >
               {content}
