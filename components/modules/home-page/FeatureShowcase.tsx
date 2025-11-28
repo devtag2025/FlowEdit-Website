@@ -6,10 +6,10 @@ import Image from "next/image";
 
 const FeatureShowcase = () => {
   return (
-    <div className="relative h-screen">
+    <div className="relative">
       <Background2 />
       <Background3 />
-      <Container className="absolute top-0 w-full h-screen flex flex-col-reverse lg:flex-row items-center justify-center gap-10 lg:gap-20">
+      <Container className="absolute top-0 z-20 w-full h-screen flex flex-col-reverse lg:flex-row items-center justify-center gap-10 lg:gap-20">
         <div className="flex flex-col gap-4 text-center lg:text-left">
           <h1 className="font-semibold text-black -tracking-[0.04em] text-3xl sm:text-4xl md:text-5xl lg:text-[54px] whitespace-nowrap">
             Effortless Video

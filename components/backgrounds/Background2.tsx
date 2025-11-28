@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Background2 = () => {
   return (
-    <div className="relative -top-[60%] h-screen">
+    <div className="absolute inset-0 -top-[60%] h-screen">
       <Image
         src="/images/background/wave-3.png"
         alt="wave bg"

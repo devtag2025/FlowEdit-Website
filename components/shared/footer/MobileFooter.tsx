@@ -8,7 +8,7 @@ interface FooterProps {
 
 const MobileFooter = ({ footerMenu }: FooterProps) => {
   return (
-    <footer className="block lg:hidden space-y-11 mt-14">
+    <footer className="lg:hidden flex flex-col gap-12 mt-14">
       <Logo className="text-lg font-bold text-center" />
 
       <div className="grid grid-cols-2 gap-8">
