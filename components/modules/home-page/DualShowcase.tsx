@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const DualShowcase = () => {
   return (
-    <Container className="flex flex-col justify-between gap-28">
+    <Container className="relative mt-180 lg:-mt-40 flex flex-col justify-between gap-28">
       <div className="flex flex-col lg:flex-row justify-between gap-24 max-w-full">
         <div className="w-full lg:w-1/2 rounded-2xl">
           <div className="relative w-full aspect-4/3 lg:h-full">
@@ -38,8 +38,8 @@ const DualShowcase = () => {
             Amet sem.
           </p>
 
-          <div className="w-fit">
-            <SiteButton>Start for Free</SiteButton>
+          <div className="w-full lg:w-fit">
+            <SiteButton className="w-full">Start for Free</SiteButton>
           </div>
         </div>
       </div>
@@ -77,8 +77,8 @@ const DualShowcase = () => {
             Amet sem.
           </p>
 
-          <div className="w-fit">
-            <SiteButton>Start for Free</SiteButton>
+          <div className="w-full lg:w-fit">
+            <SiteButton className="w-full">Start for Free</SiteButton>
           </div>
         </div>
       </div>
