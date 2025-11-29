@@ -12,25 +12,15 @@ export default function HomePage() {
     <div className="relative lg:pb-20">
       <Navbar />
       <Image
-        src="/bg.jpg"
+        src="/bg3.png"
         alt="background"
         fill
-        priority
-        placeholder="blur"
-        blurDataURL="/bg-blur.jpg"
-        quality={80}
-        sizes="100vw"
         className="object-cover object-top -z-10 sm:block hidden"
       />
       <Image
         src="/bg-mobile.png"
         alt="background"
         fill
-        priority
-        placeholder="blur"
-        blurDataURL="/bg-mobile-blur.png"
-        quality={80}
-        sizes="100vw"
         className="object-cover object-top -z-10 block sm:hidden"
       />
       <Banner />
