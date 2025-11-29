@@ -72,22 +72,8 @@ const PriceCarosel = () => {
   const sliderRef = useRef<SwiperType | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   return (
-    <div className="relative py-28 lg:py-20 -mt-52 mb-40 lg:mb-0">
-      <div className="relative w-full h-screen">
-        <Image
-          src="/images/background/wave-3.png"
-          alt="grid"
-          fill
-          className="object-cover object-top -mt-150 z-3"
-        />
-        <Image
-          src="/images/background/wallpaper-blur.png"
-          alt="grid"
-          fill
-          className="object-fill object-top z-3"
-        />
-      </div>
-      <div className="absolute top-0 z-20 w-full">
+    <div className="relative py-0 mb-[15px] lg:mb-[170px]">
+      <div className="w-full">
         <Container>
           <div className="lg:hidden">
             <Swiper
@@ -95,8 +81,15 @@ const PriceCarosel = () => {
               modules={[FreeMode]}
               freeMode={true}
               grabCursor={true}
-              spaceBetween={24}
-              slidesPerView={1.15}
+              spaceBetween={20}
+              slidesPerView={1.25}
+              breakpoints={{
+                768: {
+                  slidesPerView: 1.5,
+                  centeredSlides: true,
+                  spaceBetween: 10,
+                },
+              }}
               centeredSlides={true}
               className="w-full py-8"
             >

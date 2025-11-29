@@ -9,6 +9,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper/modules";
+import { usePathname } from "next/navigation";
 
 const testimonials = [
   {
@@ -51,15 +52,22 @@ const TestimonialCard = ({ item }: any) => (
 );
 
 const LovedByCreatorsSection = () => {
+  const pathname = usePathname();
   return (
-    <Container className="flex flex-col items-center justify-center gap-10 pt-[222px]">
+    <Container
+      className={`flex flex-col items-center justify-center gap-10 ${
+        pathname === "/portfolio"
+          ? "pt-24 lg:pt-[120px]"
+          : "pt-20 lg:pt-[120px]"
+      }`}
+    >
       <PageHeaderButton text="Testimonials" />
 
-      <h1 className="font-semibold text-[32px] sm:text-[44px] md:text-[54px] -tracking-[0.04em] text-black text-center">
+      <h1 className="font-semibold text-[36px] sm:text-[44px] md:text-[54px] -tracking-[0.04em] text-black text-center">
         Loved by creators
       </h1>
 
-      <div className="block lg:hidden w-screen px-1 py-4">
+      <div className="block lg:hidden w-screen px-4">
         <Swiper
           modules={[FreeMode]}
           freeMode={true}

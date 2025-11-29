@@ -4,8 +4,8 @@ import Image from "next/image";
 
 const DualShowcase = () => {
   return (
-    <Container className="flex flex-col justify-between gap-28">
-      <div className="flex flex-col lg:flex-row justify-between gap-24 max-w-full">
+    <Container className="flex flex-col justify-between gap-16 lg:gap-28">
+      <div className="flex flex-col lg:flex-row justify-between gap-10 lg:gap-24 max-w-full">
         <div className="w-full lg:w-1/2 rounded-2xl">
           <div className="relative w-full aspect-4/3 lg:h-full">
             <Image
@@ -39,14 +39,14 @@ const DualShowcase = () => {
           </p>
 
           <div className="w-full lg:w-fit">
-            <SiteButton className="bg-[#B6C7F5]/15 hover:bg-[#B6C7F5]/15 shadow-lg">
+            <SiteButton className="bg-[#B6C7F5]/15 hover:bg-[#B6C7F5]/15 shadow-lg w-full">
               Start for Free
             </SiteButton>
           </div>
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row-reverse justify-between gap-24 max-w-full">
+      <div className="flex flex-col lg:flex-row-reverse justify-between gap-10 lg:gap-24 max-w-full">
         <div className="w-full lg:w-1/2 rounded-2xl">
           <div className="relative w-full aspect-4/3 lg:h-full">
             <Image

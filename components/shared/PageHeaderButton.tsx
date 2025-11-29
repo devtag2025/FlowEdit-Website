@@ -22,7 +22,7 @@ const PageHeaderButton = ({
         className
       )}
     >
-      <span className="text-sm font-medium text-neutral-900 leading-[150%]">
+      <span className="text-[13px] whitespace-nowrap font-medium text-neutral-900 leading-[150%]">
         {text}
       </span>
 

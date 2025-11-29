@@ -1,38 +1,13 @@
 "use client";
 
-import Background1 from "@/components/backgrounds/Background1";
-
-import PriceBackground2 from "@/components/backgrounds/PriceBackground2";
 import Container from "@/components/shared/Container";
 import PageHeaderButton from "@/components/shared/PageHeaderButton";
 import ToggleSwitch from "@/components/shared/ToggleSwitch";
-import Image from "next/image";
 
 const PriceBanner = () => {
   return (
-    <div className="relative overflow-hidden h-screen">
-      <div className="relative w-screen h-screen">
-        <Image
-          src="/images/background/grid.png"
-          alt="grid"
-          fill
-          className="object-cover z-2"
-        />
-        <Image
-          src="/images/background/gradient.png"
-          alt="grid"
-          fill
-          className="object-fill"
-        />
-        <Image
-          src="/images/background/spider-wave.png"
-          alt="grid"
-          fill
-          className="object-contain z-4"
-        />
-      </div>
-
-      <div className="absolute top-0 z-4 w-full h-[70vh]">
+    <div className="relative overflow-hidden lg:pt-14 mb-[43px] lg:mb-[77px]">
+      <div className="w-full h-full">
         <Container className="flex flex-col gap-5 items-center justify-center h-full w-full">
           <div className="w-fit">
             <PageHeaderButton text="Pricing" />

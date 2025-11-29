@@ -36,8 +36,8 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`sticky top-0 left-0 z-50 w-full px-6 md:px-20 py-6 flex items-center justify-between text-white transition-all duration-300 
-      ${scrolled ? "bg-[#6283ea]/50 backdrop-blur-lg" : "bg-transparent"}`}
+      className={`sticky top-0 left-0 z-50 w-full px-4 py-6 flex items-center justify-between text-white transition-all duration-300 
+      ${scrolled ? "bg-[#6283ea]/80 backdrop-blur-lg" : "bg-transparent"}`}
     >
       <Link
         href="/"
@@ -50,7 +50,7 @@ const Navbar = () => {
         <NavItems navItems={navItems} />
       </div>
 
-      <div className="lg:hidden">
+      <div className="md:hidden lg:hidden">
         <Sheet>
           <SheetTrigger>
             <Menu className="w-7 h-7" />

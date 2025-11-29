@@ -50,7 +50,7 @@ const Banner = () => {
     <div className="w-full pb-[134px] z-10">
       <Container>
         <div className="w-full ">
-          <div className="flex flex-col items-center justify-center text-center gap-11 sm:gap-6 md:gap-7 mt-12 px-4 pt-5  w-full">
+          <div className="flex flex-col items-center justify-center text-center gap-11 sm:gap-6 md:gap-7 mt-12 pt-5  w-full">
             <PageHeaderButton
               text="Loved by 4.5 out of 5 Creators"
               icons={[
@@ -63,7 +63,7 @@ const Banner = () => {
             />
 
             <div className="flex flex-col gap-8 z-40 items-center">
-              <h1 className="hero-title font-semibold text-white max-w-xl sm:max-w-2xl md:max-w-4xl text-5xl sm:text-4xl md:text-5xl lg:text-7xl leading-[120%] tracking-[4%]">
+              <h1 className="hero-title font-semibold text-white md:max-w-5xl text-[44px] sm:text-4xl md:text-5xl lg:text-7xl leading-[120%] tracking-[-4%]">
                 Post Better Videos - Faster. Skip the Editing.
               </h1>
 
@@ -73,8 +73,8 @@ const Banner = () => {
                 drives growth—with zero effort on your part.
               </p>
 
-              <div className="w-fit shadow-2xl">
-                <SiteButton className="bg-[#B6C7F5]/30 hover:bg-[#B6C7F5]/30">
+              <div className="w-full sm:w-fit shadow-2xl">
+                <SiteButton className="bg-[#B6C7F5]/30 w-full hover:bg-[#B6C7F5]/30">
                   Start for Free
                 </SiteButton>
               </div>

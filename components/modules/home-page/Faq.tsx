@@ -1,11 +1,21 @@
+"use client";
+
 import FaqAccordion from "@/components/sections/FaqAccordion";
 import Container from "@/components/shared/Container";
 import PageHeaderButton from "@/components/shared/PageHeaderButton";
 import GetStarted from "./GetStarted";
+import { usePathname } from "next/navigation";
 
 const Faq = () => {
+  const pathname = usePathname();
   return (
-    <Container className="flex flex-col items-center text-center gap-8 sm:gap-10 px-4 pt-[180px] pb-[168px]">
+    <Container
+      className={`flex flex-col items-center text-center px-4 ${
+        pathname === "/portfolio"
+          ? "pt-[69px] lg:pt-[120px] pb-[50px]"
+          : "pt-10 lg:pt-[180px] pb-[102px]"
+      }`}
+    >
       <div className="flex flex-col items-center text-center gap-8 sm:gap-10">
         <div className="flex flex-col items-center gap-4 sm:gap-5 max-w-2xl">
           <PageHeaderButton text="FAQs" className="mb-4" />
@@ -23,7 +33,11 @@ const Faq = () => {
         <FaqAccordion />
       </div>
 
-      <div className="w-full overflow-hidden rounded-2xl pt-[94px] pb-10">
+      <div
+        className={`w-full overflow-hidden rounded-2xl px-2 ${
+          pathname === "/portfolio" ? "pt-[57px] lg:py-10" : "pt-[94px] pb-10"
+        }`}
+      >
         <GetStarted />
       </div>
     </Container>

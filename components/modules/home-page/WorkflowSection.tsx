@@ -1,3 +1,4 @@
+import Container from "@/components/shared/Container";
 import Image from "next/image";
 
 const workflowData = [
@@ -23,7 +24,7 @@ const workflowData = [
 
 const WorkflowSection = () => {
   return (
-    <div className=" w-full flex flex-col items-center gap-10 px-4 mb-[234px]">
+    <Container className=" w-full flex flex-col items-center gap-10 px-4 mb-16 lg:mb-[150px]">
       <h1 className="font-semibold text-[34px] sm:text-[42px] md:text-[54px] -tracking-[0.04em] text-center">
         A Simple Powerful Workflow
       </h1>
@@ -32,7 +33,7 @@ const WorkflowSection = () => {
         {workflowData.map((item) => (
           <div
             key={item.id}
-            className="p-2.5 flex flex-col gap-6 border border-[rgba(255,255,255,0.1)] backdrop-blur-[20px] bg-[linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.5))] shadow-[0_10px_10px_rgba(0,0,0,0.1),0_4px_4px_rgba(0,0,0,0.05),0_1px_0_rgba(0,0,0,0.05)] rounded-xl w-full max-w-[370px] min-h-[400px]"
+            className="p-2.5 flex flex-col gap-6 border border-[rgba(255,255,255,0.1)] backdrop-blur-[20px] bg-[linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.5))] shadow-[0_10px_10px_rgba(0,0,0,0.1),0_4px_4px_rgba(0,0,0,0.05),0_1px_0_rgba(0,0,0,0.05)] rounded-xl w-full"
           >
             <div className="relative w-full h-[220px] sm:h-[241px]">
               <Image
@@ -54,7 +55,7 @@ const WorkflowSection = () => {
           </div>
         ))}
       </div>
-    </div>
+    </Container>
   );
 };
 
