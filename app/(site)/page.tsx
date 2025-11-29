@@ -1,8 +1,6 @@
 import Banner from "@/components/modules/home-page/Banner";
 import DualShowcase from "@/components/modules/home-page/DualShowcase";
 import Faq from "@/components/modules/home-page/Faq";
-import FeatureShowcase from "@/components/modules/home-page/FeatureShowcase";
-import GetStarted from "@/components/modules/home-page/GetStarted";
 import LovedByCreatorsSection from "@/components/modules/home-page/LovedByCreatorsSection";
 import WorkflowSection from "@/components/modules/home-page/WorkflowSection";
 import Footer from "@/components/shared/footer/Footer";
@@ -17,12 +15,22 @@ export default function HomePage() {
         src="/bg.jpg"
         alt="background"
         fill
+        priority
+        placeholder="blur"
+        blurDataURL="/bg-blur.jpg"
+        quality={80}
+        sizes="100vw"
         className="object-cover object-top -z-10 sm:block hidden"
       />
       <Image
         src="/bg-mobile.png"
         alt="background"
         fill
+        priority
+        placeholder="blur"
+        blurDataURL="/bg-mobile-blur.png"
+        quality={80}
+        sizes="100vw"
         className="object-cover object-top -z-10 block sm:hidden"
       />
       <Banner />
