@@ -15,7 +15,7 @@ const SiteButton = ({
   size = "default",
 }: SiteButtonProps) => {
   return (
-    <div className="p-0.5 bg-linear-to-b from-[#F5F9FF] to-[#DDE7FF] rounded-lg">
+    <div className="p-0.5 bg-linear-to-r from-white/60 to-white rounded-lg">
       <Button
         variant={variant}
         size={size}

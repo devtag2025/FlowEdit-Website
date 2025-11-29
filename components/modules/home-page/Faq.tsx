@@ -1,15 +1,24 @@
-import Background8 from "@/components/backgrounds/Background8";
+"use client";
+
 import FaqAccordion from "@/components/sections/FaqAccordion";
 import Container from "@/components/shared/Container";
 import PageHeaderButton from "@/components/shared/PageHeaderButton";
+import GetStarted from "./GetStarted";
+import { usePathname } from "next/navigation";
 
 const Faq = () => {
+  const pathname = usePathname();
   return (
-    <div className="relative h-screen -mt-48 mb-20">
-      <Background8 />
-      <Container className="absolute top-0 z-20 flex flex-col items-center text-center gap-8 sm:gap-10 px-4 py-16">
+    <Container
+      className={`flex flex-col items-center text-center px-4 ${
+        pathname === "/portfolio"
+          ? "pt-[69px] lg:pt-[120px] pb-[50px]"
+          : "pt-10 lg:pt-[180px] pb-[102px]"
+      }`}
+    >
+      <div className="flex flex-col items-center text-center gap-8 sm:gap-10">
         <div className="flex flex-col items-center gap-4 sm:gap-5 max-w-2xl">
-          <PageHeaderButton text="FAQs" />
+          <PageHeaderButton text="FAQs" className="mb-4" />
 
           <h1 className="font-semibold text-3xl sm:text-4xl md:text-[54px] -tracking-[0.04em] text-black">
             Frequently asked questions
@@ -22,8 +31,16 @@ const Faq = () => {
         </div>
 
         <FaqAccordion />
-      </Container>
-    </div>
+      </div>
+
+      <div
+        className={`w-full overflow-hidden rounded-2xl px-2 ${
+          pathname === "/portfolio" ? "pt-[57px] lg:py-10" : "pt-[94px] pb-10"
+        }`}
+      >
+        <GetStarted />
+      </div>
+    </Container>
   );
 };
 

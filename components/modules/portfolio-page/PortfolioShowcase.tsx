@@ -6,12 +6,10 @@ import Image from "next/image";
 
 const PortfolioShowcase = () => {
   return (
-    <div className="relative h-screen">
-      <PortfolioBackground4 />
-      <PortfolioBackground5 />
-      <div className="absolute top-0 z-20 w-full">
-        <Container className="pt-52 pb-14">
-          <div className="flex flex-col lg:flex-row justify-between gap-24 max-w-full">
+    <div className="relative overflow-hidden">
+      <div className="w-full px-4">
+        <Container className="">
+          <div className="flex flex-col lg:flex-row justify-between gap-10 lg:gap-24 max-w-full">
             <div className="w-full lg:w-1/2 rounded-2xl">
               <div className="relative w-full aspect-4/3 lg:h-full">
                 <Image
@@ -35,7 +33,7 @@ const PortfolioShowcase = () => {
               <h1 className="font-semibold text-[36px] lg:text-[54px] -tracking-[0.04em] text-black max-w-xl">
                 Duis convallis elit blandit turpis
               </h1>
-              <p className="font-normal text-lg leading-[133%] text-[rgba(0,0,0,0.7)] max-w-lg">
+              <p className="font-normal text-lg leading-[133%] text-[rgba(0,0,0,0.7)] md:max-w-2xl lg:max-w-lg">
                 Tellus fermentum laoreet dignissim risus scelerisque pretium
                 ullamcorper pretium. Sapien ut tellus ut hendrerit mauris.
                 Varius dui sed vestibulum quis tellus egestas dolor eget magna.
@@ -45,7 +43,9 @@ const PortfolioShowcase = () => {
               </p>
 
               <div className="w-full lg:w-fit">
-                <SiteButton className="w-full">Start for Free</SiteButton>
+                <SiteButton className="w-full bg-[#B6C7F5]/30 hover:bg-[#B6C7F5]/30">
+                  Start for Free
+                </SiteButton>
               </div>
             </div>
           </div>

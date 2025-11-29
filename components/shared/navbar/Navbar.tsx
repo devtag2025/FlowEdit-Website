@@ -12,23 +12,45 @@ import Logo from "../Logo";
 import NavItems from "./NavItems";
 import MobileMenu from "./MobileMenu";
 import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
+  const [scrolled, setScrolled] = useState(false);
+
   const navItems = [
     { label: "home", to: "/" },
     { label: "pricing", to: "/pricing" },
     { label: "portfolio", to: "/portfolio" },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) setScrolled(true);
+      else setScrolled(false);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="fixed top-0 left-0 w-full z-50 px-6 md:px-20 py-6 flex items-center justify-between text-white bg-[#5578e5]">
-      <Logo />
+    <nav
+      className={`sticky top-0 left-0 z-50 w-full px-4 py-6 flex items-center justify-between text-white transition-all duration-300 
+      ${scrolled ? "bg-[#6283ea]/80 backdrop-blur-lg" : "bg-transparent"}`}
+    >
+      <Link
+        href="/"
+        className={`font-inter font-medium text-xl leading-[150%]`}
+      >
+        <h1>Flow Edit</h1>
+      </Link>
 
       <div className="hidden md:flex">
         <NavItems navItems={navItems} />
       </div>
 
-      <div className="lg:hidden">
+      <div className="md:hidden lg:hidden">
         <Sheet>
           <SheetTrigger>
             <Menu className="w-7 h-7" />

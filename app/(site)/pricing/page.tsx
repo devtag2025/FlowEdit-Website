@@ -1,11 +1,22 @@
 import PriceBanner from "@/components/modules/pricing-page/PriceBanner";
 import PriceCarosel from "@/components/modules/pricing-page/PriceCarosel/PriceCarosel";
+import Footer from "@/components/shared/footer/Footer";
+import Navbar from "@/components/shared/navbar/Navbar";
+import Image from "next/image";
 
 const PricingPage = () => {
   return (
-    <div className="relative pt-8">
+    <div className="relative lg:pb-24">
+      <Navbar />
+      <Image
+        src="/pricing-bg.jpg"
+        alt="background"
+        fill
+        className="object-cover object-top -z-10"
+      />
       <PriceBanner />
       <PriceCarosel />
+      <Footer />
     </div>
   );
 };
