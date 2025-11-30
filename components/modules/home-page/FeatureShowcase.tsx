@@ -1,26 +1,28 @@
 "use client";
-import Container from "@/components/shared/Container";
 
+import Container from "@/components/shared/Container";
+import gsap from "gsap";
 import Image from "next/image";
+import { useEffect } from "react";
 
 const FeatureShowcase = () => {
+  useEffect(() => {
+    const tl = gsap.timeline({
+      repeat: -1,
+      yoyo: true,
+    });
+
+    tl.to(".floating-laptop", {
+      x: () => gsap.utils.random(-15, 15),
+      y: () => gsap.utils.random(-20, 20),
+      rotation: () => gsap.utils.random(-3, 3),
+      duration: 5,
+      ease: "power1.inOut",
+    });
+  }, []);
+
   return (
     <div className="">
-      {/* <div className=" w-full ">
-        <Image
-          src="/images/background/wave-3.png"
-          alt="grid"
-          width={2500}
-          height={1200}
-          className=" absolute top-40 left-0 w-full -mt-150 "
-        />
-        <Image
-          src="/images/background/wallpaper-blur.png"
-          alt="grid"
-          fill
-          className="object-fill object-top z-0"
-        />
-      </div> */}
       <div className=" z-10 relative  w-full">
         <Container className="w-full  flex flex-col-reverse lg:flex-row items-center justify-center gap-10 lg:gap-20">
           <div className="flex flex-col gap-4 text-center lg:text-left">
@@ -39,7 +41,7 @@ const FeatureShowcase = () => {
             </p>
           </div>
 
-          <div className="relative w-full h-[450px] md:h-[530px] block lg:hidden overflow-hidden">
+          <div className="relative w-full h-[450px] md:h-[530px] block lg:hidden overflow-hidden floating-laptop">
             <Image
               src="/images/home-page/laptop.png"
               alt="laptop image"
@@ -48,7 +50,7 @@ const FeatureShowcase = () => {
             />
           </div>
 
-          <div className="hidden lg:block relative w-full max-w-[711px] h-[650px]">
+          <div className="hidden lg:block relative w-full max-w-[711px] h-[650px] floating-laptop">
             <Image
               src="/images/home-page/laptop.png"
               alt="laptop image"
