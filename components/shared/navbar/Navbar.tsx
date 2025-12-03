@@ -36,7 +36,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`sticky top-0 left-0 z-50 w-full px-2 py-6 flex items-center justify-between text-white transition-all duration-300 
+      className={`sticky top-0 left-0 z-50 w-full px-2 py-3 flex items-center justify-between text-white transition-all duration-300 
       ${scrolled ? "bg-[#6283ea]/80 backdrop-blur-lg" : "bg-transparent"}`}
     >
       <Link
@@ -53,7 +53,7 @@ const Navbar = () => {
       <div className="md:hidden lg:hidden">
         <Sheet>
           <SheetTrigger>
-            <Menu className="w-7 h-7" />
+            <Menu className="w-5 h-5" />
           </SheetTrigger>
 
           <SheetContent
