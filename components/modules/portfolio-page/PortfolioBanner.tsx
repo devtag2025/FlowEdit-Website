@@ -8,7 +8,7 @@ const PortfolioBanner = () => {
           <h1 className="font-semibold text-[44px] lg:text-[73px] leading-[118%] -tracking-[0.04em] text-white text-center lg:text-left">
             Check out our <br className="block lg:hidden" /> portfolio
           </h1>
-          <p className="font-normal text-lg lg:text-xl leading-[150%] text-white max-w-5xl text-center px-4">
+          <p className="font-normal text-lg lg:text-xl leading-[150%] text-white max-w-5xl text-center">
             Nullam egestas et in tristique faucibus. Mauris quis posuere lorem
             tincidunt phasellus auctor tortor. Sit id neque tincidunt ac nibh
             varius aliquam tincidunt. Habitant egestas donec diam scelerisque
