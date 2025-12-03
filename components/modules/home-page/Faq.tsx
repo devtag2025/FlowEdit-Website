@@ -10,7 +10,7 @@ const Faq = () => {
   const pathname = usePathname();
   return (
     <Container
-      className={`flex flex-col items-center text-center px-4 ${
+      className={`flex flex-col items-center text-center ${
         pathname === "/portfolio"
           ? "pt-[69px] lg:pt-[120px] pb-[50px]"
           : "pt-10 lg:pt-[180px] pb-[102px]"
@@ -34,7 +34,7 @@ const Faq = () => {
       </div>
 
       <div
-        className={`w-full overflow-hidden rounded-2xl px-2 ${
+        className={`w-full overflow-hidden rounded-2xl ${
           pathname === "/portfolio" ? "pt-[57px] lg:py-10" : "pt-[94px] pb-10"
         }`}
       >

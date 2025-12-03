@@ -82,7 +82,7 @@ const PriceCarosel = () => {
               freeMode={true}
               grabCursor={true}
               spaceBetween={20}
-              slidesPerView={1.25}
+              slidesPerView={1}
               breakpoints={{
                 768: {
                   slidesPerView: 1.5,

@@ -52,7 +52,7 @@ const AllProjects = () => {
   ];
   return (
     <div className="relative pt-15 lg:pt-32 pb-[75px] lg:pb-32">
-      <div className="w-full px-4">
+      <div className="w-full">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {allProjects?.map((project, i) => (
