@@ -1,5 +1,3 @@
-import PortfolioBackground4 from "@/components/backgrounds/PortfolioBackground4";
-import PortfolioBackground5 from "@/components/backgrounds/PotfolioBackground5";
 import Container from "@/components/shared/Container";
 import SiteButton from "@/components/shared/SiteButton";
 import Image from "next/image";
@@ -7,8 +5,8 @@ import Image from "next/image";
 const PortfolioShowcase = () => {
   return (
     <div className="relative overflow-hidden">
-      <div className="w-full px-4">
-        <Container className="">
+      <div className="w-full">
+        <Container>
           <div className="flex flex-col lg:flex-row justify-between gap-10 lg:gap-24 max-w-full">
             <div className="w-full lg:w-1/2 rounded-2xl">
               <div className="relative w-full aspect-4/3 lg:h-full">

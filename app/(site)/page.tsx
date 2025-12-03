@@ -12,7 +12,7 @@ export default function HomePage() {
     <div className="relative lg:pb-20">
       <Navbar />
       <Image
-        src="/bg3.jpg"
+        src="/bg.jpg"
         alt="background"
         fill
         className="object-cover object-top -z-10 sm:block hidden"

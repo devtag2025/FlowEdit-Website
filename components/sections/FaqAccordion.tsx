@@ -35,7 +35,7 @@ const items = [
 
 export default function FaqAccordion() {
   return (
-    <div className="w-full max-w-xl sm:max-w-2xl space-y-4 px-2 sm:px-0">
+    <div className="w-full max-w-xl sm:max-w-2xl space-y-4 sm:px-0">
       <Accordion type="single" collapsible className="space-y-4">
         {items.map(({ title, content }, index) => (
           <AccordionItem

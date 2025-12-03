@@ -67,7 +67,7 @@ const LovedByCreatorsSection = () => {
         Loved by creators
       </h1>
 
-      <div className="block lg:hidden w-screen px-4">
+      <div className="block lg:hidden w-screen px-2">
         <Swiper
           modules={[FreeMode]}
           freeMode={true}
