@@ -1,6 +1,5 @@
 import { IProject } from "@/types/portfolio";
 import ProjectCard from "./ProjectCard";
-import Container from "@/components/shared/Container";
 
 const AllProjects = () => {
   const allProjects: IProject[] = [
@@ -53,13 +52,15 @@ const AllProjects = () => {
   return (
     <div className="relative pt-15 lg:pt-32 pb-[75px] lg:pb-32">
       <div className="w-full">
-        <Container>
+        <div className="w-full">
+          <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {allProjects?.map((project, i) => (
               <ProjectCard key={i} project={project} />
             ))}
           </div>
-        </Container>
+          </div>
+        </div>
       </div>
     </div>
   );

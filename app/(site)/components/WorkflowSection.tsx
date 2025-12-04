@@ -1,4 +1,3 @@
-import Container from "@/components/shared/Container";
 import Image from "next/image";
 
 const workflowData = [
@@ -24,7 +23,8 @@ const workflowData = [
 
 const WorkflowSection = () => {
   return (
-    <Container className=" w-full flex flex-col items-center gap-10 mb-16 lg:mb-[150px]">
+    <div className="w-full">
+      <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px] flex flex-col items-center gap-10 mb-16 lg:mb-[150px]">
       <h1 className="font-semibold text-[34px] sm:text-[42px] md:text-[54px] -tracking-[0.04em] text-center">
         A Simple Powerful Workflow
       </h1>
@@ -55,7 +55,8 @@ const WorkflowSection = () => {
           </div>
         ))}
       </div>
-    </Container>
+      </div>
+    </div>
   );
 };
 

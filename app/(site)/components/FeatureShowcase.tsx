@@ -1,6 +1,5 @@
 "use client";
 
-import Container from "@/components/shared/Container";
 import gsap from "gsap";
 import Image from "next/image";
 import { useEffect } from "react";
@@ -24,7 +23,8 @@ const FeatureShowcase = () => {
   return (
     <div className="">
       <div className=" z-10 relative  w-full">
-        <Container className="w-full  flex flex-col-reverse lg:flex-row items-center justify-center gap-10 lg:gap-20">
+        <div className="w-full">
+          <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px] flex flex-col-reverse lg:flex-row items-center justify-center gap-10 lg:gap-20">
           <div className="flex flex-col gap-4 text-center lg:text-left">
             <h1 className="font-semibold text-black -tracking-[0.04em] text-3xl sm:text-4xl md:text-5xl lg:text-[54px] whitespace-nowrap">
               Effortless Video
@@ -58,7 +58,8 @@ const FeatureShowcase = () => {
               className="object-contain lg:object-cover"
             />
           </div>
-        </Container>
+          </div>
+        </div>
       </div>
     </div>
   );

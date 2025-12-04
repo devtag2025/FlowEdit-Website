@@ -2,7 +2,6 @@ import { SquarePlay } from "lucide-react";
 import Link from "next/link";
 import { FC } from "react";
 import { FaXTwitter } from "react-icons/fa6";
-import Container from "../Container";
 import MobileFooter from "./MobileFooter";
 import Logo from "../Logo";
 
@@ -50,8 +49,9 @@ const footerMenu = [
 
 const Footer: FC = () => {
   return (
-    <Container>
-      <footer className=" w-full py-0 bg-white hidden md:block px-4 xl:px-0">
+    <div className="w-full bg-gray-300">
+      <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px]">
+      <footer className=" w-full py-0 hidden md:block px-4 xl:px-0">
         <div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 text-center sm:text-left">
             <div className="flex flex-col items-center sm:items-start">
@@ -109,7 +109,8 @@ const Footer: FC = () => {
       </footer>
 
       <MobileFooter footerMenu={footerMenu} />
-    </Container>
+      </div>
+    </div>
   );
 };
 

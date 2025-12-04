@@ -1,6 +1,5 @@
 "use client";
 
-import Container from "@/components/shared/Container";
 import PageHeaderButton from "@/components/shared/PageHeaderButton";
 import ToggleSwitch from "@/components/shared/ToggleSwitch";
 
@@ -8,7 +7,8 @@ const PriceBanner = () => {
   return (
     <div className="relative overflow-hidden lg:pt-14 mb-[43px] lg:mb-[77px]">
       <div className="w-full h-full">
-        <Container className="flex flex-col gap-5 items-center justify-center h-full w-full">
+        <div className="w-full">
+          <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px] flex flex-col gap-5 items-center justify-center h-full">
           <div className="w-fit">
             <PageHeaderButton text="Pricing" />
           </div>
@@ -35,7 +35,8 @@ const PriceBanner = () => {
               35% savings
             </p>
           </div>
-        </Container>
+          </div>
+        </div>
       </div>
     </div>
   );

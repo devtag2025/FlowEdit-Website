@@ -1,6 +1,5 @@
 "use client";
 
-import Container from "@/components/shared/Container";
 import PriceCard, { FeatureType } from "./PriceCard";
 
 import "swiper/css";
@@ -72,7 +71,8 @@ const PriceCarosel = () => {
   return (
     <div className="relative py-0 mb-[15px] lg:mb-[170px]">
       <div className="w-full">
-        <Container>
+        <div className="w-full">
+          <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px]">
           <div className="lg:hidden">
             <Swiper
               onSwiper={(swiper) => (sliderRef.current = swiper)}
@@ -111,7 +111,8 @@ const PriceCarosel = () => {
               <PriceCard key={i} {...card} />
             ))}
           </div>
-        </Container>
+          </div>
+        </div>
       </div>
     </div>
   );

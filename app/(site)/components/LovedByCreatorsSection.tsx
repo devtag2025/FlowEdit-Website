@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import Container from "@/components/shared/Container";
 import PageHeaderButton from "@/components/shared/PageHeaderButton";
 import { BiSolidQuoteLeft } from "react-icons/bi";
 
@@ -54,13 +53,14 @@ const TestimonialCard = ({ item }: any) => (
 const LovedByCreatorsSection = () => {
   const pathname = usePathname();
   return (
-    <Container
-      className={`flex flex-col items-center justify-center gap-10 ${
-        pathname === "/portfolio"
-          ? "pt-24 lg:pt-[120px]"
-          : "pt-20 lg:pt-[120px]"
-      }`}
-    >
+    <div className="w-full">
+      <div
+        className={`mx-auto w-full px-2.5 md:px-0 max-w-[1216px] flex flex-col items-center justify-center gap-10 ${
+          pathname === "/portfolio"
+            ? "pt-24 lg:pt-[120px]"
+            : "pt-20 lg:pt-[120px]"
+        }`}
+      >
       <PageHeaderButton text="Testimonials" />
 
       <h1 className="font-semibold text-[36px] sm:text-[44px] md:text-[54px] -tracking-[0.04em] text-black text-center">
@@ -89,7 +89,8 @@ const LovedByCreatorsSection = () => {
           <TestimonialCard key={index} item={item} />
         ))}
       </div>
-    </Container>
+      </div>
+    </div>
   );
 };
 

@@ -1,6 +1,5 @@
 "use client";
 
-import Container from "@/components/shared/Container";
 import PageHeaderButton from "@/components/shared/PageHeaderButton";
 import SiteButton from "@/components/shared/SiteButton";
 import gsap from "gsap";
@@ -48,44 +47,46 @@ const Banner = () => {
 
   return (
     <div className="w-full pb-[134px] z-10">
-      <Container>
-        <div className="w-full ">
-          <div className="flex flex-col items-center justify-center text-center gap-11 sm:gap-6 md:gap-7 mt-12 pt-5  w-full">
-            <PageHeaderButton
-              text="Loved by 4.5 out of 5 Creators"
-              icons={[
-                <IoMdStar key="1" />,
-                <IoMdStar key="2" />,
-                <IoMdStar key="3" />,
-                <IoMdStar key="4" />,
-                <IoMdStarHalf key="5" />,
-              ]}
-            />
+      <div className="w-full">
+        <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px]">
+          <div className="w-full ">
+            <div className="flex flex-col items-center justify-center text-center gap-11 sm:gap-6 md:gap-7 mt-12 pt-5  w-full">
+              <PageHeaderButton
+                text="Loved by 4.5 out of 5 Creators"
+                icons={[
+                  <IoMdStar key="1" />,
+                  <IoMdStar key="2" />,
+                  <IoMdStar key="3" />,
+                  <IoMdStar key="4" />,
+                  <IoMdStarHalf key="5" />,
+                ]}
+              />
 
-            <div className="flex flex-col gap-8 z-40 items-center">
-              <h1 className="hero-title font-semibold text-white md:max-w-5xl text-[44px] sm:text-4xl md:text-5xl lg:text-7xl leading-[120%] tracking-[-4%]">
-                Post Better Videos - Faster. Skip the Editing.
-              </h1>
+              <div className="flex flex-col gap-8 z-40 items-center">
+                <h1 className="hero-title font-semibold text-white md:max-w-5xl text-[44px] sm:text-4xl md:text-5xl lg:text-7xl leading-[120%] tracking-[-4%]">
+                  Post Better Videos - Faster. Skip the Editing.
+                </h1>
 
-              <p className="hero-subtitle text-white leading-[150%] max-w-[20rem] sm:max-w-lg md:max-w-3xl lg:max-w-5xl text-sm sm:text-base md:text-lg lg:text-xl">
-                We’ll edit anything, fast-optimized for any platform. Just drop
-                your footage, and we’ll turn it into content that gets views and
-                drives growth—with zero effort on your part.
-              </p>
+                <p className="hero-subtitle text-white leading-[150%] max-w-[20rem] sm:max-w-lg md:max-w-3xl lg:max-w-5xl text-sm sm:text-base md:text-lg lg:text-xl">
+                  We'll edit anything, fast-optimized for any platform. Just drop
+                  your footage, and we'll turn it into content that gets views and
+                  drives growth—with zero effort on your part.
+                </p>
 
-              <div className="w-full sm:w-fit shadow-2xl">
-                <SiteButton className="bg-[#B6C7F5]/30 w-full hover:bg-[#B6C7F5]/30">
-                  Start for Free
-                </SiteButton>
+                <div className="w-full sm:w-fit shadow-2xl">
+                  <SiteButton className="bg-[#B6C7F5]/30 w-full hover:bg-[#B6C7F5]/30">
+                    Start for Free
+                  </SiteButton>
+                </div>
+
+                <p className="hero-bottom-text text-white max-w-60 sm:max-w-sm md:max-w-md text-xs sm:text-sm md:text-base leading-[150%]">
+                  14-Day free access to professional video editing team
+                </p>
               </div>
-
-              <p className="hero-bottom-text text-white max-w-60 sm:max-w-sm md:max-w-md text-xs sm:text-sm md:text-base leading-[150%]">
-                14-Day free access to professional video editing team
-              </p>
             </div>
           </div>
         </div>
-      </Container>
+      </div>
 
       <div className="">
         <FeatureShowcase />
