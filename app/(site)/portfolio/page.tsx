@@ -1,10 +1,10 @@
 "use client";
 
-import Faq from "@/components/modules/home-page/Faq";
-import LovedByCreatorsSection from "@/components/modules/home-page/LovedByCreatorsSection";
-import AllProjects from "@/components/modules/portfolio-page/all-projects/AllProjects";
-import PortfolioBanner from "@/components/modules/portfolio-page/PortfolioBanner";
-import PortfolioShowcase from "@/components/modules/portfolio-page/PortfolioShowcase";
+import Faq from "../components/Faq";
+import LovedByCreatorsSection from "../components/LovedByCreatorsSection";
+import AllProjects from "./components/all-projects/AllProjects";
+import PortfolioBanner from "./components/PortfolioBanner";
+import PortfolioShowcase from "./components/PortfolioShowcase";
 import Footer from "@/components/shared/footer/Footer";
 import Navbar from "@/components/shared/navbar/Navbar";
 import Image from "next/image";

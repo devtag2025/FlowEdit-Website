@@ -10,7 +10,7 @@ const Faq = () => {
   const pathname = usePathname();
   return (
     <Container
-      className={`flex flex-col items-center text-center ${
+      className={`flex flex-col items-center text-center bg-white ${
         pathname === "/portfolio"
           ? "pt-[69px] lg:pt-[120px] pb-[50px]"
           : "pt-10 lg:pt-[180px] pb-[102px]"

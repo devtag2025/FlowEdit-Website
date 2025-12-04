@@ -1,5 +1,5 @@
-import PriceBanner from "@/components/modules/pricing-page/PriceBanner";
-import PriceCarosel from "@/components/modules/pricing-page/PriceCarosel/PriceCarosel";
+import PriceBanner from "./components/PriceBanner";
+import PriceCarosel from "./components/PriceCarosel/PriceCarosel";
 import Footer from "@/components/shared/footer/Footer";
 import Navbar from "@/components/shared/navbar/Navbar";
 import Image from "next/image";
