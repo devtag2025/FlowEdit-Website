@@ -46,7 +46,7 @@ const Banner = () => {
   }, [pathname]);
 
   return (
-    <div className="w-full pb-[134px] z-10">
+    <div className="w-full pb-[134px] z-10 bg-[linear-gradient(180deg,#4069E4_0%,rgba(255,255,255,0)_100%)]">
       <div className="w-full">
         <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px]">
           <div className="w-full ">
