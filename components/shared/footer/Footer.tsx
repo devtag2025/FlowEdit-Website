@@ -49,7 +49,7 @@ const footerMenu = [
 
 const Footer: FC = () => {
   return (
-    <div className="w-full bg-gray-300">
+    <div className="w-full">
       <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px]">
       <footer className=" w-full py-0 hidden md:block px-4 xl:px-0">
         <div>
