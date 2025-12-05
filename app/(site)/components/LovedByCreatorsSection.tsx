@@ -64,8 +64,8 @@ const LovedByCreatorsSection = () => {
           className="w-full h-full object-cover object-top"
           sizes="100vw"
           style={{
-            maskImage: "linear-gradient(to bottom, transparent 0%, black 100%)",
-            WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 100%)",
+            maskImage: "linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%)",
           }}
         />
       </div>

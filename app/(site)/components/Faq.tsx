@@ -9,7 +9,7 @@ import Image from "next/image";
 const Faq = () => {
   const pathname = usePathname();
   return (
-    <div className="w-full relative overflow-hidden lg:h-[1700px] -my-[100px]">
+    <div className="w-full relative overflow-hidden lg:h-[1700px] -my-[100px] -mb-[180px]">
       {/* Background Image */}
       <div className="absolute top-0 left-0 right-0 bottom-0 w-screen h-full -z-10">
         <Image
