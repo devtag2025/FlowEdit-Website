@@ -36,7 +36,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`sticky top-0 left-0 z-50 w-full px-2 py-3 flex items-center justify-between text-white transition-all duration-300 
+      className={`fixed top-0 left-0 z-50 w-full px-2 py-3 flex items-center justify-between text-white transition-all duration-300 
       ${scrolled ? "bg-[#6283ea]/80 backdrop-blur-lg" : "bg-transparent"}`}
     >
       <Link
