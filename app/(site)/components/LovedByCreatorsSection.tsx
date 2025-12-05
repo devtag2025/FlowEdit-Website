@@ -3,6 +3,7 @@
 
 import PageHeaderButton from "@/components/shared/PageHeaderButton";
 import { BiSolidQuoteLeft } from "react-icons/bi";
+import Image from "next/image";
 
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -53,12 +54,27 @@ const TestimonialCard = ({ item }: any) => (
 const LovedByCreatorsSection = () => {
   const pathname = usePathname();
   return (
-    <div className="w-full">
+    <div className="w-full relative overflow-hidden lg:h-[1172px] lg:-mt-[344px]">
+      {/* Background Image */}
+      <div className="absolute top-0 left-0 right-0 w-screen h-full -z-10">
+        <Image
+          src="/homepage/creatorbg.svg"
+          alt="creator background"
+          fill
+          className="w-full h-full object-cover object-top"
+          sizes="100vw"
+          style={{
+            maskImage: "linear-gradient(to bottom, transparent 0%, black 100%)",
+            WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 100%)",
+          }}
+        />
+      </div>
+      
       <div
-        className={`mx-auto w-full px-2.5 md:px-0 max-w-[1216px] flex flex-col items-center justify-center gap-10 ${
+        className={`mx-auto w-full px-2.5 md:px-0 max-w-[1216px] flex flex-col items-center justify-center gap-10 relative z-10 h-full lg:justify-end lg:pb-20 ${
           pathname === "/portfolio"
-            ? "pt-24 lg:pt-[120px]"
-            : "pt-20 lg:pt-[120px]"
+            ? "pt-24 lg:pt-0"
+            : "pt-20 lg:pt-0"
         }`}
       >
       <PageHeaderButton text="Testimonials" />

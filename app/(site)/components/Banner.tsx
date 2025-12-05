@@ -117,8 +117,8 @@ const Banner = () => {
                   </SiteButton>
                 </div>
 
-                <p className="hero-bottom-text text-white max-w-60 sm:max-w-sm md:max-w-md text-xs sm:text-sm md:text-base leading-[150%]">
-                  14-Day free access to professional video editing team
+                <p className="hero-bottom-text text-white max-w-60 sm:max-w-sm md:max-w-md text-xs sm:text-sm md:text-base leading-[150%] pb-20">
+                  14-Day free access to professional <br /> video editing team
                 </p>
               </div>
             </div>
@@ -146,7 +146,7 @@ const Banner = () => {
               </p>
             </div>
 
-            <div className="relative w-full h-[450px] md:h-[530px] block lg:hidden overflow-hidden floating-laptop">
+            <div className="relative w-full h-[470px] md:h-[555px] block lg:hidden overflow-hidden floating-laptop">
               <Image
                 src="/images/home-page/laptop.png"
                 alt="laptop image"

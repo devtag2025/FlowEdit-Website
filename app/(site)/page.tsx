@@ -1,5 +1,4 @@
 import Banner from "./components/Banner";
-import DualShowcase from "./components/DualShowcase";
 import Faq from "./components/Faq";
 import LovedByCreatorsSection from "./components/LovedByCreatorsSection";
 import WorkflowSection from "./components/WorkflowSection";
@@ -12,7 +11,6 @@ export default function HomePage() {
       <Navbar />
       <Banner />
       <WorkflowSection />
-      <DualShowcase />
       <LovedByCreatorsSection />
       <Faq />
       <Footer />
