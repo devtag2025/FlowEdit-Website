@@ -36,55 +36,57 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 z-50 w-full px-2 py-3 flex items-center justify-between text-white transition-all duration-300 
+      className={`fixed top-0 z-50 mx-auto w-full max-w-[1440px] px-2 py-3 text-white transition-all duration-300 
       ${scrolled ? "bg-[#6283ea]/80 backdrop-blur-lg" : "bg-transparent"}`}
     >
-      <Link
-        href="/"
-        className={`font-inter font-medium text-xl leading-[150%]`}
-      >
-        <h1>Flow Edit</h1>
-      </Link>
+      <div className="mx-auto max-w-[1216px] flex items-center justify-between">
+        <Link
+          href="/"
+          className={`font-inter font-medium text-xl leading-[150%]`}
+        >
+          <h1>Flow Edit</h1>
+        </Link>
 
-      <div className="hidden md:flex">
-        <NavItems navItems={navItems} />
-      </div>
+        <div className="hidden md:flex">
+          <NavItems navItems={navItems} />
+        </div>
 
-      <div className="md:hidden lg:hidden">
-        <Sheet>
-          <SheetTrigger>
-            <Menu className="w-5 h-5" />
-          </SheetTrigger>
+        <div className="md:hidden lg:hidden">
+          <Sheet>
+            <SheetTrigger>
+              <Menu className="w-5 h-5" />
+            </SheetTrigger>
 
-          <SheetContent
-            forceMount
-            side="top"
-            className="p-0 w-full h-screen max-w-[100vw] overflow-hidden border-none bg-[#6283ea] [&>button]:hidden"
-          >
-            <Image
-              src="/images/background/mobile-bg.png"
-              alt="mobile-menu-bg"
-              fill
-              className="object-cover"
-            />
+            <SheetContent
+              forceMount
+              side="top"
+              className="p-0 w-full h-screen max-w-[100vw] overflow-hidden border-none bg-[#6283ea] [&>button]:hidden"
+            >
+              <Image
+                src="/images/background/mobile-bg.png"
+                alt="mobile-menu-bg"
+                fill
+                className="object-cover"
+              />
 
-            <div>
-              <SheetTitle>
-                <Logo className="absolute left-6 top-8 z-20 text-white" />
-              </SheetTitle>
+              <div>
+                <SheetTitle>
+                  <Logo className="absolute left-6 top-8 z-20 text-white" />
+                </SheetTitle>
 
-              <div className="pointer-events-auto">
-                <SheetClose asChild>
-                  <button className="absolute right-6 top-8 z-999 text-white">
-                    <X className="w-7 h-7" />
-                  </button>
-                </SheetClose>
+                <div className="pointer-events-auto">
+                  <SheetClose asChild>
+                    <button className="absolute right-6 top-8 z-999 text-white">
+                      <X className="w-7 h-7" />
+                    </button>
+                  </SheetClose>
+                </div>
               </div>
-            </div>
 
-            <MobileMenu navItems={navItems} />
-          </SheetContent>
-        </Sheet>
+              <MobileMenu navItems={navItems} />
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </nav>
   );

@@ -61,7 +61,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className="w-full pt-20 lg:pt-32 pb-[134px] z-10 bg-linear-to-b from-[#4069E4] to-[rgba(255,255,255,0)] relative overflow-hidden">
+    <div className="w-full h-[1440px] z-10 bg-linear-to-b from-[#4069E4] to-[rgba(255,255,255,0)] relative overflow-hidden">
       {/* Top Banner Image */}
       <div className="absolute top-0 left-0 right-0 w-full z-10 pointer-events-none">
         <Image
@@ -85,10 +85,10 @@ const Banner = () => {
         />
       </div>
       
-      <div className="w-full relative z-20">
+      <div className="w-full relative z-20 mt-[260px]">
         <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px]">
           <div className="w-full ">
-            <div className="flex flex-col items-center justify-center text-center gap-11 sm:gap-6 md:gap-7 mt-12 pt-5  w-full">
+            <div className="flex flex-col items-center justify-center text-center gap-11 sm:gap-6 md:gap-7 lg:gap[25px] w-full">
               <PageHeaderButton
                 text="Loved by 4.5 out of 5 Creators"
                 icons={[
@@ -102,7 +102,7 @@ const Banner = () => {
 
               <div className="flex flex-col gap-8 z-40 items-center">
                 <h1 className="hero-title font-semibold text-white md:max-w-5xl text-[44px] sm:text-4xl md:text-5xl lg:text-7xl leading-[120%] tracking-[-4%]">
-                  Post Better Videos - Faster. Skip the Editing.
+                Post Better Videos—Faster. Skip the Editing.
                 </h1>
 
                 <p className="hero-subtitle text-white leading-[150%] max-w-[20rem] sm:max-w-lg md:max-w-3xl lg:max-w-5xl text-sm sm:text-base md:text-lg lg:text-xl">
@@ -117,7 +117,7 @@ const Banner = () => {
                   </SiteButton>
                 </div>
 
-                <p className="hero-bottom-text text-white max-w-60 sm:max-w-sm md:max-w-md text-xs sm:text-sm md:text-base leading-[150%] pb-20">
+                <p className="hero-bottom-text text-white max-w-60 sm:max-w-sm md:max-w-md text-xs sm:text-sm md:text-base leading-[150%]">
                   14-Day free access to professional <br /> video editing team
                 </p>
               </div>
@@ -146,7 +146,7 @@ const Banner = () => {
               </p>
             </div>
 
-            <div className="relative w-full h-[470px] md:h-[555px] block lg:hidden overflow-hidden floating-laptop">
+            <div className="relative w-full h-[440px] md:h-[520px] block lg:hidden overflow-hidden floating-laptop">
               <Image
                 src="/images/home-page/laptop.png"
                 alt="laptop image"
