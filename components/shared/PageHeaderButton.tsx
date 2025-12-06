@@ -15,7 +15,7 @@ const PageHeaderButton = ({
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-1 rounded-xl px-3 py-1",
+        "inline-flex items-center gap-1 rounded-lg px-3 py-1",
         "bg-white/50 backdrop-blur-[20px]",
         "border border-[rgba(255,255,255,0.05)]",
         "shadow-[0_10px_10px_rgba(0,0,0,0.1),0_4px_4px_rgba(0,0,0,0.05),0_1px_0_rgba(0,0,0,0.05)]",

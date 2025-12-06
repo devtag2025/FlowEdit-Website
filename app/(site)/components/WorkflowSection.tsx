@@ -24,26 +24,26 @@ const workflowData = [
 
 const WorkflowSection = () => {
   return (
-    <div className="w-full relative overflow-hidden">
+    <div className="w-full relative overflow-hidden -my-12">
       {/* Background Image */}
-      <div className="absolute top-0 left-0 right-0 bottom-0 w-screen h-full -z-10">
+      <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full -z-10">
         <Image
           src="/homepage/workflowbg.png"
           alt="workflow background"
           fill
-          className="w-full h-full object-cover object-top"
+          className="w-full h-full object-contain object-top"
           sizes="100vw"
           priority
         />
       </div>
       
       {/* Content */}
-      <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px] flex flex-col items-center gap-10 mb-16 lg:mb-[150px] relative z-10 pt-10">
-      <h1 className="font-semibold text-[34px] sm:text-[42px] md:text-[54px] -tracking-[0.04em] text-center pt-24">
+      <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px] flex flex-col items-center gap-10 relative lg:mb-[50px] z-10 pt-10">
+      <h1 className="font-semibold text-[34px] sm:text-[42px] md:text-[54px] -tracking-[0.04em] text-center pt-18">
         A Simple Powerful Workflow
       </h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 place-items-stretch">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 place-items-stretch lg:-mb-[75px]">
         {workflowData.map((item) => (
           <div
             key={item.id}
