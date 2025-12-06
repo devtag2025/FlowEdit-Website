@@ -13,6 +13,8 @@ const PricingPage = () => {
   return (
     <div className="relative lg:pb-24">
       <Navbar />
+      {/* Gradient Background - Shows before image loads */}
+      <div className="absolute inset-0 bg-linear-to-b from-[#4069E4] to-[rgba(255,255,255,0)] -z-20"></div>
       <Image
         src="/pricing-bg.jpg"
         alt="background"
