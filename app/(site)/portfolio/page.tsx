@@ -2,7 +2,6 @@
 
 import Faq from "../components/Faq";
 import LovedByCreatorsSection from "../components/LovedByCreatorsSection";
-import AllProjects from "./components/all-projects/AllProjects";
 import PortfolioBanner from "./components/PortfolioBanner";
 import PortfolioShowcase from "./components/PortfolioShowcase";
 import Footer from "@/components/shared/footer/Footer";
@@ -15,20 +14,21 @@ const PortfolioPage = () => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className="relative pb-24">
-      <Navbar />
-      <Image
-        src="/portfolio-bg.jpg"
-        alt="background"
-        fill
-        className="object-cover object-top -z-10"
-      />
-      <PortfolioBanner />
-      <AllProjects />
-      <PortfolioShowcase />
-      <LovedByCreatorsSection />
-      <Faq />
-      <Footer />
+    <div className="relative bg-white">
+      <div className="mx-auto max-w-[1440px] relative lg:pb-20">
+        <Image
+          src="/portfolio-bg.jpg"
+          alt="background"
+          fill
+          className="object-cover object-top -z-10"
+        />
+        <Navbar />
+        <PortfolioBanner />
+        <PortfolioShowcase />
+        <LovedByCreatorsSection />
+        <Faq />
+        <Footer />
+      </div>
     </div>
   );
 };
