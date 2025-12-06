@@ -2,8 +2,16 @@
 
 import PageHeaderButton from "@/components/shared/PageHeaderButton";
 import ToggleSwitch from "@/components/shared/ToggleSwitch";
+import { useState } from "react";
 
-const PriceBanner = () => {
+const PriceBanner = ({ onToggleChange }: { onToggleChange: (value: boolean) => void }) => {
+  const [isToggled, setIsToggled] = useState(true);
+
+  const handleToggle = (value: boolean) => {
+    setIsToggled(value);
+    onToggleChange(value);
+  };
+
   return (
     <div className="relative overflow-hidden lg:pt-14 mb-[43px] lg:mb-[77px]">
       <div className="w-full h-full">
@@ -28,8 +36,8 @@ const PriceBanner = () => {
             </p>
 
             <ToggleSwitch
-              checked={true}
-              onChange={(value) => console.log("Toggled:", value)}
+              checked={isToggled}
+              onChange={handleToggle}
             />
             <p className="text-lg lg:text-xl leading-[150%] text-white">
               35% savings

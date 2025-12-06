@@ -9,6 +9,10 @@ import { FreeMode } from "swiper/modules";
 import { useRef } from "react";
 import type { Swiper as SwiperType } from "swiper";
 
+interface PriceCaroselProps {
+  discountApplied?: boolean;
+}
+
 const priceData: {
   title: string;
   price: number;
@@ -65,9 +69,20 @@ const priceData: {
   },
 ];
 
-const PriceCarosel = () => {
+const PriceCarosel = ({ discountApplied = false }: PriceCaroselProps) => {
   const sliderRef = useRef<SwiperType | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Calculate prices with 35% discount
+  const calculatePrice = (originalPrice: number) => {
+    return discountApplied ? Math.round(originalPrice * 0.65) : originalPrice;
+  };
+
+  const discountedPriceData = priceData.map((card) => ({
+    ...card,
+    price: calculatePrice(card.price),
+  }));
+
   return (
     <div className="relative py-0 mb-[15px] lg:mb-[170px]">
       <div className="w-full">
@@ -91,7 +106,7 @@ const PriceCarosel = () => {
               centeredSlides={true}
               className="w-full py-8"
             >
-              {priceData.map((card, i) => (
+              {discountedPriceData.map((card, i) => (
                 <SwiperSlide key={i}>
                   <div
                     ref={(el) => {
@@ -107,7 +122,7 @@ const PriceCarosel = () => {
           </div>
 
           <div className="hidden lg:flex items-center justify-center gap-8">
-            {priceData.map((card, i) => (
+            {discountedPriceData.map((card, i) => (
               <PriceCard key={i} {...card} />
             ))}
           </div>
