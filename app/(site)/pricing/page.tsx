@@ -11,7 +11,7 @@ const PricingPage = () => {
   const [discountApplied, setDiscountApplied] = useState(true);
 
   return (
-    <div className="relative lg:pb-24">
+    <div className="mx-auto max-w-[1440px] relative lg:pb-24">
       <Navbar />
       {/* Gradient Background - Shows before image loads */}
       <div className="absolute inset-0 bg-linear-to-b from-[#4069E4] to-[rgba(255,255,255,0)] -z-20"></div>
