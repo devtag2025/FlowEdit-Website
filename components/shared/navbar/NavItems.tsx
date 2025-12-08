@@ -10,7 +10,7 @@ const NavItems = ({ navItems }: navLinkProps) => {
       <ul className="capitalize font-medium text-base leading-[150%] flex items-center gap-[2.938rem]">
         {navItems?.map((link, i) => (
           <li key={i}>
-            <Link href={link.to}>{link.label}</Link>
+            <Link href={link.to} className="cursor-pointer">{link.label}</Link>
           </li>
         ))}
 

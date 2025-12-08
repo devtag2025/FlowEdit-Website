@@ -69,11 +69,11 @@ const Footer: FC = () => {
 
               <p className="hidden lg:block text-sm text-black/70">
                 © 2025.{" "}
-                <Link href="#" className="hover:underline">
+                <Link href="#" className="hover:underline cursor-pointer">
                   PRIVACY
                 </Link>
                 .{" "}
-                <Link href="#" className="hover:underline">
+                <Link href="#" className="hover:underline cursor-pointer">
                   TERMS
                 </Link>
               </p>
@@ -95,7 +95,7 @@ const Footer: FC = () => {
                       <li key={linkIdx} className="w-full">
                         <Link
                           href={link.to}
-                          className="relative text-black/90 text-sm font-medium px-3 py-1.5 block w-2/3 hover:border-l-2 hover:border-l-[#2670e9] border-transparent border-l-2 before:absolute before:top-0 before:left-0 before:h-full before:w-[3px] before:bg-[#2670e9] before:blur-[10px] before:opacity-0 before:transition-all before:duration-300 before:ease-out hover:before:opacity-100 after:absolute after:inset-0 after:bg-[linear-gradient(90deg,rgba(38,112,233,0.3)_0%,rgba(38,112,233,0.15)_60%,rgba(38,112,233,0)_100%)] after:opacity-0 after:transition-all after:duration-500 after:ease-out hover:after:opacity-100"
+                          className="relative text-black/90 text-sm font-medium px-3 py-1.5 block w-2/3 hover:border-l-2 hover:border-l-[#2670e9] border-transparent border-l-2 before:absolute before:top-0 before:left-0 before:h-full before:w-[3px] before:bg-[#2670e9] before:blur-[10px] before:opacity-0 before:transition-all before:duration-300 before:ease-out hover:before:opacity-100 after:absolute after:inset-0 after:bg-[linear-gradient(90deg,rgba(38,112,233,0.3)_0%,rgba(38,112,233,0.15)_60%,rgba(38,112,233,0)_100%)] after:opacity-0 after:transition-all after:duration-500 after:ease-out hover:after:opacity-100 cursor-pointer"
                         >
                           {link.label}
                         </Link>

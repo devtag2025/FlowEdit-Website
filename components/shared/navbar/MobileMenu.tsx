@@ -15,7 +15,7 @@ const MobileMenu = ({
             <SheetClose asChild>
               <Link
                 href={link.to}
-                className="capitalize text-white text-xl font-semibold"
+                className="capitalize text-white text-xl font-semibold cursor-pointer"
               >
                 {link.label}
               </Link>
