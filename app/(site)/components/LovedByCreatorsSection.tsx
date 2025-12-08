@@ -9,6 +9,7 @@ import "swiper/css/free-mode";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper/modules";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const testimonials = [
   {
@@ -52,14 +53,25 @@ const TestimonialCard = ({ item }: any) => (
 
 const LovedByCreatorsSection = () => {
   const pathname = usePathname();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
     <div className="w-full relative overflow-hidden lg:h-[1200px] lg:-mt-[254px]">
       {/* Background Image */}
       <div 
-        className="absolute top-30 left-0 right-0 bottom-0 w-full h-full z-0"
+        className="absolute top-0 lg:top-30 left-0 right-0 bottom-0 w-full h-full z-0"
         style={{
           backgroundImage: "url('/homepage/creatorbg.svg')",
-          backgroundSize: "100% auto",
+          backgroundSize: isMobile ? "cover" : "100% auto",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           maskImage: "linear-gradient(to bottom, black 0%, black 50%, black 80%, transparent 100%)",

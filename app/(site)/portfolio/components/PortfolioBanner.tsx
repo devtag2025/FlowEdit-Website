@@ -7,11 +7,21 @@ import { useState, useEffect } from "react";
 
 const PortfolioBanner = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const img = new window.Image();
     img.src = "/homepage/projectsbg.svg";
     img.onload = () => setImageLoaded(true);
+  }, []);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
   const allProjects: IProject[] = [
     {
@@ -66,25 +76,19 @@ const PortfolioBanner = () => {
       <div className="w-full relative">
         {/* Background Image */}
         <div 
-          className="absolute top-0 left-0 right-0 w-full h-full z-0"
+          className="absolute top-0 left-0 right-0 bottom-0 w-full h-full z-0"
           style={{
-            backgroundImage: imageLoaded ? `url('/homepage/projectsbg.svg')` : 'none',
-            backgroundSize: '100% auto',
+            backgroundImage: `url('/homepage/projectsbg.svg')`,
+            backgroundSize: isMobile ? 'cover' : '100% auto',
             backgroundPosition: 'top left',
             backgroundRepeat: 'no-repeat',
+            minHeight: '100%',
           }}
-        >
-          <img
-            src="/homepage/projectsbg.svg"
-            alt=""
-            className="hidden"
-            onLoad={() => setImageLoaded(true)}
-          />
-        </div>
+        />
         
         {/* Background Color - shows until image loads */}
         <div 
-          className={`absolute top-0 left-0 right-0 w-full h-full bg-gradient-to-b from-[#4069E4] to-[rgba(255,255,255,0)] z-0 transition-opacity duration-300 ${
+          className={`absolute top-0 left-0 right-0 bottom-0 w-full h-full bg-gradient-to-b from-[#4069E4] to-[rgba(255,255,255,0)] z-0 transition-opacity duration-300 ${
             imageLoaded ? 'opacity-0' : 'opacity-100'
           }`}
         />

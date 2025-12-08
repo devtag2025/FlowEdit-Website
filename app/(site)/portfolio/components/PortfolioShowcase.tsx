@@ -1,23 +1,35 @@
+"use client";
+
 import SiteButton from "@/components/shared/SiteButton";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const PortfolioShowcase = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
-    <div className="relative overflow-hidden h-[1452px] w-full mt-[-700px] -mb-24">
+    <div className="relative overflow-hidden lg:h-[1452px] w-full lg:mt-[-700px] lg:-mb-24">
       {/* Background Image */}
       <div 
         className="absolute top-0 left-0 right-0 bottom-0 w-full h-full z-0"
         style={{
           backgroundImage: `url('/homepage/duisbg.svg')`,
-          backgroundSize: "100% 100%",
+          backgroundSize: isMobile ? "cover" : "100% 100%",
           backgroundPosition: "top left",
           backgroundRepeat: "no-repeat",
-          width: "100%",
-          height: "100%",
         }}
       />
       
-      <div className="w-full h-full relative z-10 flex items-end  bottom-24">
+      <div className="w-full h-full relative z-10 flex lg:items-end pt-10 pb-10 lg:pt-0 lg:pb-0 lg:bottom-24">
         <div className="w-full">
           <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px] pb-10 lg:pb-20">
           <div className="flex flex-col lg:flex-row justify-between gap-10 lg:gap-24 max-w-full">
