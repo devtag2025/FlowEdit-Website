@@ -14,13 +14,13 @@ const FluidContainer = ({ children }: FluidContainerProps) => {
       const viewportWidth = window.innerWidth;
       const baseWidth = 1440;
 
-      // For screens >= 768px: Scale 1440px design to fill full viewport width
-      // Maintains 100% ratio, fills entire screen, no white space
-      if (viewportWidth >= 768) {
+      // Only scale for screens > 1440px
+      // For screens <= 1440px: Keep existing responsive design (no scaling)
+      if (viewportWidth > baseWidth) {
         const scaleValue = viewportWidth / baseWidth;
         setScale(scaleValue);
       } else {
-        // Mobile (< 768px): Use existing responsive design (no scaling)
+        // Screens <= 1440px: No scaling, use existing responsive design
         setScale(1);
       }
     };
@@ -30,18 +30,41 @@ const FluidContainer = ({ children }: FluidContainerProps) => {
     return () => window.removeEventListener("resize", updateScale);
   }, []);
 
-  return (
-    <div className="w-screen min-h-screen overflow-x-hidden" style={{ width: "100vw" }}>
-      <div
-        className="relative mx-auto"
-        style={{
-          width: "1440px",
-          transform: `scale(${scale})`,
-          transformOrigin: "top center",
+  // For screens > 1440px, we scale visually but keep the scroll behavior same
+  if (scale !== 1) {
+    return (
+      <div 
+        className="w-full overflow-x-hidden" 
+        style={{ 
+          width: "100vw", 
+          maxWidth: "100vw",
+          scrollBehavior: "smooth"
         }}
       >
-        {children}
+        <div
+          style={{
+            width: "1440px",
+            transform: `scale(${scale}) translateZ(0)`,
+            transformOrigin: "top center",
+            marginLeft: "auto",
+            marginRight: "auto",
+            willChange: "transform",
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            perspective: 1000,
+            WebkitPerspective: 1000,
+          }}
+        >
+          {children}
+        </div>
       </div>
+    );
+  }
+
+  // For screens <= 1440px, no scaling - normal responsive behavior
+  return (
+    <div className="w-full">
+      {children}
     </div>
   );
 };
