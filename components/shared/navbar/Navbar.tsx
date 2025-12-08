@@ -36,7 +36,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 z-50 mx-auto w-full max-w-[1440px] px-2 py-3 text-white transition-all duration-300 
+      className={`fixed top-0 z-[9999] mx-auto w-full max-w-[1440px] px-2 py-3 text-white transition-all duration-300 
       ${scrolled ? "bg-[#6283ea]/80 backdrop-blur-lg" : "bg-transparent"}`}
     >
       <div className="mx-auto max-w-[1216px] flex items-center justify-between">
@@ -60,7 +60,7 @@ const Navbar = () => {
             <SheetContent
               forceMount
               side="top"
-              className="p-0 w-full h-screen max-w-[100vw] overflow-hidden border-none bg-[#6283ea] [&>button]:hidden"
+              className="p-0 w-full h-screen max-w-[100vw] overflow-hidden border-none bg-[#6283ea] [&>button]:hidden z-[9999]"
             >
               <Image
                 src="/images/background/mobile-bg.png"
