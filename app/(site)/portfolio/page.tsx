@@ -16,18 +16,18 @@ const PortfolioPage = () => {
   return (
     <div className="relative bg-white">
       <div className="mx-auto max-w-[1440px] relative lg:pb-20">
-        <Image
-          src="/portfolio-bg.jpg"
-          alt="background"
-          fill
-          className="object-cover object-top -z-10"
-        />
+      <Image
+        src="/portfolio-bg.jpg"
+        alt="background"
+        fill
+        className="object-cover object-top -z-10"
+      />
         <Navbar />
-        <PortfolioBanner />
-        <PortfolioShowcase />
-        <LovedByCreatorsSection />
-        <Faq />
-        <Footer />
+      <PortfolioBanner />
+      <PortfolioShowcase />
+      <LovedByCreatorsSection />
+      <Faq />
+      <Footer />
       </div>
     </div>
   );

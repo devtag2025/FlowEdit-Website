@@ -3,7 +3,6 @@
 
 import PageHeaderButton from "@/components/shared/PageHeaderButton";
 import { BiSolidQuoteLeft } from "react-icons/bi";
-import Image from "next/image";
 
 import "swiper/css";
 import "swiper/css/free-mode";
@@ -54,21 +53,19 @@ const TestimonialCard = ({ item }: any) => (
 const LovedByCreatorsSection = () => {
   const pathname = usePathname();
   return (
-    <div className="w-full relative overflow-hidden lg:h-[1172px] lg:-mt-[344px]">
+    <div className="w-full relative overflow-hidden lg:h-[1180px] lg:-mt-[344px]">
       {/* Background Image */}
-      <div className="absolute top-42 left-0 right-0 w-screen h-full -z-10">
-        <Image
-          src="/homepage/creatorbg.svg"
-          alt="creator background"
-          fill
-          className="w-full h-full object-cover object-top"
-          sizes="100vw"
-          style={{
-            maskImage: "linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%)",
-          }}
-        />
-      </div>
+      <div 
+        className="absolute top-32 left-0 right-0 bottom-0 w-full h-full -z-10"
+        style={{
+          backgroundImage: "url('/homepage/creatorbg.svg')",
+          backgroundSize: "100% auto",
+          backgroundPosition: "bottom left",
+          backgroundRepeat: "no-repeat",
+          maskImage: "linear-gradient(to bottom, black 0%, black 50%, black 80%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 50%, black 80%, transparent 100%)",
+        }}
+      />
       
       <div
         className={`mx-auto w-full px-2.5 md:px-0 max-w-[1216px] flex flex-col items-center justify-center gap-10 relative z-10 h-full lg:justify-end lg:pb-20 ${
