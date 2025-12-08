@@ -33,14 +33,26 @@ const FluidContainer = ({ children }: FluidContainerProps) => {
   // For screens > 1440px, we scale visually but keep the scroll behavior same
   if (scale !== 1) {
     return (
-      <div className="w-full overflow-x-hidden" style={{ width: "100vw", maxWidth: "100vw" }}>
+      <div 
+        className="w-full overflow-x-hidden" 
+        style={{ 
+          width: "100vw", 
+          maxWidth: "100vw",
+          scrollBehavior: "smooth"
+        }}
+      >
         <div
           style={{
             width: "1440px",
-            transform: `scale(${scale})`,
+            transform: `scale(${scale}) translateZ(0)`,
             transformOrigin: "top center",
             marginLeft: "auto",
             marginRight: "auto",
+            willChange: "transform",
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+            perspective: 1000,
+            WebkitPerspective: 1000,
           }}
         >
           {children}
