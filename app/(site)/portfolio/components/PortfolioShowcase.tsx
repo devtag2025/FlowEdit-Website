@@ -3,10 +3,23 @@ import Image from "next/image";
 
 const PortfolioShowcase = () => {
   return (
-    <div className="relative overflow-hidden">
-      <div className="w-full">
+    <div className="relative overflow-hidden h-[1452px] w-full mt-[-700px] -mb-24">
+      {/* Background Image */}
+      <div 
+        className="absolute top-0 left-0 right-0 bottom-0 w-full h-full z-0"
+        style={{
+          backgroundImage: `url('/homepage/duisbg.svg')`,
+          backgroundSize: "100% 100%",
+          backgroundPosition: "top left",
+          backgroundRepeat: "no-repeat",
+          width: "100%",
+          height: "100%",
+        }}
+      />
+      
+      <div className="w-full h-full relative z-10 flex items-end  bottom-24">
         <div className="w-full">
-          <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px]">
+          <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px] pb-10 lg:pb-20">
           <div className="flex flex-col lg:flex-row justify-between gap-10 lg:gap-24 max-w-full">
             <div className="w-full lg:w-1/2 rounded-2xl">
               <div className="relative w-full aspect-4/3 lg:h-full">
