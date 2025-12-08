@@ -30,19 +30,29 @@ const FluidContainer = ({ children }: FluidContainerProps) => {
     return () => window.removeEventListener("resize", updateScale);
   }, []);
 
-  return (
-    <div className="w-full min-h-screen overflow-x-hidden" style={{ maxWidth: "100vw" }}>
-      <div
-        className="relative mx-auto"
-        style={{
-          width: scale !== 1 ? "1440px" : "100%",
-          maxWidth: scale !== 1 ? "1440px" : "100%",
-          transform: scale !== 1 ? `scale(${scale})` : "none",
-          transformOrigin: "top center",
-        }}
-      >
-        {children}
+  // For screens > 1440px, we scale visually but keep the scroll behavior same
+  if (scale !== 1) {
+    return (
+      <div className="w-full overflow-x-hidden" style={{ width: "100vw", maxWidth: "100vw" }}>
+        <div
+          style={{
+            width: "1440px",
+            transform: `scale(${scale})`,
+            transformOrigin: "top center",
+            marginLeft: "auto",
+            marginRight: "auto",
+          }}
+        >
+          {children}
+        </div>
       </div>
+    );
+  }
+
+  // For screens <= 1440px, no scaling - normal responsive behavior
+  return (
+    <div className="w-full">
+      {children}
     </div>
   );
 };
