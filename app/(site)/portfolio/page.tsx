@@ -14,20 +14,20 @@ const PortfolioPage = () => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className="relative bg-white">
-      <div className="mx-auto max-w-[1440px] relative lg:pb-20">
-        <Image
-          src="/portfolio-bg.jpg"
-          alt="background"
-          fill
-          className="object-cover object-top -z-10"
-        />
+    <div className="relative bg-white w-full">
+      <div className="w-full relative lg:pb-20">
+      <Image
+        src="/portfolio-bg.jpg"
+        alt="background"
+        fill
+        className="object-cover object-top -z-10"
+      />
         <Navbar />
-        <PortfolioBanner />
-        <PortfolioShowcase />
-        <LovedByCreatorsSection />
-        <Faq />
-        <Footer />
+      <PortfolioBanner />
+      <PortfolioShowcase />
+      <LovedByCreatorsSection />
+      <Faq />
+      <Footer />
       </div>
     </div>
   );

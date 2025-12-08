@@ -61,7 +61,7 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className="w-full h-[1440px] z-10 bg-linear-to-b from-[#4069E4] to-[rgba(255,255,255,0)] relative overflow-hidden">
+    <div className="w-full lg:h-[1440px] z-10 bg-linear-to-b from-[#4069E4] to-[rgba(255,255,255,0)] relative overflow-hidden">
       {/* Top Banner Image */}
       <div className="absolute top-0 left-0 right-0 w-full z-10 pointer-events-none">
         <Image

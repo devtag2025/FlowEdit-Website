@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import SiteButton from "@/components/shared/SiteButton";
+import { useEffect, useState } from "react";
 
 const workflowData = [
   {
@@ -23,22 +26,37 @@ const workflowData = [
 ];
 
 const WorkflowSection = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
-    <div className="w-full relative overflow-hidden -my-12">
+    <div className="w-full relative overflow-hidden lg:-my-12">
       {/* Background Image */}
-      <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full -z-10">
+      <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full z-0">
         <Image
           src="/homepage/workflowbg.png"
           alt="workflow background"
           fill
-          className="w-full h-full object-contain object-top"
+          className="w-full h-full"
+          style={{
+            objectFit: isMobile ? 'cover' : 'contain',
+            objectPosition: 'top',
+          }}
           sizes="100vw"
           priority
         />
       </div>
       
       {/* Content */}
-      <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px] flex flex-col items-center gap-10 relative lg:mb-[50px] z-10 pt-10">
+      <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px] flex flex-col items-center gap-10 relative lg:mb-[50px] z-10 pt-10 pb-10 lg:pb-0">
       <h1 className="font-semibold text-[34px] sm:text-[42px] md:text-[54px] -tracking-[0.04em] text-center pt-18">
         A Simple Powerful Workflow
       </h1>
@@ -71,7 +89,7 @@ const WorkflowSection = () => {
       </div>
 
       {/* DualShowcase Section */}
-      <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px] flex flex-col justify-between gap-16 lg:gap-28 relative z-10 mt-[284px] ">
+      <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px] flex flex-col justify-between gap-16 lg:gap-28 relative z-10 mt-10 lg:mt-[284px] pb-10 lg:pb-0">
         <div className="flex flex-col lg:flex-row justify-between gap-10 lg:gap-24 max-w-full">
           <div className="w-full lg:w-1/2 rounded-2xl">
             <div className="relative w-full aspect-4/3 lg:h-full">

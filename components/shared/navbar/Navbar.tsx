@@ -36,13 +36,13 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 z-50 mx-auto w-full max-w-[1440px] px-2 py-3 text-white transition-all duration-300 
+      className={`fixed top-0 z-[9999] mx-auto w-full max-w-[1440px] px-2 py-3 text-white transition-all duration-300 
       ${scrolled ? "bg-[#6283ea]/80 backdrop-blur-lg" : "bg-transparent"}`}
     >
       <div className="mx-auto max-w-[1216px] flex items-center justify-between">
         <Link
           href="/"
-          className={`font-inter font-medium text-xl leading-[150%]`}
+          className={`font-inter font-medium text-xl leading-[150%] cursor-pointer`}
         >
           <h1>Flow Edit</h1>
         </Link>
@@ -53,14 +53,14 @@ const Navbar = () => {
 
         <div className="md:hidden lg:hidden">
           <Sheet>
-            <SheetTrigger>
+            <SheetTrigger className="cursor-pointer">
               <Menu className="w-5 h-5" />
             </SheetTrigger>
 
             <SheetContent
               forceMount
               side="top"
-              className="p-0 w-full h-screen max-w-[100vw] overflow-hidden border-none bg-[#6283ea] [&>button]:hidden"
+              className="p-0 w-full h-screen max-w-[100vw] overflow-hidden border-none bg-[#6283ea] [&>button]:hidden z-[9999]"
             >
               <Image
                 src="/images/background/mobile-bg.png"
@@ -76,7 +76,7 @@ const Navbar = () => {
 
                 <div className="pointer-events-auto">
                   <SheetClose asChild>
-                    <button className="absolute right-6 top-8 z-999 text-white">
+                    <button className="absolute right-6 top-8 z-999 text-white cursor-pointer">
                       <X className="w-7 h-7" />
                     </button>
                   </SheetClose>

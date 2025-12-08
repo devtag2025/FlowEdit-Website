@@ -3,13 +3,13 @@
 
 import PageHeaderButton from "@/components/shared/PageHeaderButton";
 import { BiSolidQuoteLeft } from "react-icons/bi";
-import Image from "next/image";
 
 import "swiper/css";
 import "swiper/css/free-mode";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper/modules";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 const testimonials = [
   {
@@ -53,25 +53,34 @@ const TestimonialCard = ({ item }: any) => (
 
 const LovedByCreatorsSection = () => {
   const pathname = usePathname();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
-    <div className="w-full relative overflow-hidden lg:h-[1172px] lg:-mt-[344px]">
+    <div className="w-full relative overflow-hidden lg:h-[1200px] lg:-mt-[254px]">
       {/* Background Image */}
-      <div className="absolute top-42 left-0 right-0 w-screen h-full -z-10">
-        <Image
-          src="/homepage/creatorbg.svg"
-          alt="creator background"
-          fill
-          className="w-full h-full object-cover object-top"
-          sizes="100vw"
-          style={{
-            maskImage: "linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%)",
-          }}
-        />
-      </div>
+      <div 
+        className="absolute top-0 lg:top-30 left-0 right-0 bottom-0 w-full h-full z-0"
+        style={{
+          backgroundImage: "url('/homepage/creatorbg.svg')",
+          backgroundSize: isMobile ? "cover" : "100% auto",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          maskImage: "linear-gradient(to bottom, black 0%, black 50%, black 80%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 50%, black 80%, transparent 100%)",
+        }}
+      />
       
       <div
-        className={`mx-auto w-full px-2.5 md:px-0 max-w-[1216px] flex flex-col items-center justify-center gap-10 relative z-10 h-full lg:justify-end lg:pb-20 ${
+        className={`mx-auto w-full px-2.5 md:px-0 max-w-[1216px] flex flex-col items-center justify-center gap-10 relative z-10 h-full lg:justify-end lg:pb-40 ${
           pathname === "/portfolio"
             ? "pt-24 lg:pt-0"
             : "pt-20 lg:pt-0"

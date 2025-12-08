@@ -4,26 +4,35 @@ import FaqAccordion from "@/components/sections/FaqAccordion";
 import PageHeaderButton from "@/components/shared/PageHeaderButton";
 import GetStarted from "./GetStarted";
 import { usePathname } from "next/navigation";
-import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const Faq = () => {
   const pathname = usePathname();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
-    <div className="w-full relative overflow-hidden lg:h-[1700px] -my-[100px] -mb-[180px]">
+    <div className="w-full relative overflow-hidden lg:h-[1700px] lg:-my-[100px] lg:-mb-[180px]">
       {/* Background Image */}
-      <div className="absolute top-0 left-0 right-0 bottom-0 w-screen h-full -z-10">
-        <Image
-          src="/homepage/faqbg.svg"
-          alt="FAQ background"
-          fill
-          className="w-full h-full object-contain object-top"
-          sizes="100vw"
-          style={{
-            maskImage: "linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 30%, black 70%, transparent 100%)",
-          }}
-        />
-      </div>
+      <div 
+        className="absolute top-0 left-0 right-0 bottom-0 w-screen h-full z-0"
+        style={{
+          backgroundImage: "url('/homepage/faqbg.svg')",
+          backgroundSize: isMobile ? "cover" : "100% 100%",
+          backgroundPosition: "top left",
+          backgroundRepeat: "no-repeat",
+          maskImage: "linear-gradient(to bottom, transparent 0%, transparent 10%, black 40%, black 70%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, transparent 10%, black 40%, black 70%, transparent 100%)",
+        }}
+      />
       
       <div
         className={`mx-auto w-full px-2.5 md:px-0 max-w-[1216px] flex flex-col items-center text-center relative z-10 h-full lg:justify-center ${
