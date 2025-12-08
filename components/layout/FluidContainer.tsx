@@ -14,13 +14,13 @@ const FluidContainer = ({ children }: FluidContainerProps) => {
       const viewportWidth = window.innerWidth;
       const baseWidth = 1440;
 
-      // For screens >= 768px: Scale 1440px design to fill full viewport width
-      // Maintains 100% ratio, fills entire screen, no white space
-      if (viewportWidth >= 768) {
+      // Only scale for screens > 1440px
+      // For screens <= 1440px: Keep existing responsive design (no scaling)
+      if (viewportWidth > baseWidth) {
         const scaleValue = viewportWidth / baseWidth;
         setScale(scaleValue);
       } else {
-        // Mobile (< 768px): Use existing responsive design (no scaling)
+        // Screens <= 1440px: No scaling, use existing responsive design
         setScale(1);
       }
     };
@@ -31,12 +31,13 @@ const FluidContainer = ({ children }: FluidContainerProps) => {
   }, []);
 
   return (
-    <div className="w-screen min-h-screen overflow-x-hidden" style={{ width: "100vw" }}>
+    <div className="w-full min-h-screen overflow-x-hidden" style={{ maxWidth: "100vw" }}>
       <div
         className="relative mx-auto"
         style={{
-          width: "1440px",
-          transform: `scale(${scale})`,
+          width: scale !== 1 ? "1440px" : "100%",
+          maxWidth: scale !== 1 ? "1440px" : "100%",
+          transform: scale !== 1 ? `scale(${scale})` : "none",
           transformOrigin: "top center",
         }}
       >
