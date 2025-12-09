@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 const PricingPage = () => {
   const [discountApplied, setDiscountApplied] = useState(true);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const img = new window.Image();
@@ -16,8 +17,15 @@ const PricingPage = () => {
     img.onload = () => setImageLoaded(true);
   }, []);
 
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   return (
-    <div className="w-full relative lg:pb-24 overflow-hidden">
+    <div className="w-full relative min-h-screen lg:pb-24 overflow-hidden">
       <Navbar />
       {/* Gradient Background - Shows before image loads */}
       <div 
@@ -30,8 +38,8 @@ const PricingPage = () => {
         className="absolute top-0 left-0 right-0 bottom-0 w-full h-full min-h-screen z-0"
         style={{
           backgroundImage: "url('/homepage/pricingbg.svg')",
-          backgroundSize: "100% auto",
-          backgroundPosition: "top left",
+          backgroundSize: isMobile ? "cover" : "100% auto",
+          backgroundPosition: "top center",
           backgroundRepeat: "no-repeat",
           maskImage: "linear-gradient(to bottom, black 0%, black 50%, black 70%, rgba(0,0,0,0.5) 85%, rgba(0,0,0,0.1) 95%, transparent 100%)",
           WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 50%, black 70%, rgba(0,0,0,0.5) 85%, rgba(0,0,0,0.1) 95%, transparent 100%)",
