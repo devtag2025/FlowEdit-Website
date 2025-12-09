@@ -114,7 +114,7 @@ const PortfolioBanner = () => {
             <div className="w-full">
               <div className="w-full">
                 <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px]">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {allProjects?.map((project, i) => (
                       <div key={i} className="p-2.5 flex flex-col gap-6 border border-[rgba(255,255,255,0.1)] backdrop-blur-[20px] bg-[linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.5))] shadow-[0_10px_10px_rgba(0,0,0,0.1),0_4px_4px_rgba(0,0,0,0.05),0_1px_0_rgba(0,0,0,0.05)] rounded-xl w-full min-h-[400px]">
                         <div className="relative w-full h-[220px] sm:h-[241px]">
@@ -123,6 +123,7 @@ const PortfolioBanner = () => {
                             alt={project.title}
                             fill
                             className="object-cover rounded-md"
+                            priority={i < 3}
                           />
                         </div>
 
