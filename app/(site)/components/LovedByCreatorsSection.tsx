@@ -10,6 +10,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper/modules";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const testimonials = [
   {
@@ -67,13 +68,16 @@ const LovedByCreatorsSection = () => {
   return (
     <div className="w-full relative overflow-hidden lg:h-[1200px] lg:-mt-[254px]">
       {/* Background Image */}
-      <div 
+      <Image
+        src="/homepage/creatorbg.svg"
+        alt="creator background"
+        fill
+        priority
         className="absolute top-0 lg:top-30 left-0 right-0 bottom-0 w-full h-full z-0"
+        sizes="100vw"
         style={{
-          backgroundImage: "url('/homepage/creatorbg.svg')",
-          backgroundSize: isMobile ? "cover" : "100% auto",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
+          objectFit: isMobile ? "cover" : "contain",
+          objectPosition: "center",
           maskImage: "linear-gradient(to bottom, black 0%, black 50%, black 80%, transparent 100%)",
           WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 50%, black 80%, transparent 100%)",
         }}

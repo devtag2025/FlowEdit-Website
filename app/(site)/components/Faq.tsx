@@ -5,6 +5,7 @@ import PageHeaderButton from "@/components/shared/PageHeaderButton";
 import GetStarted from "./GetStarted";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 const Faq = () => {
   const pathname = usePathname();
@@ -22,13 +23,16 @@ const Faq = () => {
   return (
     <div className="w-full relative overflow-hidden lg:h-[1700px] lg:-my-[100px] lg:-mb-[180px]">
       {/* Background Image */}
-      <div 
+      <Image
+        src="/homepage/faqbg.svg"
+        alt="faq background"
+        fill
+        priority
         className="absolute top-0 left-0 right-0 bottom-0 w-screen h-full z-0"
+        sizes="100vw"
         style={{
-          backgroundImage: "url('/homepage/faqbg.svg')",
-          backgroundSize: isMobile ? "cover" : "100% auto",
-          backgroundPosition: "top left",
-          backgroundRepeat: "no-repeat",
+          objectFit: isMobile ? "cover" : "contain",
+          objectPosition: "top left",
           maskImage: "linear-gradient(to bottom, transparent 0%, transparent 10%, black 40%, black 70%, transparent 100%)",
           WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, transparent 10%, black 40%, black 70%, transparent 100%)",
         }}
