@@ -46,6 +46,7 @@ const PortfolioPage = () => {
         fill
         className="object-cover object-top -z-10"
         priority
+        fetchPriority="high"
       />
         <div className="flex flex-col space-y-12 lg:space-y-0">
           <Navbar />
