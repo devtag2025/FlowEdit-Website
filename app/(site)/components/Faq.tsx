@@ -41,8 +41,8 @@ const Faq = () => {
       <div
         className={`mx-auto w-full px-2.5 md:px-0 max-w-[1216px] flex flex-col items-center text-center relative z-10 h-full lg:justify-center ${
           pathname === "/portfolio"
-            ? "pt-[69px] lg:pt-0 pb-[50px]"
-            : "pt-10 lg:pt-0 pb-[102px]"
+            ? "pt-[69px] lg:pt-0 pb-12 lg:pb-[50px]"
+            : "pt-1 lg:pt-0 pb-[4px] lg:pb-[102px]"
         }`}
       >
         <div className="w-full flex flex-col items-center">
@@ -65,7 +65,9 @@ const Faq = () => {
 
           <div
             className={`w-full overflow-hidden rounded-2xl mt-20 ${
-              pathname === "/portfolio" ? "pt-[57px] lg:py-10" : "pt-[94px] pb-10"
+              pathname === "/portfolio"
+                ? "mt-10 lg:mt-20 pt-[57px] lg:py-10"
+                : "mt-10 lg:mt-20 pt-[94px] pb-10"
             }`}
           >
             <GetStarted />

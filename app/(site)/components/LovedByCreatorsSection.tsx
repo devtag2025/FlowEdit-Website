@@ -66,7 +66,7 @@ const LovedByCreatorsSection = () => {
   }, []);
 
   return (
-    <div className="w-full relative overflow-hidden lg:h-[1200px] lg:-mt-[254px]">
+    <div className="w-full relative overflow-hidden lg:h-[1200px] -mt-20 md:-mt-[254px]">
       {/* Background Image */}
       <Image
         src="/homepage/creatorbg.svg"
@@ -86,8 +86,8 @@ const LovedByCreatorsSection = () => {
       <div
         className={`fluid-container flex flex-col items-center justify-center gap-10 relative z-10 h-full lg:justify-end lg:pb-40 ${
           pathname === "/portfolio"
-            ? "pt-24 lg:pt-0"
-            : "pt-20 lg:pt-0"
+            ? "pt-12 lg:pt-0"
+            : "pt-10 lg:pt-0"
         }`}
       >
       <PageHeaderButton text="Testimonials" />

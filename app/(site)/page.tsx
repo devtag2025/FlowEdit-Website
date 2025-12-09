@@ -8,7 +8,7 @@ import Navbar from "@/components/shared/navbar/Navbar";
 
 export default function HomePage() {
   return (
-    <div className="w-full relative lg:pb-20">
+    <div className="w-full relative -mt-32 md:mt-0 lg:pb-20">
       <Head>
         <link rel="preload" as="image" href="/homepage/workflowbg.png" />
         <link rel="preload" as="image" href="/homepage/creatorbg.svg" />
@@ -17,12 +17,14 @@ export default function HomePage() {
         <link rel="preload" as="image" href="/banner/bannertop.svg" />
         <link rel="preload" as="image" href="/banner/bannerbottom.svg" />
       </Head>
-      <Navbar />
-      <Banner />
-      <WorkflowSection />
-      <LovedByCreatorsSection />
-      <Faq />
-      <Footer />
+      <div className="flex flex-col space-y-12 lg:space-y-0">
+        <Navbar />
+        <Banner />
+        <WorkflowSection />
+        <LovedByCreatorsSection />
+        <Faq />
+        <Footer />
+      </div>
     </div>
   );
 }
