@@ -96,7 +96,7 @@ const PortfolioBanner = () => {
         />
         
         <div className="relative z-10 mx-auto w-full px-2.5 md:px-0 max-w-[1216px]">
-          <div className="flex flex-col items-center justify-center gap-6 pt-10 lg:pt-[190px] ">
+          <div className="flex flex-col items-center justify-center gap-6 pt-20 lg:pt-[190px] ">
             <h1 className="font-semibold text-[44px] lg:text-[73px] leading-[118%] -tracking-[0.04em] text-white text-center lg:text-left">
               Check out our <br className="block lg:hidden" /> portfolio
             </h1>

@@ -45,11 +45,11 @@ const PricingPage = () => {
           WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 50%, black 70%, rgba(0,0,0,0.5) 85%, rgba(0,0,0,0.1) 95%, transparent 100%)",
         }}
       />
-      <div className="relative z-10">
+      <div className="relative z-10 flex flex-col space-y-12 lg:space-y-0">
         <PriceBanner onToggleChange={setDiscountApplied} />
         <PriceCarosel discountApplied={discountApplied} />
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 };

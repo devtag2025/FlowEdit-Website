@@ -38,7 +38,7 @@ const WorkflowSection = () => {
   }, []);
 
   return (
-    <div className="w-full relative overflow-hidden  lg:-my-12">
+    <div className="w-full relative overflow-hidden -mt-20 md:-my-12">
       {/* Background Image */}
       <div className="absolute top-24 md:top-0 left-0 right-0 bottom-0 w-full h-full z-0">
         <Image
@@ -56,7 +56,7 @@ const WorkflowSection = () => {
       </div>
       
       {/* Content */}
-      <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px] flex flex-col items-center gap-10 relative lg:mb-[50px] z-10 pt-10 pb-10 lg:pb-0">
+      <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px] flex flex-col items-center gap-10 relative lg:mb-[50px] z-10 pt-6 md:pt-10 pb-10 lg:pb-0">
       <h1 className="font-semibold text-[34px] sm:text-[42px] md:text-[54px] -tracking-[0.04em] text-center pt-18">
         A Simple Powerful Workflow
       </h1>

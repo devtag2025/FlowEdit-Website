@@ -47,12 +47,14 @@ const PortfolioPage = () => {
         className="object-cover object-top -z-10"
         priority
       />
-        <Navbar />
-      <PortfolioBanner />
-      <PortfolioShowcase />
-      <LovedByCreatorsSection />
-      <Faq />
-      <Footer />
+        <div className="flex flex-col space-y-12 lg:space-y-0">
+          <Navbar />
+          <PortfolioBanner />
+          <PortfolioShowcase />
+          <LovedByCreatorsSection />
+          <Faq />
+          <Footer />
+        </div>
       </div>
     </div>
   );
