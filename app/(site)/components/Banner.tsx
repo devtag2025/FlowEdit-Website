@@ -75,7 +75,7 @@ const Banner = () => {
       </div>
       
       {/* Bottom Banner Image Holla */}
-      <div className="absolute bottom-24 md:bottom-0 left-[4000.1px] md:left-0 right-0 w-full z-10 pointer-events-none flex justify-center">
+      <div className="absolute bottom-24 md:bottom-0 left-[400px] md:left-0 right-0 w-full z-10 pointer-events-none flex justify-center">
         <Image
           src="/banner/bannerbottom.svg"
           alt="banner bottom decoration"
