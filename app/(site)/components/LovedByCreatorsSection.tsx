@@ -80,7 +80,7 @@ const LovedByCreatorsSection = () => {
       />
       
       <div
-        className={`mx-auto w-full px-2.5 md:px-0 max-w-[1216px] flex flex-col items-center justify-center gap-10 relative z-10 h-full lg:justify-end lg:pb-40 ${
+        className={`fluid-container flex flex-col items-center justify-center gap-10 relative z-10 h-full lg:justify-end lg:pb-40 ${
           pathname === "/portfolio"
             ? "pt-24 lg:pt-0"
             : "pt-20 lg:pt-0"

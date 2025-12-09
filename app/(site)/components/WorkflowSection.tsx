@@ -38,9 +38,9 @@ const WorkflowSection = () => {
   }, []);
 
   return (
-    <div className="w-full relative overflow-hidden lg:-my-12">
+    <div className="w-full relative overflow-hidden  lg:-my-12">
       {/* Background Image */}
-      <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full z-0">
+      <div className="absolute top-24 md:top-0 left-0 right-0 bottom-0 w-full h-full z-0">
         <Image
           src="/homepage/workflowbg.png"
           alt="workflow background"
