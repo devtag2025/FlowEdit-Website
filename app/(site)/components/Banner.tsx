@@ -75,17 +75,18 @@ const Banner = () => {
       </div>
       
       {/* Bottom Banner Image */}
-      <div className="absolute bottom-0 left-0 right-0 w-full z-10 pointer-events-none">
+      <div className="absolute bottom-24 md:bottom-0 left-[400px] md:left-0 right-0 w-full z-10 pointer-events-none flex justify-center">
         <Image
           src="/banner/bannerbottom.svg"
           alt="banner bottom decoration"
           width={1920}
           height={200}
-          className="w-full h-auto object-contain"
+          className="w-auto md:w-full max-w-[1200px] md:h-auto  object-contain"
+          style={{ objectPosition: "bottom" }}
         />
       </div>
       
-      <div className="w-full relative z-20 mt-[260px]">
+      <div className="w-full relative z-20 mt-24 md:mt-[260px]">
         <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px]">
           <div className="w-full ">
             <div className="flex flex-col items-center justify-center text-center gap-11 sm:gap-6 md:gap-7 lg:gap[25px] w-full">

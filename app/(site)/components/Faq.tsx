@@ -26,7 +26,7 @@ const Faq = () => {
         className="absolute top-0 left-0 right-0 bottom-0 w-screen h-full z-0"
         style={{
           backgroundImage: "url('/homepage/faqbg.svg')",
-          backgroundSize: isMobile ? "cover" : "100% 100%",
+          backgroundSize: isMobile ? "cover" : "100% auto",
           backgroundPosition: "top left",
           backgroundRepeat: "no-repeat",
           maskImage: "linear-gradient(to bottom, transparent 0%, transparent 10%, black 40%, black 70%, transparent 100%)",
