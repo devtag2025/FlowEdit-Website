@@ -4,26 +4,32 @@ import PriceBanner from "./components/PriceBanner";
 import PriceCarosel from "./components/PriceCarosel/PriceCarosel";
 import Footer from "@/components/shared/footer/Footer";
 import Navbar from "@/components/shared/navbar/Navbar";
-import Image from "next/image";
 import { useState } from "react";
 
 const PricingPage = () => {
   const [discountApplied, setDiscountApplied] = useState(true);
 
   return (
-    <div className="w-full relative lg:pb-24 bg-linear-to-b from-[#4069E4] to-[rgba(255,255,255,0)]">
+    <div className="w-full relative lg:pb-24 overflow-hidden">
       <Navbar />
       {/* Gradient Background - Shows before image loads */}
       <div className="absolute inset-0 bg-linear-to-b from-[#4069E4] to-[rgba(255,255,255,0)] -z-20"></div>
-      <Image
-        src="/pricing-bg.jpg"
-        alt="background"
-        fill
-        className="object-cover object-top -z-10"
-        priority
+      {/* Background Image */}
+      <div 
+        className="absolute top-0 left-0 right-0 bottom-0 w-full h-full min-h-screen z-0"
+        style={{
+          backgroundImage: "url('/homepage/pricingbg.svg')",
+          backgroundSize: "100% auto",
+          backgroundPosition: "top left",
+          backgroundRepeat: "no-repeat",
+          maskImage: "linear-gradient(to bottom, black 0%, black 50%, black 70%, rgba(0,0,0,0.5) 85%, rgba(0,0,0,0.1) 95%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 50%, black 70%, rgba(0,0,0,0.5) 85%, rgba(0,0,0,0.1) 95%, transparent 100%)",
+        }}
       />
-      <PriceBanner onToggleChange={setDiscountApplied} />
-      <PriceCarosel discountApplied={discountApplied} />
+      <div className="relative z-10">
+        <PriceBanner onToggleChange={setDiscountApplied} />
+        <PriceCarosel discountApplied={discountApplied} />
+      </div>
       <Footer />
     </div>
   );
