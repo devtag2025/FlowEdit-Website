@@ -13,7 +13,7 @@ const PriceBanner = ({ onToggleChange }: { onToggleChange: (value: boolean) => v
   };
 
   return (
-    <div className="relative overflow-hidden lg:pt-14 mb-[43px] lg:mb-[77px]">
+    <div className="relative overflow-hidden mt-0 md:-mt-2 mb-[43px] lg:mb-[77px]">
       <div className="w-full h-full">
         <div className="w-full">
           <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px] flex flex-col gap-5 items-center justify-center h-full mt-[100px] lg:mt-[185px]">

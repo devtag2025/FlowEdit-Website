@@ -75,7 +75,7 @@ const Banner = () => {
       </div>
       
       {/* Bottom Banner Image Holla */}
-      <div className="absolute bottom-24 md:bottom-[137px] left-[400px] md:left-0 right-0 w-full z-10 pointer-events-none flex justify-center">
+      <div className="absolute bottom-24 md:bottom-[216px] left-[400px] md:left-0 right-0 w-full z-10 pointer-events-none flex justify-center">
         <Image
           src="/banner/bannerbottom.svg"
           alt="banner bottom decoration"
@@ -86,7 +86,7 @@ const Banner = () => {
         />
       </div>
       
-      <div className="w-full relative z-20 mt-[220px] md:mt-[260px]">
+      <div className="w-full relative z-20 mt-[220px] md:mt-[180px]">
         <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px]">
           <div className="w-full ">
             <div className="flex flex-col items-center justify-center text-center gap-11 sm:gap-6 md:gap-7 lg:gap[25px] w-full">
