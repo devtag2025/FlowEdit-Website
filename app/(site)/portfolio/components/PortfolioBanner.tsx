@@ -75,14 +75,16 @@ const PortfolioBanner = () => {
     <div className="relative w-full">
       <div className="w-full relative">
         {/* Background Image */}
-        <div 
-          className="absolute top-0 left-0 right-0 bottom-0 w-full h-full z-0"
+        <Image
+          src="/homepage/projectsbg.svg"
+          alt="projects background"
+          fill
+          priority
+          className="absolute top-0 left-0 right-0 bottom-0 w-full h-full z-0 pointer-events-none"
+          sizes="100vw"
           style={{
-            backgroundImage: `url('/homepage/projectsbg.svg')`,
-            backgroundSize: isMobile ? 'cover' : '100% auto',
-            backgroundPosition: 'top left',
-            backgroundRepeat: 'no-repeat',
-            minHeight: '100%',
+            objectFit: isMobile ? "cover" : "contain",
+            objectPosition: "top left",
           }}
         />
         

@@ -7,6 +7,7 @@ import PortfolioShowcase from "./components/PortfolioShowcase";
 import Footer from "@/components/shared/footer/Footer";
 import Navbar from "@/components/shared/navbar/Navbar";
 import Image from "next/image";
+import Head from "next/head";
 import { useEffect } from "react";
 
 const PortfolioPage = () => {
@@ -31,6 +32,13 @@ const PortfolioPage = () => {
 
   return (
     <div className="relative bg-white w-full">
+      <Head>
+        <link rel="preload" as="image" href="/portfolio-bg.jpg" />
+        <link rel="preload" as="image" href="/homepage/projectsbg.svg" />
+        <link rel="preload" as="image" href="/homepage/duisbg.svg" />
+        <link rel="preload" as="image" href="/images/home-page/workflow-2.png" />
+        <link rel="preload" as="image" href="/images/home-page/workflow-3.png" />
+      </Head>
       <div className="w-full relative lg:pb-20">
       <Image
         src="/portfolio-bg.jpg"

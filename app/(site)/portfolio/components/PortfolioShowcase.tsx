@@ -19,13 +19,16 @@ const PortfolioShowcase = () => {
   return (
     <div className="relative overflow-hidden lg:h-[1452px] w-full lg:mt-[-700px] lg:-mb-24">
       {/* Background Image */}
-      <div 
+      <Image
+        src="/homepage/duisbg.svg"
+        alt="showcase background"
+        fill
+        priority
         className="absolute top-0 left-0 right-0 bottom-0 w-full h-full z-0 pointer-events-none"
+        sizes="100vw"
         style={{
-          backgroundImage: `url('/homepage/duisbg.svg')`,
-          backgroundSize: isMobile ? "cover" : "100% 100%",
-          backgroundPosition: "top left",
-          backgroundRepeat: "no-repeat",
+          objectFit: isMobile ? "cover" : "contain",
+          objectPosition: "top left",
         }}
       />
       
