@@ -40,6 +40,7 @@ const PortfolioShowcase = () => {
                   alt="showcase image big"
                   fill
                   className="object-cover rounded-2xl"
+                  priority
                 />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[98%] h-[98%] border border-[rgba(255,255,255,0.33)] rounded-2xl">
                   <Image
@@ -47,6 +48,7 @@ const PortfolioShowcase = () => {
                     alt="showcase image big"
                     fill
                     className="object-cover rounded-2xl"
+                    priority
                   />
                 </div>
               </div>
