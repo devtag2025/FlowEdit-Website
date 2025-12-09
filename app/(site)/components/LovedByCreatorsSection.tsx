@@ -92,27 +92,29 @@ const LovedByCreatorsSection = () => {
         Loved by creators
       </h1>
 
-      <div className="block lg:hidden w-screen px-2">
-        <Swiper
-          modules={[FreeMode]}
-          freeMode={true}
-          grabCursor={true}
-          spaceBetween={24}
-          slidesPerView={1}
-          className="w-full py-4 pl-4"
-        >
-          {testimonials.map((item, index) => (
-            <SwiperSlide key={index} style={{ width: "auto" }}>
-              <TestimonialCard item={item} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+      <div className="w-full max-w-[1216px] mx-auto px-4">
+        <div className="block lg:hidden w-full">
+          <Swiper
+            modules={[FreeMode]}
+            freeMode={true}
+            grabCursor={true}
+            spaceBetween={24}
+            slidesPerView={1}
+            className="w-full py-4 pl-2"
+          >
+            {testimonials.map((item, index) => (
+              <SwiperSlide key={index} style={{ width: "auto" }}>
+                <TestimonialCard item={item} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
 
-      <div className="hidden lg:flex justify-center gap-6 w-full">
-        {testimonials.map((item, index) => (
-          <TestimonialCard key={index} item={item} />
-        ))}
+        <div className="hidden lg:flex justify-center gap-6 w-full">
+          {testimonials.map((item, index) => (
+            <TestimonialCard key={index} item={item} />
+          ))}
+        </div>
       </div>
       </div>
     </div>
