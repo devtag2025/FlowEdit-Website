@@ -4,16 +4,27 @@ import PriceBanner from "./components/PriceBanner";
 import PriceCarosel from "./components/PriceCarosel/PriceCarosel";
 import Footer from "@/components/shared/footer/Footer";
 import Navbar from "@/components/shared/navbar/Navbar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const PricingPage = () => {
   const [discountApplied, setDiscountApplied] = useState(true);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  useEffect(() => {
+    const img = new window.Image();
+    img.src = "/homepage/pricingbg.svg";
+    img.onload = () => setImageLoaded(true);
+  }, []);
 
   return (
     <div className="w-full relative lg:pb-24 overflow-hidden">
       <Navbar />
       {/* Gradient Background - Shows before image loads */}
-      <div className="absolute inset-0 bg-linear-to-b from-[#4069E4] to-[rgba(255,255,255,0)] -z-20"></div>
+      <div 
+        className={`absolute inset-0 bg-linear-to-b from-[#4069E4] to-[rgba(255,255,255,0)] -z-20 transition-opacity duration-300 ${
+          imageLoaded ? 'opacity-0' : 'opacity-100'
+        }`}
+      ></div>
       {/* Background Image */}
       <div 
         className="absolute top-0 left-0 right-0 bottom-0 w-full h-full min-h-screen z-0"
