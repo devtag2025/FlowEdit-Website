@@ -3,10 +3,12 @@ import { BsCurrencyDollar } from "react-icons/bs";
 import { GoCreditCard } from "react-icons/go";
 import SiteButton from "@/components/shared/SiteButton";
 import DiamondIcon from "@/components/shared/DiamondCheckIcon";
+import { Button } from "@/types/siteSettings";
 
 export type FeatureType = "check" | "minus";
 
 interface Feature {
+  _key?: string;
   text: string;
   type: FeatureType;
 }
@@ -14,15 +16,19 @@ interface Feature {
 interface PriceCardProps {
   title: string;
   price: number;
+  priceLabel?: string;
   features: Feature[];
   glow?: boolean;
+  cta?: Button;
 }
 
 const PriceCard = ({
   title,
   price,
+  priceLabel = "Per video",
   features,
   glow = false,
+  cta,
 }: PriceCardProps) => {
   return (
     <div className="relative py-6 lg:py-12 px-4 lg:px-12 shadow-lg border border-white/25 rounded-[10px] bg-white/50 overflow-hidden flex flex-col items-center gap-8">
@@ -47,14 +53,14 @@ const PriceCard = ({
           </h1>
         </div>
 
-        <h1 className="font-medium text-sm text-black/70">Per video</h1>
+        <h1 className="font-medium text-sm text-black/70">{priceLabel}</h1>
       </div>
 
       <div className="h-px w-[95%] bg-black/15" />
 
       <ul className="flex flex-col gap-6 relative z-20">
         {features.map((f, i) => (
-          <li key={i} className="flex items-center gap-4">
+          <li key={f._key || i} className="flex items-center gap-4">
             <DiamondIcon type={f.type} />
             <p className="text-base text-black/70 leading-[154%]">{f.text}</p>
           </li>
@@ -63,14 +69,16 @@ const PriceCard = ({
 
       <div className="h-px w-[95%] bg-black/15" />
 
-      <div className="w-fit shadow-xl relative z-20 rounded-lg">
-        <SiteButton className="bg-white hover:bg-white">
-          <div className="flex items-center gap-2">
-            <span>Start 14 Days Trial</span>
-            <GoCreditCard />
-          </div>
-        </SiteButton>
-      </div>
+      {cta && (
+        <div className="w-fit shadow-xl relative z-20 rounded-lg">
+          <SiteButton button={cta} className="bg-white hover:bg-white">
+            <div className="flex items-center gap-2">
+              <span>{cta.text || "Get Started"}</span>
+              <GoCreditCard />
+            </div>
+          </SiteButton>
+        </div>
+      )}
     </div>
   );
 };

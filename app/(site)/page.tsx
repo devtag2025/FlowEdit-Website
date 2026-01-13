@@ -1,29 +1,27 @@
-import Head from "next/head";
-import Banner from "./components/Banner";
+import { draftMode } from "next/headers";
+import { unstable_noStore } from "next/cache";
+import { getHomePage } from "@/sanity/lib/api";
+import PageBuilder from "./components/PageBuilder";
 import Faq from "./components/Faq";
-import LovedByCreatorsSection from "./components/LovedByCreatorsSection";
-import WorkflowSection from "./components/WorkflowSection";
-import Footer from "@/components/shared/footer/Footer";
-import Navbar from "@/components/shared/navbar/Navbar";
+import Banner from "./components/Banner";
 
-export default function HomePage() {
+export default async function HomePage() {
+  // Bypass cache when draft mode is enabled for visual editing
+  const draft = await draftMode();
+  if (draft.isEnabled) {
+    unstable_noStore();
+  }
+  
+  const homePage = await getHomePage();
+  const contentBlocks = homePage?.contentBlocks || [];
+
+  // If contentBlocks exist, use PageBuilder, otherwise fallback to static components
+  const hasContentBlocks = contentBlocks.length > 0;
+
   return (
-    <div className="w-full relative -mt-32 md:mt-0 lg:pb-20">
-      <Head>
-        <link rel="preload" as="image" href="/homepage/workflowbg.png" />
-        <link rel="preload" as="image" href="/homepage/creatorbg.svg" />
-        <link rel="preload" as="image" href="/homepage/faqbg.svg" />
-        <link rel="preload" as="image" href="/images/home-page/laptop.png" />
-        <link rel="preload" as="image" href="/banner/bannertop.svg" />
-        <link rel="preload" as="image" href="/banner/bannerbottom.svg" />
-      </Head>
-      <div className="flex flex-col space-y-12 lg:space-y-0">
-        <Navbar />
-        <Banner />
-        <WorkflowSection />
-        <LovedByCreatorsSection />
-        <Faq />
-        <Footer />
+    <div className="w-full relative">
+      <div className="flex flex-col">
+        {hasContentBlocks ? <PageBuilder blocks={contentBlocks} /> : ""}
       </div>
     </div>
   );

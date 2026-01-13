@@ -6,8 +6,31 @@ import GetStarted from "./GetStarted";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { Button } from "@/types/siteSettings";
 
-const Faq = () => {
+interface FaqItem {
+  _id: string;
+  question: string;
+  answer: any; // Portable text array
+}
+
+interface FaqProps {
+  headerButtonText?: string;
+  title?: string;
+  description?: string;
+  faqs?: FaqItem[];
+  getStartedTitle?: string;
+  getStartedCta?: Button;
+}
+
+const Faq = ({
+  headerButtonText = "FAQs",
+  title = "Frequently asked questions",
+  description = "Find quick answers to common questions and make the most of Maps Explore's key features, from traffic updates to emergency alerts",
+  faqs = [],
+  getStartedTitle = "Ready to get started?",
+  getStartedCta,
+}: FaqProps) => {
   const pathname = usePathname();
   const [isMobile, setIsMobile] = useState(false);
 
@@ -22,7 +45,7 @@ const Faq = () => {
 
   return (
     <div className="w-full relative overflow-hidden lg:h-[1700px] lg:-my-[100px] lg:-mb-[180px]">
-      {/* Background Image */}
+      {/* Background Image - Hardcoded */}
       <Image
         src="/homepage/faqbg.svg"
         alt="faq background"
@@ -48,19 +71,24 @@ const Faq = () => {
         <div className="w-full flex flex-col items-center">
           <div className="flex flex-col items-center text-center gap-8 sm:gap-10">
             <div className="flex flex-col items-center gap-4 sm:gap-5 max-w-2xl">
-              <PageHeaderButton text="FAQs" className="mb-4" />
+              {headerButtonText && (
+                <PageHeaderButton text={headerButtonText} className="mb-4" />
+              )}
 
-              <h1 className="font-semibold text-3xl sm:text-4xl md:text-[54px] -tracking-[0.04em] text-black">
-                Frequently asked questions
-              </h1>
+              {title && (
+                <h1 className="font-semibold text-3xl sm:text-4xl md:text-[54px] -tracking-[0.04em] text-black">
+                  {title}
+                </h1>
+              )}
 
-              <p className="text-sm sm:text-base leading-[150%] text-[rgba(0,0,0,0.7)] max-w-md sm:max-w-lg md:max-w-xl">
-                Find quick answers to common questions and make the most of Maps
-                Explore&apos;s key features, from traffic updates to emergency alerts
-              </p>
+              {description && (
+                <p className="text-sm sm:text-base leading-[150%] text-[rgba(0,0,0,0.7)] max-w-md sm:max-w-lg md:max-w-xl">
+                  {description}
+                </p>
+              )}
             </div>
 
-            <FaqAccordion />
+            <FaqAccordion faqs={faqs} />
           </div>
 
           <div
@@ -70,7 +98,7 @@ const Faq = () => {
                 : "mt-10 lg:mt-20 pt-[94px] pb-10"
             }`}
           >
-            <GetStarted />
+            <GetStarted title={getStartedTitle} cta={getStartedCta} />
           </div>
         </div>
       </div>

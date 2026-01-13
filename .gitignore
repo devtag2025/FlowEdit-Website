@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/sanity/node_modules
 /.pnp
 .pnp.*
 .yarn/*
@@ -19,6 +20,8 @@
 
 # production
 /build
+/dist
+/sanity/dist
 
 # misc
 .DS_Store
@@ -41,3 +44,5 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
+
+.sanity

@@ -11,29 +11,24 @@ import { FreeMode } from "swiper/modules";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { urlFor } from "@/sanity/lib/image";
 
-const testimonials = [
-  {
-    quote: "“The best in town”",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus sed sit ultrices et sed metus sollicitudin. Orci nullam vitae amet ullamcorper scelerisque",
-    name: "Emerson Saris",
-    info: "58, California, USA",
-  },
-  {
-    quote: "“Finance is now easy!”",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus sed sit ultrices et sed metus sollicitudin. Orci nullam vitae amet ullamcorper scelerisque",
-    name: "Emerson Saris",
-    info: "58, California, USA",
-  },
-  {
-    quote: "“They made it easy”",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus sed sit ultrices et sed metus sollicitudin. Orci nullam vitae amet ullamcorper scelerisque",
-    name: "Emerson Saris",
-    info: "58, California, USA",
-  },
-];
+interface Testimonial {
+  _id: string;
+  quote: string;
+  description: string;
+  name: string;
+  address?: string;
+}
 
-const TestimonialCard = ({ item }: any) => (
+interface LovedByCreatorsSectionProps {
+  headerButtonText?: string;
+  title?: string;
+  backgroundImage?: any;
+  testimonials?: Testimonial[];
+}
+
+const TestimonialCard = ({ item }: { item: Testimonial }) => (
   <div className="w-full rounded-[20px] px-6 py-8 border border-[rgba(255,255,255,0.14)] backdrop-blur-[25px] shadow-[0_8px_20px_rgba(0,0,0,0.12)] bg-[linear-gradient(180deg,rgba(255,255,255,0.68),rgba(255,255,255,0.5))] flex flex-col gap-5 items-center lg:items-start text-center lg:text-left">
     <BiSolidQuoteLeft className="text-6xl opacity-10" />
 
@@ -42,17 +37,24 @@ const TestimonialCard = ({ item }: any) => (
     </h1>
 
     <p className="text-base sm:text-lg leading-[150%] text-black/70">
-      {item.text}
+      {item.description}
     </p>
 
     <div className="flex flex-col gap-1 mt-auto">
       <h6 className="text-lg font-semibold text-black">{item.name}</h6>
-      <p className="text-sm text-black/70">{item.info}</p>
+      {item.address && (
+        <p className="text-sm text-black/70">{item.address}</p>
+      )}
     </div>
   </div>
 );
 
-const LovedByCreatorsSection = () => {
+const LovedByCreatorsSection = ({
+  headerButtonText = "Testimonials",
+  title = "Loved by creators",
+  backgroundImage,
+  testimonials = [],
+}: LovedByCreatorsSectionProps) => {
   const pathname = usePathname();
   const [isMobile, setIsMobile] = useState(false);
 
@@ -65,12 +67,27 @@ const LovedByCreatorsSection = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
+  const getBackgroundImageUrl = (image: any): string => {
+    if (!image || !image.asset) return "/homepage/creatorbg.svg";
+    try {
+      return urlFor(image).url() || "/homepage/creatorbg.svg";
+    } catch {
+      return "/homepage/creatorbg.svg";
+    }
+  };
+
+  const backgroundImageUrl = getBackgroundImageUrl(backgroundImage);
+
+  if (testimonials.length === 0) {
+    return null;
+  }
+
   return (
     <div className="w-full relative overflow-hidden lg:h-[1200px] -mt-20 md:-mt-[254px]">
       {/* Background Image */}
       <Image
-        src="/homepage/creatorbg.svg"
-        alt="creator background"
+        src={backgroundImageUrl}
+        alt={backgroundImage?.alt || "creator background"}
         fill
         priority
         className="absolute top-0 lg:top-30 left-0 right-0 bottom-0 w-full h-full z-0"
@@ -90,11 +107,15 @@ const LovedByCreatorsSection = () => {
             : "pt-10 lg:pt-0"
         }`}
       >
-      <PageHeaderButton text="Testimonials" />
+      {headerButtonText && (
+        <PageHeaderButton text={headerButtonText} />
+      )}
 
-      <h1 className="font-semibold text-[36px] sm:text-[44px] md:text-[54px] -tracking-[0.04em] text-black text-center">
-        Loved by creators
-      </h1>
+      {title && (
+        <h1 className="font-semibold text-[36px] sm:text-[44px] md:text-[54px] -tracking-[0.04em] text-black text-center">
+          {title}
+        </h1>
+      )}
 
       <div className="w-full max-w-[1216px] mx-auto px-4">
         <div className="block lg:hidden w-full">
@@ -107,7 +128,7 @@ const LovedByCreatorsSection = () => {
             className="w-full py-4 pl-2"
           >
             {testimonials.map((item, index) => (
-              <SwiperSlide key={index} style={{ width: "auto" }}>
+              <SwiperSlide key={item._id || `testimonial-${index}`} style={{ width: "auto" }}>
                 <TestimonialCard item={item} />
               </SwiperSlide>
             ))}
@@ -116,7 +137,7 @@ const LovedByCreatorsSection = () => {
 
         <div className="hidden lg:flex justify-center gap-6 w-full">
           {testimonials.map((item, index) => (
-            <TestimonialCard key={index} item={item} />
+            <TestimonialCard key={item._id || `testimonial-${index}`} item={item} />
           ))}
         </div>
       </div>

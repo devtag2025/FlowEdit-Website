@@ -16,7 +16,6 @@ const SmoothScroll = ({ children }: Props) => {
     });
 
     lenis.on("scroll", (e) => {
-      console.log(e);
     });
 
     return () => {

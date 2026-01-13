@@ -1,45 +1,40 @@
+"use client";
+
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { PortableText } from "@portabletext/react";
 
-const items = [
-  {
-    title: "Sit quisque arcu hendrerit et nam. Vitae enim viverra quis aliqua",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
-  {
-    title:
-      "Egestas sollicitudin amet vivamus duis ornare. Magnis feugiat diam.",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Faucibus ac.",
-  },
-  {
-    title:
-      "In mauris nibh pellentesque tincidunt. Leo sed amet vel eu porttitor",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed amet elit.",
-  },
-  {
-    title: "Justo ac nibh etiam tincidunt massa tempus. Turpis purus nullam",
-    content:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Turpis morbi.",
-  },
-  {
-    title: "Et volutpat in at magna in gravida ultricies proin suspendiss",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  },
-];
+interface FaqItem {
+  _id: string;
+  question: string;
+  answer: any; // Portable text array
+}
 
-export default function FaqAccordion() {
+interface FaqAccordionProps {
+  faqs?: FaqItem[];
+}
+
+export default function FaqAccordion({ faqs = [] }: FaqAccordionProps) {
+  // Use FAQs from Sanity if available, otherwise use fallback
+  const items =
+    faqs.length > 0
+      ? faqs.map((faq) => ({
+          id: faq._id,
+          title: faq.question,
+          content: faq.answer,
+        }))
+      : [];
+
   return (
     <div className="w-full max-w-xl sm:max-w-2xl space-y-4 sm:px-0">
       <Accordion type="single" collapsible className="space-y-4">
-        {items.map(({ title, content }, index) => (
+        {items.map(({ id, title, content }, index) => (
           <AccordionItem
-            key={index}
+            key={id || index}
             value={`item-${index}`}
             className="
               group 
@@ -92,7 +87,11 @@ export default function FaqAccordion() {
                 pt-2 pb-4 text-left
               "
             >
-              {content}
+              {Array.isArray(content) ? (
+                <PortableText value={content} />
+              ) : (
+                content
+              )}
             </AccordionContent>
           </AccordionItem>
         ))}

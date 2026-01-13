@@ -1,20 +1,32 @@
 import Link from "next/link";
 import SiteButton from "../SiteButton";
+import { NavigationItem, Button } from "@/types/siteSettings";
+import { getLinkProps } from "@/lib/linkHelper";
 
 interface navLinkProps {
-  navItems: { label: string; to: string }[];
+  navItems: NavigationItem[];
+  ctaButton: Button | null;
 }
-const NavItems = ({ navItems }: navLinkProps) => {
+const NavItems = ({ navItems, ctaButton }: navLinkProps) => {
   return (
     <div>
       <ul className="capitalize font-medium text-base leading-[150%] flex items-center gap-[2.938rem]">
-        {navItems?.map((link, i) => (
-          <li key={i}>
-            <Link href={link.to} className="cursor-pointer">{link.label}</Link>
-          </li>
-        ))}
+        {navItems?.map((item) => {
+          const linkProps = getLinkProps(item);
+          return (
+            <li key={item._key}>
+              <Link {...linkProps} className="cursor-pointer">
+                {item.title}
+              </Link>
+            </li>
+          );
+        })}
 
-        <SiteButton>Start for Free</SiteButton>
+        {ctaButton && (
+          <li>
+            <SiteButton button={ctaButton} />
+          </li>
+        )}
       </ul>
     </div>
   );

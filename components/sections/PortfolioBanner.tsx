@@ -1,11 +1,34 @@
 "use client";
 
 import SiteButton from "@/components/shared/SiteButton";
-import { IProject } from "@/types/portfolio";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { urlFor } from "@/sanity/lib/image";
+import { Button } from "@/types/siteSettings";
 
-const PortfolioBanner = () => {
+interface PortfolioProject {
+  _id: string;
+  title: string;
+  shortDescription: string;
+  thumbnail?: {
+    asset?: any;
+    alt?: string;
+  };
+}
+
+interface PortfolioBannerProps {
+  title?: string;
+  description?: string;
+  cta?: Button;
+  projects?: PortfolioProject[];
+}
+
+const PortfolioBanner = ({
+  title = "Check out our portfolio",
+  description = "Nullam egestas et in tristique faucibus. Mauris quis posuere lorem tincidunt phasellus auctor tortor. Sit id neque tincidunt ac nibh varius aliquam tincidunt. Habitant egestas donec diam scelerisque donec aenean odio mattis. Lacus tempus est congue ultricies in vestibulum aenean. Enim aliquet nunc hac eget.",
+  cta,
+  projects = [],
+}: PortfolioBannerProps) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -23,53 +46,11 @@ const PortfolioBanner = () => {
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
-  const allProjects: IProject[] = [
-    {
-      img: "/images/home-page/workflow-2.png",
-      title: "project name",
-      desc: "Share your footage and any relevant media assets via the upload portal",
-    },
-    {
-      img: "/images/home-page/workflow-3.png",
-      title: "project name",
-      desc: "Our team of editors cuts, polishes, and optimizes a video to match your goals and audience.",
-    },
-    {
-      img: "/images/home-page/workflow-2.png",
-      title: "project name",
-      desc: "Your video is given an eye-catching thumbnail, tags, optimized for success and posted using our full service process.",
-    },
-    {
-      img: "/images/home-page/workflow-3.png",
-      title: "project name",
-      desc: "Our team of editors cuts, polishes, and optimizes a video to match your goals and audience.",
-    },
-    {
-      img: "/images/home-page/workflow-2.png",
-      title: "project name",
-      desc: "Share your footage and any relevant media assets via the upload portal",
-    },
-    {
-      img: "/images/home-page/workflow-3.png",
-      title: "project name",
-      desc: "Your video is given an eye-catching thumbnail, tags, optimized for success and posted using our full service process.",
-    },
-    {
-      img: "/images/home-page/workflow-2.png",
-      title: "project name",
-      desc: "Share your footage and any relevant media assets via the upload portal",
-    },
-    {
-      img: "/images/home-page/workflow-3.png",
-      title: "project name",
-      desc: "Your video is given an eye-catching thumbnail, tags, optimized for success and posted using our full service process.",
-    },
-    {
-      img: "/images/home-page/workflow-2.png",
-      title: "project name",
-      desc: "Our team of editors cuts, polishes, and optimizes a video to match your goals and audience.",
-    },
-  ];
+
+  const getImageUrl = (thumbnail?: { asset?: any }) => {
+    if (!thumbnail || !thumbnail.asset) return "/images/home-page/workflow-2.png";
+    return urlFor(thumbnail).width(800).height(600).url() || "/images/home-page/workflow-2.png";
+  };
 
   return (
     <div className="relative w-full">
@@ -99,18 +80,24 @@ const PortfolioBanner = () => {
         <div className="relative z-10 mx-auto w-full px-2.5 md:px-0 max-w-[1216px]">
           <div className="flex flex-col items-center justify-center gap-6 pt-20 lg:pt-[190px] ">
             <h1 className="font-semibold text-[44px] lg:text-[73px] leading-[118%] -tracking-[0.04em] text-white text-center lg:text-left">
-              Check out our <br className="block lg:hidden" /> portfolio
+              {title.includes('portfolio') ? (
+                <>
+                  {title.split('portfolio')[0]}
+                  <br className="block lg:hidden" /> portfolio
+                  {title.split('portfolio')[1]}
+                </>
+              ) : (
+                title
+              )}
             </h1>
             <p className="font-normal text-lg lg:text-xl leading-[150%] text-white max-w-5xl text-center">
-              Nullam egestas et in tristique faucibus. Mauris quis posuere lorem
-              tincidunt phasellus auctor tortor. Sit id neque tincidunt ac nibh
-              varius aliquam tincidunt. Habitant egestas donec diam scelerisque
-              donec aenean odio mattis. Lacus tempus est congue ultricies in
-              vestibulum aenean. Enim aliquet nunc hac eget.
+              {description}
             </p>
-            <div className="w-fit">
-              <SiteButton>View Projects</SiteButton>
-            </div>
+            {cta && (
+              <div className="w-fit">
+                <SiteButton button={cta} />
+              </div>
+            )}
           </div>
 
           <div className="relative pt-15 lg:pt-[128px] pb-[75px] lg:pb-32">
@@ -118,12 +105,15 @@ const PortfolioBanner = () => {
               <div className="w-full">
                 <div className="mx-auto w-full px-2.5 md:px-0 max-w-[1216px]">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {allProjects?.map((project, i) => (
-                      <div key={i} className="p-2.5 flex flex-col gap-6 border border-[rgba(255,255,255,0.1)] backdrop-blur-[20px] bg-[linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.5))] shadow-[0_10px_10px_rgba(0,0,0,0.1),0_4px_4px_rgba(0,0,0,0.05),0_1px_0_rgba(0,0,0,0.05)] rounded-xl w-full min-h-[400px]">
+                    {projects?.map((project, i) => {
+                      // Generate a unique key combining _id and index to prevent duplicates
+                      const projectKey = project._id ? `project-${project._id}-${i}` : `project-${i}`;
+                      return (
+                      <div key={projectKey} className="p-2.5 flex flex-col gap-6 border border-[rgba(255,255,255,0.1)] backdrop-blur-[20px] bg-[linear-gradient(180deg,rgba(255,255,255,0.6),rgba(255,255,255,0.5))] shadow-[0_10px_10px_rgba(0,0,0,0.1),0_4px_4px_rgba(0,0,0,0.05),0_1px_0_rgba(0,0,0,0.05)] rounded-xl w-full min-h-[400px]">
                         <div className="relative w-full h-[220px] sm:h-[241px]">
                           <Image
-                            src={project.img}
-                            alt={project.title}
+                            src={getImageUrl(project.thumbnail)}
+                            alt={project.thumbnail?.alt || project.title}
                             fill
                             className="object-cover rounded-md"
                             priority={i < 3}
@@ -134,10 +124,11 @@ const PortfolioBanner = () => {
                           <h2 className="font-semibold text-2xl sm:text-3xl -tracking-[0.04em] capitalize">
                             {project.title}
                           </h2>
-                          <p className="text-base leading-[150%] text-black/70">{project.desc}</p>
+                          <p className="text-base leading-[150%] text-black/70">{project.shortDescription}</p>
                         </div>
                       </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
               </div>

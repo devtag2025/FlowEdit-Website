@@ -3,8 +3,25 @@
 import SiteButton from "@/components/shared/SiteButton";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { urlFor } from "@/sanity/lib/image";
+import { Button } from "@/types/siteSettings";
 
-const PortfolioShowcase = () => {
+interface PortfolioShowcaseProps {
+  title?: string;
+  description?: string;
+  image?: {
+    asset?: any;
+    alt?: string;
+  };
+  cta?: Button;
+}
+
+const PortfolioShowcase = ({
+  title = "Duis convallis elit blandit turpis",
+  description = "Tellus fermentum laoreet dignissim risus scelerisque pretium ullamcorper pretium. Sapien ut tellus ut hendrerit mauris. Varius dui sed vestibulum quis tellus egestas dolor eget magna. Dui imperdiet interdum parturient vitae. Nunc gravida lobortis ut ut in nisl facilisis amet. Aenean feugiat ultrices mauris gravida iaculis. Amet sem.",
+  image,
+  cta,
+}: PortfolioShowcaseProps) => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -15,6 +32,11 @@ const PortfolioShowcase = () => {
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  const getImageUrl = () => {
+    if (!image || !image.asset) return "/images/home-page/workflow-2.png";
+    return urlFor(image).url() || "/images/home-page/workflow-2.png";
+  };
 
   return (
     <div className="relative overflow-hidden lg:h-[1452px] w-full lg:mt-[-700px] lg:-mb-24">
@@ -40,16 +62,16 @@ const PortfolioShowcase = () => {
             <div className="w-full lg:w-1/2 rounded-2xl">
               <div className="relative w-full aspect-4/3 lg:h-full">
                 <Image
-                  src="/images/home-page/workflow-2.png"
-                  alt="showcase image big"
+                  src={getImageUrl()}
+                  alt={image?.alt || "showcase image"}
                   fill
                   className="object-cover rounded-2xl"
                   priority
                 />
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[98%] h-[98%] border border-[rgba(255,255,255,0.33)] rounded-2xl">
                   <Image
-                    src="/images/home-page/workflow-2.png"
-                    alt="showcase image big"
+                    src={getImageUrl()}
+                    alt={image?.alt || "showcase image"}
                     fill
                     className="object-cover rounded-2xl"
                     priority
@@ -60,22 +82,17 @@ const PortfolioShowcase = () => {
 
             <div className="w-full lg:w-1/2 flex flex-col gap-6 relative">
               <h1 className="font-semibold text-[36px] lg:text-[54px] -tracking-[0.04em] text-black max-w-xl">
-                Duis convallis elit blandit turpis
+                {title}
               </h1>
               <p className="font-normal text-lg leading-[133%] text-[rgba(0,0,0,0.7)] md:max-w-2xl lg:max-w-lg">
-                Tellus fermentum laoreet dignissim risus scelerisque pretium
-                ullamcorper pretium. Sapien ut tellus ut hendrerit mauris.
-                Varius dui sed vestibulum quis tellus egestas dolor eget magna.
-                Dui imperdiet interdum parturient vitae. Nunc gravida lobortis
-                ut ut in nisl facilisis amet. Aenean feugiat ultrices mauris
-                gravida iaculis. Amet sem.
+                {description}
               </p>
 
-              <div className="w-full lg:w-fit">
-                <SiteButton className="w-full bg-[#B6C7F5]/30 hover:bg-[#B6C7F5]/30">
-                  Start for Free
-                </SiteButton>
-              </div>
+              {cta && (
+                <div className="w-full lg:w-fit">
+                  <SiteButton button={cta} className="w-full bg-[#B6C7F5]/30 hover:bg-[#B6C7F5]/30" />
+                </div>
+              )}
             </div>
           </div>
           </div>

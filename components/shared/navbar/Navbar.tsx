@@ -14,15 +14,22 @@ import MobileMenu from "./MobileMenu";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { urlFor } from "@/sanity/lib/image";
+import { NavigationItem, Button } from "@/types/siteSettings";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
-const Navbar = () => {
+const Navbar = ({
+  navItems,
+  ctaButton,
+  logo,
+  mobileMenuBackground,
+}: {
+  navItems: NavigationItem[];
+  ctaButton: Button | null;
+  logo: (SanityImageSource & { alt?: string }) | null;
+  mobileMenuBackground: (SanityImageSource & { alt?: string }) | null;
+}) => {
   const [scrolled, setScrolled] = useState(false);
-
-  const navItems = [
-    { label: "home", to: "/" },
-    { label: "pricing", to: "/pricing" },
-    { label: "portfolio", to: "/portfolio" },
-  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,15 +47,23 @@ const Navbar = () => {
       ${scrolled ? "bg-[#6283ea]/80 backdrop-blur-lg" : "bg-transparent"}`}
     >
       <div className="mx-auto max-w-[1216px] flex items-center justify-between">
-        <Link
-          href="/"
-          className={`font-inter font-medium text-xl leading-[150%] cursor-pointer`}
-        >
-          <h1>Flow Edit</h1>
-        </Link>
+        {logo && (
+          <Link
+            href="/"
+            className={`font-inter font-medium text-xl leading-[150%] cursor-pointer`}
+          >
+            <Image
+              src={urlFor(logo).url()}
+              alt={logo.alt || "Logo"}
+              width={150}
+              height={50}
+              className="h-[24px] w-auto"
+            />
+          </Link>
+        )}
 
         <div className="hidden md:flex">
-          <NavItems navItems={navItems} />
+          <NavItems navItems={navItems} ctaButton={ctaButton} />
         </div>
 
         <div className="md:hidden lg:hidden">
@@ -62,16 +77,33 @@ const Navbar = () => {
               side="top"
               className="p-0 w-full h-screen max-w-[100vw] overflow-hidden border-none bg-[#6283ea] [&>button]:hidden z-[9999]"
             >
-              <Image
-                src="/images/background/mobile-bg.png"
-                alt="mobile-menu-bg"
-                fill
-                className="object-cover"
-              />
+              {mobileMenuBackground ? (
+                <Image
+                  src={urlFor(mobileMenuBackground).url()}
+                  alt={mobileMenuBackground.alt || "mobile-menu-bg"}
+                  fill
+                  className="object-cover"
+                />
+              ) : (
+                ""
+              )}
 
               <div>
                 <SheetTitle>
-                  <Logo className="absolute left-6 top-8 z-20 text-white" />
+                  {logo && (
+                    <Link
+                      href="/"
+                      className="cursor-pointer absolute left-6 top-8 z-20"
+                    >
+                      <Image
+                        src={urlFor(logo).url()}
+                        alt={logo.alt || "Logo"}
+                        width={150}
+                        height={50}
+                        className="h-[24px] w-auto"
+                      />
+                    </Link>
+                  )}
                 </SheetTitle>
 
                 <div className="pointer-events-auto">
@@ -83,7 +115,7 @@ const Navbar = () => {
                 </div>
               </div>
 
-              <MobileMenu navItems={navItems} />
+              <MobileMenu navItems={navItems} ctaButton={ctaButton} />
             </SheetContent>
           </Sheet>
         </div>

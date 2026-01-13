@@ -1,0 +1,12 @@
+{
+  "name": "flowedit-sanity",
+  "private": true,
+  "version": "0.1.0",
+  "dependencies": {
+    "@sanity/vision": "^4.22.0",
+    "sanity": "^4.22.0",
+    "sanity-plugin-media": "^4.1.1",
+    "styled-components": "^6.3.5"
+  }
+}
+
