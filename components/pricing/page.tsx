@@ -1,5 +1,6 @@
 "use client";
 
+import { Button } from "@/types/siteSettings";
 import PriceBanner from "./components/PriceBanner";
 import PriceCarosel from "./components/PriceCarosel/PriceCarosel";
 import { useState, useEffect } from "react";
@@ -24,21 +25,7 @@ interface PricingPageData {
         text: string;
         type: "check" | "minus";
       }>;
-      cta?: {
-        _key?: string;
-        text?: string;
-        linkType?: string;
-        internalLink?: {
-          _id?: string;
-          title?: string;
-          slug?: {
-            current?: string;
-          };
-        };
-        externalUrl?: string;
-        openInNewTab?: boolean;
-        variant?: string;
-      };
+      cta?: Button;
     }>;
     discountPercentage?: number;
   };

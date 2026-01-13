@@ -8,6 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode } from "swiper/modules";
 import { useRef } from "react";
 import type { Swiper as SwiperType } from "swiper";
+import { Button } from "@/types/siteSettings";
 
 interface PricingPlan {
   _key?: string;
@@ -16,21 +17,7 @@ interface PricingPlan {
   priceLabel?: string;
   glow?: boolean;
   features: { _key?: string; text: string; type: FeatureType }[];
-  cta?: {
-    _key?: string;
-    text?: string;
-    linkType?: string;
-    internalLink?: {
-      _id?: string;
-      title?: string;
-      slug?: {
-        current?: string;
-      };
-    };
-    externalUrl?: string;
-    openInNewTab?: boolean;
-    variant?: string;
-  };
+  cta?: Button
 }
 
 interface PriceCaroselProps {

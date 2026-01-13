@@ -57,11 +57,11 @@ const BannerBlock = ({
         stagger: 0.05,
       })
         .from(".hero-subtitle", { opacity: 0, y: 30, duration: 0.9 }, "-=0.4")
-        .from(
-          ".hero-button",
-          { opacity: 0, scale: 0.9, duration: 0.8 },
-          "-=0.3"
-        )
+        // .from(
+        //   ".hero-button",
+        //   { opacity: 0, scale: 0.9, duration: 0.8 },
+        //   "-=0.3"
+        // )
         .from(
           ".hero-bottom-text",
           { opacity: 0, y: 20, duration: 0.8 },
@@ -147,7 +147,7 @@ const BannerBlock = ({
     
     return stars;
   };
-
+console.log("button", cta)
   return (
     <div className="w-full lg:h-[1440px] z-10 bg-linear-to-b from-[#4069E4] to-[rgba(255,255,255,0)] relative overflow-hidden">
       {/* Top Banner Image */}
@@ -203,9 +203,7 @@ const BannerBlock = ({
                 )}
 
                 {cta && (
-                  <div className="w-full sm:w-fit shadow-2xl">
-                    <SiteButton button={cta} className="bg-[#B6C7F5]/30 w-full hover:bg-[#B6C7F5]/30 hero-button" />
-                  </div>
+                  <SiteButton button={cta} className="bg-[#B6C7F5]/30 w-full hover:bg-[#B6C7F5]/30 hero-button" />
                 )}
                 {bottomText && (
                   <p className="hero-bottom-text text-white max-w-60 sm:max-w-sm md:max-w-md text-xs sm:text-sm md:text-base leading-[150%]">
