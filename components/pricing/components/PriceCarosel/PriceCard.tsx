@@ -1,9 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import { BsCurrencyDollar } from "react-icons/bs";
 import { GoCreditCard } from "react-icons/go";
-import SiteButton from "@/components/shared/SiteButton";
+import { Loader2 } from "lucide-react";
 import DiamondIcon from "@/components/shared/DiamondCheckIcon";
-import { Button } from "@/types/siteSettings";
 
 export type FeatureType = "check" | "minus";
 
@@ -19,7 +20,9 @@ interface PriceCardProps {
   priceLabel?: string;
   features: Feature[];
   glow?: boolean;
-  cta?: Button;
+  planKey: string;
+  isLoading?: boolean;
+  onCheckout: (planKey: string) => void;
 }
 
 const PriceCard = ({
@@ -28,7 +31,9 @@ const PriceCard = ({
   priceLabel = "Per video",
   features,
   glow = false,
-  cta,
+  planKey,
+  isLoading = false,
+  onCheckout,
 }: PriceCardProps) => {
   return (
     <div className="relative py-6 lg:py-12 px-4 lg:px-12 shadow-lg border border-white/25 rounded-[10px] bg-white/50 overflow-hidden flex flex-col items-center gap-8">
@@ -43,21 +48,21 @@ const PriceCard = ({
         </div>
       )}
 
+      {/* Price info */}
       <div className="flex flex-col items-center relative z-20">
         <h1 className="font-medium text-sm text-black/70">{title}</h1>
-
         <div className="flex items-center gap-1">
           <BsCurrencyDollar className="text-3xl text-black/70" />
           <h1 className="font-semibold text-6xl -tracking-[0.04em] text-black">
             {price}
           </h1>
         </div>
-
         <h1 className="font-medium text-sm text-black/70">{priceLabel}</h1>
       </div>
 
       <div className="h-px w-[95%] bg-black/15" />
 
+      {/* Features */}
       <ul className="flex flex-col gap-6 relative z-20">
         {features.map((f, i) => (
           <li key={f._key || i} className="flex items-center gap-4">
@@ -69,16 +74,29 @@ const PriceCard = ({
 
       <div className="h-px w-[95%] bg-black/15" />
 
-      {cta && (
-        <div className="w-fit shadow-xl relative z-20 rounded-lg">
-          <SiteButton button={cta} className="bg-white hover:bg-white">
-            <div className="flex items-center gap-2">
-              <span>{cta.text || "Get Started"}</span>
-              <GoCreditCard />
-            </div>
-          </SiteButton>
+      {/* Checkout button — always rendered */}
+      <div className="w-fit shadow-xl relative z-20 rounded-lg">
+        <div className="p-0.5 bg-linear-to-r from-white/60 to-white rounded-lg">
+          <button
+            type="button"
+            onClick={() => onCheckout(planKey)}
+            disabled={isLoading}
+            className="bg-[#B6C7F5] hover:bg-[#B6C7F5]/90 text-black px-[26px] py-[18px] font-medium text-sm leading-5 shadow-md cursor-pointer rounded-md transition-opacity disabled:opacity-60 disabled:cursor-not-allowed flex items-center gap-2"
+          >
+            {isLoading ? (
+              <>
+                <Loader2 className="w-4 h-4 animate-spin" />
+                <span>Processing…</span>
+              </>
+            ) : (
+              <>
+                <span>Get Started</span>
+                <GoCreditCard />
+              </>
+            )}
+          </button>
         </div>
-      )}
+      </div>
     </div>
   );
 };

@@ -24,7 +24,11 @@ const NavItems = ({ navItems, ctaButton }: navLinkProps) => {
 
         {ctaButton && (
           <li>
-            <SiteButton button={ctaButton} />
+<Link href="/pricing">
+  <SiteButton button={ctaButton} />
+</Link>
+
+
           </li>
         )}
       </ul>

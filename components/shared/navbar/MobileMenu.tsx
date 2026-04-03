@@ -34,7 +34,9 @@ const MobileMenu = ({
 
         {ctaButton && (
           <SheetClose asChild>
+            <Link href='/login'>
             <SiteButton button={ctaButton} className="px-6 py-3 text-base shadow-lg" />
+          </Link>
           </SheetClose>
         )}
       </div>
