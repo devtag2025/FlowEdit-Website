@@ -1,12 +1,12 @@
 import Stripe from "stripe";
 import { NextResponse } from "next/server";
 
-const stripeSecret = process.env.STRIPE_SECRET_KEY;
-if (!stripeSecret) {
-  throw new Error("STRIPE_SECRET_KEY is not configured in environment variables");
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+if (!stripeSecretKey) {
+  throw new Error("STRIPE_SECRET_KEY must be configured in the environment");
 }
 
-const stripe = new Stripe(stripeSecret, {
+const stripe = new Stripe(stripeSecretKey, {
   apiVersion: process.env.STRIPE_API_VERSION || "2026-03-25.dahlia",
 });
 
@@ -16,12 +16,37 @@ const PRICE_MAP = {
   agency:  process.env.STRIPE_PRICE_AGENCY,
 };
 
+/**
+ * Resolve any plan value → a valid Stripe plan key.
+ * Handles: "starter", "pro", "agency" (direct keys)
+ *       AND "Starter", "Pro", "Agency", "Professional", "Enterprise" (Sanity titles)
+ *       AND anything else that contains those words.
+ */
+function resolvePlanKey(raw) {
+  if (!raw) return null;
+  const lower = String(raw).toLowerCase().trim();
+
+  if (lower === "starter" || lower.includes("starter") || lower.includes("basic")) return "starter";
+  if (lower === "pro"     || lower.includes("pro") || lower.includes("professional")) return "pro";
+  if (lower === "agency"  || lower.includes("agency") || lower.includes("enterprise") || lower.includes("team")) return "agency";
+
+  return null;
+}
+
 export async function POST(request) {
   try {
-    const { plan } = await request.json();
+    const body = await request.json();
 
-    if (!plan || !PRICE_MAP[plan]) {
-      return NextResponse.json({ message: "Invalid plan" }, { status: 400 });
+    // Accept either `plan` (key) or `title` (Sanity plan title) — whichever is sent
+    const rawPlan = body.plan || body.title || null;
+    const plan = resolvePlanKey(rawPlan);
+
+    if (!plan) {
+      console.error("[Checkout] Could not resolve plan from:", rawPlan);
+      return NextResponse.json(
+        { message: `Invalid plan: "${rawPlan}". Expected starter, pro, or agency.` },
+        { status: 400 }
+      );
     }
 
     const priceId = PRICE_MAP[plan];

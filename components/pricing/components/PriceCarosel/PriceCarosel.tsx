@@ -14,8 +14,7 @@ interface PricingPlan {
   price: number;
   priceLabel?: string;
   glow?: boolean;
-  planKey?: string;           // Raw from Sanity (e.g., "plus pro")
-  _normalizedPlanKey?: string; // ← Added by PricingPage (e.g., "pro")
+  planKey?: string;
   features: { _key?: string; text: string; type: FeatureType }[];
 }
 
@@ -24,7 +23,7 @@ interface PriceCaroselProps {
   pricingPlans?: PricingPlan[];
   discountPercentage?: number;
   loadingPlan?: string | null;
-  onCheckout: (planKey: string) => void; // ← Expects normalized Stripe key
+  onCheckout: (planKey: string) => void;
 }
 
 const PriceCarosel = ({
@@ -44,14 +43,10 @@ const PriceCarosel = ({
   const cards = pricingPlans.map((card) => ({
     ...card,
     price: calculatePrice(card.price),
-    // Use normalized key if available, otherwise fallback
-    checkoutPlanKey: card._normalizedPlanKey || card.planKey?.toLowerCase().trim() || card.title.toLowerCase().replace(/\s+/g, "-"),
+    // Use explicit planKey from Sanity if set, otherwise fall back to the
+    // plan title. The server-side checkout route resolves both correctly.
+    resolvedPlanKey: card.planKey || card.title,
   }));
-
-  const handleCardCheckout = (card: typeof cards[0]) => {
-    // Always pass the normalized Stripe-compatible key
-    onCheckout(card.checkoutPlanKey);
-  };
 
   return (
     <div className="relative py-0 mb-[15px] lg:mb-[170px]">
@@ -79,9 +74,9 @@ const PriceCarosel = ({
                     priceLabel={card.priceLabel}
                     features={card.features}
                     glow={card.glow}
-                    planKey={card.checkoutPlanKey} // ← Normalized key for Stripe
-                    isLoading={loadingPlan === card.checkoutPlanKey}
-                    onCheckout={() => handleCardCheckout(card)}
+                    planKey={card.resolvedPlanKey}
+                    isLoading={loadingPlan === card.resolvedPlanKey}
+                    onCheckout={onCheckout}
                   />
                 </div>
               </SwiperSlide>
@@ -99,9 +94,9 @@ const PriceCarosel = ({
               priceLabel={card.priceLabel}
               features={card.features}
               glow={card.glow}
-              planKey={card.checkoutPlanKey} // ← Normalized key for Stripe
-              isLoading={loadingPlan === card.checkoutPlanKey}
-              onCheckout={() => handleCardCheckout(card)}
+              planKey={card.resolvedPlanKey}
+              isLoading={loadingPlan === card.resolvedPlanKey}
+              onCheckout={onCheckout}
             />
           ))}
         </div>

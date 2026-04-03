@@ -5,7 +5,6 @@ import PriceCarosel from "./components/PriceCarosel/PriceCarosel";
 import { useState, useEffect } from "react";
 import { createCheckoutSession } from "@/lib/queries/billing";
 import { getStripe } from "@/lib/stripe/stripe";
-import { normalizePlanKey } from "@/lib/billing/plan-mapper"; // ← NEW IMPORT
 
 interface PricingPageData {
   pricingData?: {
@@ -22,7 +21,7 @@ interface PricingPageData {
       price: number;
       priceLabel?: string;
       glow?: boolean;
-      planKey?: string; // ← Comes from Sanity (e.g., "plus pro")
+      planKey?: string;
       features: Array<{
         _key?: string;
         text: string;
@@ -63,11 +62,12 @@ const PricingPage = ({ pageData }: PricingPageProps) => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const handleCheckout = async (stripePlanKey: string) => { // ← Now receives normalized key
+  // planKey here is either card.planKey from Sanity OR the plan title (e.g. "Starter").
+  // The checkout API route resolves both to a valid Stripe key server-side.
+  const handleCheckout = async (planKey: string) => {
     try {
-      setLoadingPlan(stripePlanKey);
-
-      const payload = await createCheckoutSession(stripePlanKey); // ← Send normalized key to Stripe
+      setLoadingPlan(planKey);
+      const payload = await createCheckoutSession(planKey);
 
       if (payload.url) {
         window.location.href = payload.url;
@@ -91,23 +91,13 @@ const PricingPage = ({ pageData }: PricingPageProps) => {
     }
   };
 
-  // ← NEW: Normalize plans BEFORE passing to carousel
-  const normalizedPlans = pricingPlans.map(plan => ({
-    ...plan,
-    // Keep original for display, but add normalized key for checkout
-    _normalizedPlanKey: normalizePlanKey(plan.planKey, plan.title),
-  }));
-
   return (
     <div className="w-full relative min-h-screen overflow-hidden">
-      {/* Gradient — visible while background image loads */}
       <div
         className={`absolute inset-0 bg-linear-to-b from-[#4069E4] to-[rgba(255,255,255,0)] -z-20 transition-opacity duration-300 ${
           imageLoaded ? "opacity-0" : "opacity-100"
         }`}
       />
-
-      {/* Background image */}
       <div
         className="absolute top-0 left-0 right-0 bottom-0 w-full h-full min-h-screen z-0"
         style={{
@@ -118,7 +108,6 @@ const PricingPage = ({ pageData }: PricingPageProps) => {
         }}
       />
 
-      {/* Page content */}
       <div className="relative z-10">
         <PriceBanner
           bannerData={bannerData}
@@ -129,7 +118,7 @@ const PricingPage = ({ pageData }: PricingPageProps) => {
 
         <PriceCarosel
           discountApplied={discountApplied}
-          pricingPlans={normalizedPlans} // ← Pass normalized plans
+          pricingPlans={pricingPlans}
           discountPercentage={discountPercentage}
           loadingPlan={loadingPlan}
           onCheckout={handleCheckout}
