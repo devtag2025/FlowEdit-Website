@@ -16,13 +16,8 @@ const PRICE_MAP = {
   agency:  process.env.STRIPE_PRICE_AGENCY,
 };
 
-/**
- * Resolve any plan value → a valid Stripe plan key.
- * Handles: "starter", "pro", "agency" (direct keys)
- *       AND "Starter", "Pro", "Agency", "Professional", "Enterprise" (Sanity titles)
- *       AND anything else that contains those words.
- */
-function resolvePlanKey(raw) {
+
+function resolvePlanKey(raw)  {
   if (!raw) return null;
   const lower = String(raw).toLowerCase().trim();
 
@@ -72,7 +67,6 @@ export async function POST(request) {
       payment_method_types: ["card"],
       line_items:           [{ price: priceId, quantity: 1 }],
       metadata:             { plan },
-      customer_creation:    "always",
       success_url: `${dashboardUrl}/login?paid=true&plan=${plan}`,
       cancel_url:  `${siteUrl}/?canceled=true`,
     });
