@@ -1,9 +1,4 @@
-// lib/billing/plan-mapper.ts
 
-/**
- * Maps Sanity CMS plan keys to Stripe-compatible plan identifiers.
- * Add new mappings here as your pricing evolves.
- */
 export const SANITY_TO_STRIPE_PLAN_MAP: Record<string, string> = {
   // Exact matches (already correct)
   "starter": "starter",
@@ -15,10 +10,10 @@ export const SANITY_TO_STRIPE_PLAN_MAP: Record<string, string> = {
   "plus pro": "pro",
   "pro plan": "pro",
   "professional": "pro",
-  
+
   "starter plan": "starter",
   "basic": "starter",
-  
+
   "agency plan": "agency",
   "team": "agency",
   "business": "agency",
@@ -36,20 +31,20 @@ export const normalizePlanKey = (
   title?: string
 ): string => {
   if (!sanityPlanKey && !title) return "launch";
-  
+
   const key = (sanityPlanKey || title || "").toLowerCase().trim();
-  
+
   // Direct map lookup
   if (key in SANITY_TO_STRIPE_PLAN_MAP) {
     return SANITY_TO_STRIPE_PLAN_MAP[key];
   }
-  
+
   // Try slugified version (e.g., "Plus Pro" → "plus-pro")
   const slugified = key.replace(/\s+/g, "-");
   if (slugified in SANITY_TO_STRIPE_PLAN_MAP) {
     return SANITY_TO_STRIPE_PLAN_MAP[slugified];
   }
-  
+
   // Fallback: derive from title (your existing logic)
   if (title) {
     const lowerTitle = title.toLowerCase();
@@ -57,7 +52,7 @@ export const normalizePlanKey = (
     if (lowerTitle.includes("pro") || lowerTitle.includes("professional")) return "pro";
     if (lowerTitle.includes("agency") || lowerTitle.includes("team") || lowerTitle.includes("business")) return "agency";
   }
-  
+
   // Last resort
   console.warn(`[PlanMapper] Unmapped plan key: "${sanityPlanKey}", title: "${title}". Falling back to "launch".`);
   return "launch";
